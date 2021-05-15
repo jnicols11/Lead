@@ -1,0 +1,122 @@
+<div class="container">
+  <form class="regForm" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <button
+      class="regForm__xBtn"
+      type="button"
+      (click)="onCancelReg()"
+      >X
+    </button>
+    <h3>Register for an Account</h3>
+    <br>
+    <span
+      *ngIf="registerForm.get('name').hasError('required') && registerForm.get('name').touched"
+      class="errorText"
+      >Full Name is a required field!
+    </span>
+    <div class="regForm__container">
+      <div class="regForm__label">
+        <label for="name">Full Name: </label>
+      </div>
+      <input
+        type="text"
+        id="name"
+        class="regForm__input"
+        placeholder="Full Name"
+        formControlName="name"
+      >
+    </div>
+    <br>
+    <span
+      *ngIf="registerForm.get('username').hasError('required') && registerForm.get('username').touched"
+      class="errorText"
+      >Username is a required field!
+    </span>
+    <div class="regForm__container">
+      <div class="regForm__label">
+        <label for="username">Username: </label>
+      </div>
+      <input
+        type="text"
+        id="username"
+        class="regForm__input"
+        placeholder="Username"
+        formControlName="username"
+      >
+    </div>
+    <br>
+    <span
+      *ngIf="registerForm.get('email').hasError('required') && registerForm.get('email').touched"
+      class="errorText"
+      >Email is a required field!
+    </span>
+    <span
+      *ngIf="registerForm.get('email').hasError('email') && registerForm.get('email').touched"
+      class="errorText"
+      >Please Enter a valid Email!
+    </span>
+    <div class="regForm__container">
+      <div class="regForm__label">
+        <label for="email">Email: </label>
+      </div>
+      <input
+        type="email"
+        id="email"
+        class="regForm__input"
+        placeholder="Email"
+        formControlName="email"
+      >
+    </div>
+    <br>
+    <span
+      *ngIf="registerForm.get('password').hasError('required') && registerForm.get('password').touched"
+      class="errorText"
+      >Password is a required field!
+    </span>
+    <span
+    *ngIf="registerForm.get('password').hasError('minlength')"
+    class="errorText"
+      >Password must be greater than 7 characters!
+    </span>
+    <div class="regForm__container">
+      <div class="regForm__label">
+        <label for="password">Password: </label>
+      </div>
+      <input
+        type="password"
+        id="password"
+        class="regForm__input"
+        placeholder="Password"
+        formControlName="password"
+      >
+    </div>
+    <br>
+    <button
+      type="submit"
+      class="regForm__submitBtn"
+      [disabled]="!registerForm.valid"
+      >Register!
+    </button>
+  </form>
+</div>
+
+<div class="success" *ngIf="successPopup">
+  <button
+    class="regForm__xBtn"
+    type="button"
+    (click)="onCancelReg()"
+    >X
+  </button>
+  <br>
+  <h2>Register Success!</h2>
+  <br>
+  <button
+    class="success__btn"
+    type="button"
+    routerLink="/login"
+    >Go to Login
+  </button>
+</div>
+
+<div class="failed" *ngIf="errorPopup">
+
+</div>
