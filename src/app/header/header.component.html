@@ -3,38 +3,51 @@
     <ul class="navbar__info__list">
       <li class="navbar__info__list__item">
         <button
+          id="homeBtn"
           class="navbar__info__list__item__btn"
           style="cursor: pointer;"
           routerLink="/home"
-          >Home
+          [ngClass]="homeFocus ? 'active' : 'not-active'"
+          (click)="onFocusHome()"
+          ><p>Home</p>
         </button>
       </li>
       <li class="navbar__info__list__item">
         <button
+          id="projectBtn"
           class="navbar__info__list__item__btn"
           style="cursor: pointer;"
           routerLink="/projects"
-          >Projects
+          [ngClass]="projectFocus ? 'active' : 'not-active'"
+          (click)="onFocusProject()"
+          ><p>Projects</p>
         </button>
       </li>
     </ul>
   </div>
+  <img src="../../assets/img/lead.JPG" class="logo" routerLink="/home" (click)="onFocusHome()">
   <div class="navbar__user">
     <ul class="navbar__user__list">
       <li class="navbar__user__list__item">
         <button
+          id="regBtn"
           class="navbar__user__list__item__btn"
           style="cursor: pointer;"
           routerLink="/register"
-          >Register
+          [ngClass]="regFocus ? 'active' : 'not-active'"
+          (click)="onFocusReg()"
+          ><p>Register</p>
         </button>
       </li>
       <li class="navbar__user__list__item">
         <button
+          id="logBtn"
           class="navbar__user__list__item__btn"
           style="cursor: pointer;"
           routerLink="/login"
-          >Login
+          [ngClass]="logFocus ? 'active' : 'not-active'"
+          (click)="onFocusLog()"
+          ><p>Login</p>
         </button>
       </li>
     </ul>

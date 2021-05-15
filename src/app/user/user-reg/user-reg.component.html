@@ -99,6 +99,8 @@
   </form>
 </div>
 
+<div class="loader" *ngIf="loading"></div>
+
 <div class="success" *ngIf="successPopup">
   <button
     class="regForm__xBtn"
@@ -118,5 +120,14 @@
 </div>
 
 <div class="failed" *ngIf="errorPopup">
-
+  <button
+    class="regForm__xBtn"
+    type="button"
+    (click)="onCloseError()"
+    >X
+  </button>
+  <br>
+  <h2>Something went wrong!</h2>
+  <br>
+  <p>We're sorry :( <br> Your registration was not completed successfully!  Feel free to try again!</p>
 </div>

@@ -20,4 +20,8 @@ export class UserHttpService {
       }
     )
   }
+
+  login(user: { credentials: string, password: string }) {
+    console.log('Logging in');
+  }
 }

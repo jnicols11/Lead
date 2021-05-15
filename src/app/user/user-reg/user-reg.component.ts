@@ -15,6 +15,7 @@ export class UserRegComponent implements OnInit {
   error = new Subject<string>();
   errorPopup = false;
   successPopup = false;
+  loading = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -25,6 +26,7 @@ export class UserRegComponent implements OnInit {
     this.initForm();
     this.errorPopup = false;
     this.successPopup = false;
+    this.loading = false;
   }
 
   onCancelReg() {
@@ -32,14 +34,21 @@ export class UserRegComponent implements OnInit {
   }
 
   onSubmit() {
+    this.loading = true;
     this.userService.register(this.registerForm.value)
     .subscribe(responseData => {
       console.log(responseData);
+      this.loading = false;
       this.successPopup = true;
     }, error => {
       this.error.next(error.message);
+      this.loading = false;
       this.errorPopup = true;
     });
+  }
+
+  onCloseError() {
+    this.errorPopup = false;
   }
 
   private initForm() {

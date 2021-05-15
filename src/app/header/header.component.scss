@@ -4,7 +4,7 @@
   margin-top: 20px;
   width: 100%;
   background-color: $color-grey-dark-1;
-  height: 50px;
+  height: 70px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -66,4 +66,17 @@
       }
     }
   }
+}
+
+.active {
+  background-color: $color-secondary;
+   & p {
+    border-bottom: 1px dotted black;
+    border-bottom-width: 1px;
+   }
+}
+
+.logo {
+  height: 60px;
+  cursor: pointer;
 }

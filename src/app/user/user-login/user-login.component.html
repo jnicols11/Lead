@@ -1,1 +1,40 @@
-<p>user-login works!</p>
+<div class="container">
+  <form class="logForm" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <button
+      class="logForm__xBtn"
+      type="button"
+      (click)="onCancelLog()"
+      >X
+    </button>
+    <h2>Log in to your account!</h2>
+    <br>
+    <div class="logForm__container">
+      <label for="credentials" class="logForm__label">Username or Email: </label>
+      <input
+        type="text"
+        id="credentials"
+        class="logForm__input"
+        placeholder="Username or Email"
+        formControlName="credentials"
+      >
+    </div>
+    <br>
+    <div class="logForm__container">
+      <label for="password" class="logForm__label">Password: </label>
+      <input
+        type="password"
+        id="password"
+        class="logForm__input"
+        placeholder="Password"
+        formControlName="password"
+      >
+    </div>
+    <br>
+    <button
+      type="submit"
+      class="logForm__submitBtn"
+      [disabled]="!loginForm.valid"
+      >Log in!
+    </button>
+  </form>
+</div>
