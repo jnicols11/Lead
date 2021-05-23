@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserHttpService } from '../user/user-http.service';
 
 @Component({
   selector: 'app-home',

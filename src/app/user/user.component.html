@@ -1,1 +1,115 @@
-<p>user works!</p>
+<div class="loadContainer" *ngIf="loading">
+  <h4>Please Wait</h4>
+  <div class="loader"></div>
+</div>
+<div class="container" *ngIf="!loading">
+  <div class="container__photo">
+
+  </div>
+
+  <div class="container__about">
+    <h2>About you</h2>
+
+      <div class="container__about__item">
+        <label class="container__about__label">Full Name</label>
+        <br>
+        <input
+          id="name"
+          class="container__about__input"
+          (click)="onPreEditName()"
+          (clickOutside)="onCancelEditName()"
+          [(ngModel)]="inputName"
+          required
+          #name="ngModel"
+        >
+        <div class="container__btnGroup" *ngIf="editName">
+          <button
+            type="button"
+            class="checkBtn"
+            *ngIf="editName"
+            (click)="onEditName(inputName)"
+            [disabled]="!name.valid"
+            >✓
+          </button>
+          <button
+            type="button"
+            class="checkBtn"
+            (click)="onCancelEditName()"
+            *ngIf="editName"
+            >X
+          </button>
+        </div>
+      </div>
+
+      <div class="container__about__item">
+        <label class="container__about__label">Username</label>
+        <br>
+        <input
+          id="username"
+          class="container__about__input"
+          (click)="onPreEditUsername()"
+          (clickOutside)="onCancelEditUsername()"
+          [(ngModel)]="inputUsername"
+          required
+          #username="ngModel"
+        >
+        <div class="container__btnGroup" *ngIf="editUsername">
+          <button
+            type="button"
+            class="checkBtn"
+            *ngIf="editUsername"
+            (click)="onEditUsername(inputUsername)"
+            [disabled]="!username.valid"
+            >✓
+          </button>
+          <button
+            type="button"
+            class="checkBtn"
+            (click)="onCancelEditUsername()"
+            *ngIf="editUsername"
+            >X
+          </button>
+        </div>
+      </div>
+  </div>
+
+  <div class="container__contact">
+      <h2>Contact</h2>
+      <div class="container__about__item">
+        <label class="container__about__label">Email</label>
+        <br>
+        <input
+          id="email"
+          class="container__about__input"
+          (click)="onPreEditEmail()"
+          (clickOutside)="onCancelEditEmail()"
+          [(ngModel)]="inputEmail"
+          required
+          email
+          #email="ngModel"
+        >
+        <div class="container__btnGroup" *ngIf="editEmail">
+          <button
+            type="button"
+            class="checkBtn"
+            *ngIf="editEmail"
+            (click)="onEditEmail(inputEmail)"
+            [disabled]="!email.valid"
+            >✓
+          </button>
+          <button
+            type="button"
+            class="checkBtn"
+            (click)="onCancelEditEmail()"
+            *ngIf="editEmail"
+            >X
+          </button>
+        </div>
+      </div>
+  </div>
+
+  <div class="container__error" *ngIf="errorPopup" (clickOutside)="onCloseErrorPopup()">
+    <h3>Your update was not completed successfully!</h3>
+    <p>Please try again another time</p>
+  </div>
+</div>

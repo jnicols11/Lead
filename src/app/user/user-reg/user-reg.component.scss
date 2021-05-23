@@ -12,6 +12,7 @@
   -moz-border-radius: 20px;
   -ms-border-radius: 20px;
   -o-border-radius: 20px;
+  box-shadow: 19px 10px 10px $color-grey-light-1;
 }
 
 .regForm {
@@ -43,7 +44,7 @@
     -moz-transition: all .5s;
     -ms-transition: all .5s;
     -o-transition: all .5s;
-}
+  }
 
   &__input:focus {
     width: 50%;
@@ -77,10 +78,10 @@
     -ms-transition: all .6s;
     -o-transition: all .6s;
     cursor: pointer;
-}
+  }
 
-&__submitBtn:disabled {
-  margin-bottom: 5%;
+  &__submitBtn:disabled {
+    margin-bottom: 5%;
     margin-left: 35%;
     margin-top: 3%;
     width: 18%;
@@ -99,39 +100,40 @@
     -ms-transition: all .6s;
     -o-transition: all .6s;
     opacity: 25%;
-}
+  }
 
-&__submitBtn:enabled:hover {
-  background-color: $color-primary;
-  color: $color-grey-dark-1;
-  border: 2px solid #fff;
-  transform: translate(5px, -5px);
-  -webkit-transform: translate(5px, -5px);
-  -moz-transform: translate(5px, -5px);
-  -ms-transform: translate(5px, -5px);
-  -o-transform: translate(5px, -5px);
-}
+  &__submitBtn:enabled:hover {
+    background-color: $color-primary;
+    color: $color-grey-dark-1;
+    border: 2px solid #fff;
+    transform: translate(5px, -5px);
+    -webkit-transform: translate(5px, -5px);
+    -moz-transform: translate(5px, -5px);
+    -ms-transform: translate(5px, -5px);
+    -o-transform: translate(5px, -5px);
+  }
 
-&__submitBtn:disabled:hover {
-  cursor: default;
-}
+  &__submitBtn:disabled:hover {
+    cursor: default;
+  }
 
-  &__xBtn {
-    margin-left: 90%;
-    margin-top: 5%;
-    background-color: red;
-    color: #fff;
-    border-radius: 35%;
-    border: 2px solid rgba(0, 0, 0, 0.541);
-    -webkit-border-radius: 35%;
-    -moz-border-radius: 35%;
-    -ms-border-radius: 35%;
-    -o-border-radius: 35%;
-    transition: all .4s;
-    -webkit-transition: all .4s;
-    -moz-transition: all .4s;
-    -ms-transition: all .4s;
-    -o-transition: all .4s;
+&__xBtn {
+  margin-left: 90%;
+  margin-top: 5%;
+  background-color: red;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 35%;
+  border: 2px solid rgba(0, 0, 0, 0.541);
+  -webkit-border-radius: 35%;
+  -moz-border-radius: 35%;
+  -ms-border-radius: 35%;
+  -o-border-radius: 35%;
+  transition: all .4s;
+  -webkit-transition: all .4s;
+  -moz-transition: all .4s;
+  -ms-transition: all .4s;
+  -o-transition: all .4s;
 }
 
 &__xBtn:hover {
@@ -255,15 +257,15 @@
 }
 .loader {
   margin: 60px auto;
-  font-size: 10px;
+  font-size: 7px;
   text-indent: -9999em;
   border-top: 1.1em solid $color-grey-dark-1;
   border-right: 1.1em solid $color-grey-dark-1;
   border-bottom: 1.1em solid $color-grey-dark-1;
   border-left: 1.1em solid $color-primary;
   transform: translateZ(0);
-  -webkit-animation: load8 1.1s infinite linear;
-  animation: load8 1.1s infinite linear;
+  -webkit-animation: load8 .8s infinite linear;
+  animation: load8 .8s infinite linear;
 }
 @-webkit-keyframes load8 {
   0% {

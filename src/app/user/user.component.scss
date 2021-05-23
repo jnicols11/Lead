@@ -1,0 +1,201 @@
+@import '../app.component.scss';
+
+.container {
+
+  &__about {
+    width: 35%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+    background-color: $color-grey-dark-1;
+    border: 2px solid $color-primary;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    box-shadow: 19px 10px 10px $color-grey-light-1;
+
+    & h2 {
+      color: $color-primary;
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+      text-align: center;
+      margin-bottom: 5%;
+    }
+
+    &__item {
+      margin-left: 10%;
+      margin-bottom: 5%;
+    }
+
+    &__label {
+      color: $color-secondary;
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    }
+
+    &__input {
+      color: $color-primary;
+      cursor: pointer;
+      width: 70%;
+      height: 25px;
+      background-color: $color-grey-dark-1;
+      margin-top: 1%;
+      margin-bottom: 2%;
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+      border: none;
+      transition: all 1s;
+      -webkit-transition: all 1s;
+      -moz-transition: all 1s;
+      -ms-transition: all 1s;
+      -o-transition: all 1s;
+    }
+
+    &__input:hover {
+      background-color: $color-primary;
+      color: $color-grey-dark-1;
+      border-radius: 20px;
+      -webkit-border-radius: 20px;
+      -moz-border-radius: 20px;
+      -ms-border-radius: 20px;
+      -o-border-radius: 20px;
+    }
+
+    &__input::selection {
+      background-color: $color-grey-dark-1;
+    }
+  }
+
+  &__contact {
+    width: 35%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3%;
+    background-color: $color-grey-dark-1;
+    border: 2px solid $color-primary;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    box-shadow: 19px 10px 10px $color-grey-light-1;
+
+    & h2 {
+      color: $color-primary;
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+      text-align: center;
+      margin-bottom: 5%;
+    }
+  }
+
+  &__btnGroup {
+    width: 20%;
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  &__error {
+    width: 25%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: red;
+    border: 2px solid $color-grey-dark-1;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    margin-top: 2%;
+
+    & h3 {
+      text-align: center;
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    }
+
+    & p {
+      margin-left: 10%;
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    }
+  }
+}
+
+.checkBtn {
+  background-color: $color-primary;
+  color: $color-grey-dark-1;
+  cursor: pointer;
+  border-radius: 20px;
+  font-size: 16px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  transition: all .4s;
+  -webkit-transition: all .4s;
+  -moz-transition: all .4s;
+  -ms-transition: all .4s;
+  -o-transition: all .4s;
+}
+
+.checkBtn:enabled:hover {
+  background-color: $color-primary-light;
+  transform: translate(3px, -3px);
+  -webkit-transform: translate(3px, -3px);
+  -moz-transform: translate(3px, -3px);
+  -ms-transform: translate(3px, -3px);
+  -o-transform: translate(3px, -3px);
+}
+
+.checkBtn:disabled {
+  background-color: $color-grey-light-1;
+  border: 1px solid $color-primary;
+  cursor: default;
+}
+
+.loadContainer {
+  margin-top: 15%;
+
+  & h4 {
+    text-align: center;
+    font-size: 25px;
+    color: $color-grey-dark-1;
+  }
+}
+
+.loader,
+.loader:after {
+  border-radius: 50%;
+  width: 10em;
+  height: 10em;
+}
+.loader {
+  margin: 60px auto;
+  font-size: 10px;
+  text-indent: -9999em;
+  border-top: 1.1em solid #FFF;
+  border-right: 1.1em solid #FFF;
+  border-bottom: 1.1em solid #FFF;
+  border-left: 1.1em solid $color-primary;
+  transform: translateZ(0);
+  -webkit-animation: load8 .8s infinite linear;
+  animation: load8 .8s infinite linear;
+}
+@-webkit-keyframes load8 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes load8 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+

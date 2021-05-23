@@ -28,7 +28,7 @@
   <img src="../../assets/img/lead.JPG" class="logo" routerLink="/home" (click)="onFocusHome()">
   <div class="navbar__user">
     <ul class="navbar__user__list">
-      <li class="navbar__user__list__item">
+      <li class="navbar__user__list__item" *ngIf="localData.getItem('currentUser') == ''">
         <button
           id="regBtn"
           class="navbar__user__list__item__btn"
@@ -39,7 +39,7 @@
           ><p>Register</p>
         </button>
       </li>
-      <li class="navbar__user__list__item">
+      <li class="navbar__user__list__item" *ngIf="localData.getItem('currentUser') == ''">
         <button
           id="logBtn"
           class="navbar__user__list__item__btn"
@@ -48,6 +48,27 @@
           [ngClass]="logFocus ? 'active' : 'not-active'"
           (click)="onFocusLog()"
           ><p>Login</p>
+        </button>
+      </li>
+      <li class="navbar__user__list__item" *ngIf="localData.getItem('currentUser') != ''">
+        <button
+          id="accBtn"
+          class="navbar__user__list__item__btn"
+          style="cursor: pointer;"
+          routerLink="/account"
+          [ngClass]="accFocus ? 'active' :'not-active'"
+          (click)="onFocusAcc()"
+          >Account
+        </button>
+      </li>
+      <li class="navbar__user__list__item" *ngIf="localData.getItem('currentUser') != ''">
+        <button
+          id="logoutBtn"
+          class="navbar__user__list__item__btn"
+          style="cursor: pointer;"
+          routerLink="/home"
+          (click)="onLogout()"
+          >Logout
         </button>
       </li>
     </ul>

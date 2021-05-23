@@ -1,1 +1,114 @@
-<p>project works!</p>
+<div class="container" *ngIf="createProject">
+  <h2>Create a Project</h2>
+  <button
+    type="button"
+    class="xbtn"
+    (click)="cancelCreateProject()"
+    >X
+  </button>
+  <form class="createForm" [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+    <div class="createForm__container">
+      <div class="createForm__label">
+        <label for="name">Project Name: </label>
+      </div>
+      <input
+        type="text"
+        id="name"
+        class="createForm__input"
+        placeholder="Project Name"
+        formControlName="name"
+      >
+    </div>
+    <br>
+    <div class="createForm__container">
+      <div class="createForm__label">
+        <label for="desc">Description: </label>
+      </div>
+      <textarea
+        name="desc"
+        id="desc"
+        class="createForm__textarea"
+        placeholder="Description"
+        cols="75"
+        rows="5"
+        formControlName="desc"
+      ></textarea>
+    </div>
+    <br>
+    <div class="createForm__container">
+      <div class="createForm__label">
+        <label for="deadline">Deadline: </label>
+      </div>
+      <input
+        type="date"
+        class="createForm__date"
+        formControlName="deadline"
+      >
+    </div>
+    <br>
+    <button
+      class="projectSubBtn"
+      type="submit"
+      [disabled]="!projectForm.valid"
+      >Create Project
+    </button>
+  </form>
+</div>
+
+<div class="container" *ngIf="!createProject">
+  <h2>Projects</h2>
+  <button
+    type="button"
+    class="createProjectBtn"
+    (click)="onPreCreateProject()"
+    >Create Project
+  </button>
+  <br>
+  <div class="loadContainer" *ngIf="projectsLoading">
+    <div class="loader"></div>
+  </div>
+  <div class="container__projects" *ngIf="!projectsLoading">
+    <div
+      class="container__projects__project"
+      *ngFor="let project of projects
+      | paginate:
+        { id: 'project',
+          itemsPerPage: 5,
+          currentPage: p
+        }
+      "
+      (click)="goToProject(project.id)"
+    >
+      <h4>{{ project.name }}</h4>
+      <p>{{ project.desc }}</p>
+      <p>{{ project.deadline | date }}</p>
+    </div>
+    <style>
+
+      .projectPagination /deep/ .ngx-pagination .current {
+        background: rgb(41, 224, 209);
+        border: 2px solid rgb(84, 85, 84);
+        border-radius: 20px;
+      }
+
+      .projectPagination /deep/ .ngx-pagination a {
+        border-radius: 20px;
+        color: #fff;
+        margin-left: 10px;
+        margin-right: 10;
+      }
+
+      .projectPagination /deep/ .ngx-pagination a:hover {
+        background: rgb(41, 224, 209);
+      }
+
+
+    </style>
+    <pagination-controls
+      class="projectPagination"
+      (pageChange)="p = $event"
+      id="project"
+      *ngIf="projects.length > 5">
+    </pagination-controls>
+  </div>
+</div>

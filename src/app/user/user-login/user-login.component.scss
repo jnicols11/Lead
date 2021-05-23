@@ -1,0 +1,191 @@
+@import '../../app.component.scss';
+
+.container {
+  width: 40%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10%;
+  background-color: $color-grey-dark-1;
+  border: solid 2px $color-primary;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  box-shadow: 19px 10px 10px $color-grey-light-1;
+}
+
+.logForm {
+  &__container {
+    display: flex;
+    margin-bottom: 3%;
+  }
+
+  &__xBtn {
+    margin-left: 90%;
+    margin-top: 5%;
+    background-color: red;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 35%;
+    border: 2px solid rgba(0, 0, 0, 0.541);
+    -webkit-border-radius: 35%;
+    -moz-border-radius: 35%;
+    -ms-border-radius: 35%;
+    -o-border-radius: 35%;
+    transition: all .4s;
+    -webkit-transition: all .4s;
+    -moz-transition: all .4s;
+    -ms-transition: all .4s;
+    -o-transition: all .4s;
+  }
+
+  &__xBtn:hover {
+    transform: translate(2px, -2px);
+    -webkit-transform: translate(2px, -2px);
+    -moz-transform: translate(2px, -2px);
+    -ms-transform: translate(2px, -2px);
+    -o-transform: translate(2px, -2px);
+  }
+
+  & h2 {
+    margin-left: 30%;
+    color: $color-primary;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin-bottom: 5%;
+  }
+
+  &__label {
+    color: $color-primary;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin-left: 17%;
+    margin-right: 10%;
+    width: 25%;
+  }
+
+  &__input {
+    width: 30%;
+    margin-right: 5%;
+    margin-left: 5%;
+    height: 30px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    transition: all .5s;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -ms-transition: all .5s;
+    -o-transition: all .5s;
+}
+
+  &__input:focus {
+    width: 35%;
+  }
+
+  &__submitBtn:enabled {
+    margin-bottom: 5%;
+    margin-left: 35%;
+    margin-top: 3%;
+    width: 18%;
+    height: 35px;
+    color: $color-primary;
+    background-color: $color-grey-dark-1;
+    border: 2px solid $color-primary;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    transition: all .6s;
+    -webkit-transition: all .6s;
+    -moz-transition: all .6s;
+    -ms-transition: all .6s;
+    -o-transition: all .6s;
+    cursor: pointer;
+  }
+
+  &__submitBtn:disabled {
+    margin-bottom: 5%;
+    margin-left: 35%;
+    margin-top: 3%;
+    width: 18%;
+    height: 35px;
+    color: $color-primary;
+    background-color: $color-grey-dark-1;
+    border: 2px solid $color-primary;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    transition: all .6s;
+    -webkit-transition: all .6s;
+    -moz-transition: all .6s;
+    -ms-transition: all .6s;
+    -o-transition: all .6s;
+    opacity: 25%;
+  }
+
+  &__submitBtn:enabled:hover {
+    background-color: $color-primary;
+    color: $color-grey-dark-1;
+    border: 2px solid #fff;
+    transform: translate(5px, -5px);
+    -webkit-transform: translate(5px, -5px);
+    -moz-transform: translate(5px, -5px);
+    -ms-transform: translate(5px, -5px);
+    -o-transform: translate(5px, -5px);
+  }
+
+  &__submitBtn:disabled:hover {
+    cursor: default;
+  }
+}
+
+.errorText {
+  color: red;
+  margin-left: 50%;
+  margin-top: 5%;
+}
+
+.loader,
+.loader:after {
+  border-radius: 50%;
+  width: 10em;
+  height: 10em;
+}
+.loader {
+  margin: 60px auto;
+  font-size: 7px;
+  text-indent: -9999em;
+  border-top: 1.1em solid $color-grey-dark-1;
+  border-right: 1.1em solid $color-grey-dark-1;
+  border-bottom: 1.1em solid $color-grey-dark-1;
+  border-left: 1.1em solid $color-primary;
+  transform: translateZ(0);
+  -webkit-animation: load8 .8s infinite linear;
+  animation: load8 .8s infinite linear;
+}
+@-webkit-keyframes load8 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes load8 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+

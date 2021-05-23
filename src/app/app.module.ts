@@ -12,6 +12,8 @@ import { UserComponent } from './user/user.component';
 import { UserLoginComponent } from './user/user-login/user-login.component';
 import { UserRegComponent } from './user/user-reg/user-reg.component';
 import { UserHttpService } from './user/user-http.service';
+import { ClickOutsideModule } from 'ng-click-outside';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { UserHttpService } from './user/user-http.service';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgxPaginationModule,
+    ClickOutsideModule
   ],
   providers: [],
   bootstrap: [AppComponent]

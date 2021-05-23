@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { UserHttpService } from '../user/user-http.service';
 
 @Component({
   selector: 'app-header',
@@ -10,14 +12,17 @@ export class HeaderComponent implements OnInit {
   projectFocus = false;
   regFocus = false;
   logFocus = false;
+  accFocus = false;
+  localData = localStorage;
 
-  constructor() { }
+  constructor(private userService: UserHttpService, private router: Router) { }
 
   ngOnInit(): void {
     this.homeFocus = false;
     this.projectFocus = false;
     this.regFocus = false;
     this.logFocus = false;
+    this.accFocus = false;
     this.onFocusHome();
   }
 
@@ -26,6 +31,7 @@ export class HeaderComponent implements OnInit {
     this.projectFocus = false;
     this.regFocus = false;
     this.logFocus = false;
+    this.accFocus = false;
   }
 
   onFocusProject() {
@@ -33,6 +39,7 @@ export class HeaderComponent implements OnInit {
     this.projectFocus = true;
     this.regFocus = false;
     this.logFocus = false;
+    this.accFocus = false;
   }
 
   onFocusReg() {
@@ -40,6 +47,7 @@ export class HeaderComponent implements OnInit {
     this.projectFocus = false;
     this.regFocus = true;
     this.logFocus = false;
+    this.accFocus = false;
   }
 
   onFocusLog() {
@@ -47,5 +55,26 @@ export class HeaderComponent implements OnInit {
     this.projectFocus = false;
     this.regFocus = false;
     this.logFocus = true;
+    this.accFocus = false;
+  }
+
+  onFocusAcc() {
+    this.homeFocus = false;
+    this.projectFocus = false;
+    this.regFocus = false;
+    this.logFocus = false;
+    this.accFocus = true;
+  }
+
+  onLogout() {
+    // update local storage
+    localStorage.setItem('currentUser', '');
+
+    // update focus
+    this.homeFocus = true;
+    this.projectFocus = false;
+    this.regFocus = false;
+    this.logFocus = false;
+    this.accFocus = false;
   }
 }

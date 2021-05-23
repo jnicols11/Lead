@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { User } from '../user.model';
 import { UserHttpService } from '../user-http.service';
 import { Subject } from 'rxjs';
 
@@ -38,6 +37,7 @@ export class UserRegComponent implements OnInit {
     this.userService.register(this.registerForm.value)
     .subscribe(responseData => {
       console.log(responseData);
+      this.registerForm.disable();
       this.loading = false;
       this.successPopup = true;
     }, error => {
@@ -56,7 +56,7 @@ export class UserRegComponent implements OnInit {
       'name': new FormControl(null, Validators.required),
       'username': new FormControl(null, Validators.required),
       'email': new FormControl(null, [Validators.required, Validators.email]),
-      'password': new FormControl(null, [Validators.required, Validators.minLength(7)])
+      'password': new FormControl(null, [Validators.required, Validators.minLength(6)])
     });
   }
 

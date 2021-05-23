@@ -9,7 +9,9 @@
     <h2>Log in to your account!</h2>
     <br>
     <div class="logForm__container">
-      <label for="credentials" class="logForm__label">Username or Email: </label>
+      <div class="logForm__label">
+        <label for="credentials">Username or Email: </label>
+      </div>
       <input
         type="text"
         id="credentials"
@@ -20,7 +22,9 @@
     </div>
     <br>
     <div class="logForm__container">
-      <label for="password" class="logForm__label">Password: </label>
+      <div class="logForm__label">
+        <label for="password">Password: </label>
+      </div>
       <input
         type="password"
         id="password"
@@ -29,6 +33,7 @@
         formControlName="password"
       >
     </div>
+    <p class="errorText" *ngIf="loginFail">Incorrect Username/Email or Password!</p>
     <br>
     <button
       type="submit"
@@ -37,4 +42,5 @@
       >Log in!
     </button>
   </form>
+  <div class="loader" *ngIf="loading"></div>
 </div>

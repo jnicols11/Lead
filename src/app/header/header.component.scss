@@ -34,6 +34,15 @@
           -o-border-radius: 5px;
           border: none;
           font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+          transition: all .6s;
+          -webkit-transition: all .6s;
+          -moz-transition: all .6s;
+          -ms-transition: all .6s;
+          -o-transition: all .6s;
+}
+
+        &__btn:hover {
+          background-color: $color-primary-light;
         }
       }
     }
@@ -62,6 +71,15 @@
           -o-border-radius: 5px;
           border: none;
           font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+          transition: all .6s;
+          -webkit-transition: all .6s;
+          -moz-transition: all .6s;
+          -ms-transition: all .6s;
+          -o-transition: all .6s;
+}
+
+        &__btn:hover {
+          background-color: $color-primary-light;
         }
       }
     }
@@ -70,10 +88,6 @@
 
 .active {
   background-color: $color-secondary;
-   & p {
-    border-bottom: 1px dotted black;
-    border-bottom-width: 1px;
-   }
 }
 
 .logo {

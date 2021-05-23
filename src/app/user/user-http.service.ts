@@ -1,4 +1,4 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpParams, HttpResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Subject } from "rxjs";
 import { User } from "./user.model";
@@ -8,6 +8,16 @@ export class UserHttpService {
   error = new Subject<string>();
 
   constructor(private http: HttpClient) { }
+
+  getUser(id: number): any {
+    return this.http.get(
+      'http://localhost/LeadAPI/api/getUser/' + id,
+      {
+        observe: 'response',
+        responseType: 'json'
+      }
+    )
+  }
 
   register(user: User) {
     // make Https call to API
@@ -22,6 +32,47 @@ export class UserHttpService {
   }
 
   login(user: { credentials: string, password: string }) {
-    console.log('Logging in');
+    // make Https call to API
+    return this.http.post(
+      'http://localhost/LeadAPI/api/login',
+      user,
+      {
+        observe: 'response',
+        responseType: 'json'
+      }
+    )
+  }
+
+  updateName(data: { name: string, id: number }) {
+    return this.http.post(
+      'http://localhost/LeadAPI/api/updateAccName',
+      data,
+      {
+        observe: 'response',
+        responseType: 'json'
+      }
+    )
+  }
+
+  updateUsername(data: { username: string, id: number }) {
+    return this.http.post(
+      'http://localhost/LeadAPI/api/updateAccUsername',
+      data,
+      {
+        observe: 'response',
+        responseType: 'json'
+      }
+    )
+  }
+
+  updateEmail(data: { email: string, id: number }) {
+    return this.http.post(
+      'http://localhost/LeadAPI/api/updateAccEmail',
+      data,
+      {
+        observe: 'response',
+        responseType: 'json'
+      }
+    )
   }
 }
