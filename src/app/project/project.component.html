@@ -72,7 +72,8 @@
       class="container__projects__project"
       *ngFor="let project of projects
       | paginate:
-        { id: 'project',
+        {
+          id: 'project',
           itemsPerPage: 5,
           currentPage: p
         }

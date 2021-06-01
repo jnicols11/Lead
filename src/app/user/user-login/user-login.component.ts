@@ -48,8 +48,16 @@ export class UserLoginComponent implements OnInit {
         responseData.body['ID']
       );
 
+      // set user state in service
+      this.userService.updateLoggedUser(this.user.id);
+
       // save user in local storage
-      localStorage.setItem('currentUser', this.user.id.toString());
+      this.userService.loggedUser
+        .subscribe(
+          (id: number) => {
+            localStorage.setItem('currentUser', id.toString());
+          }
+        );
 
       // update loading status
       this.loading = false;

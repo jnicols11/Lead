@@ -14,6 +14,11 @@ import { UserRegComponent } from './user/user-reg/user-reg.component';
 import { UserHttpService } from './user/user-http.service';
 import { ClickOutsideModule } from 'ng-click-outside';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ProjectDashboardComponent } from './project/project-dashboard/project-dashboard.component';
+import { ProjectDashboardBacklogComponent } from './project/project-dashboard/project-dashboard-backlog/project-dashboard-backlog.component';
+import { ProjectDashboardSprintsComponent } from './project/project-dashboard/project-dashboard-sprints/project-dashboard-sprints.component';
+import { ProjectDashboardReportsComponent } from './project/project-dashboard/project-dashboard-reports/project-dashboard-reports.component';
+import { ProjectDashboardManageComponent } from './project/project-dashboard/project-dashboard-manage/project-dashboard-manage.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +28,12 @@ import { NgxPaginationModule } from 'ngx-pagination';
     ProjectComponent,
     UserComponent,
     UserLoginComponent,
-    UserRegComponent
+    UserRegComponent,
+    ProjectDashboardComponent,
+    ProjectDashboardBacklogComponent,
+    ProjectDashboardSprintsComponent,
+    ProjectDashboardReportsComponent,
+    ProjectDashboardManageComponent
   ],
   imports: [
     BrowserModule,

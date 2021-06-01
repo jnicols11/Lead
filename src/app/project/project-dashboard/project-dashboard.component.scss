@@ -1,0 +1,122 @@
+@import '../../app.component.scss';
+
+.component_container {
+  width: 70%;
+  margin-left: 25%;
+  margin-top: 5%;
+}
+
+.sidebar {
+  width: 20%;
+  background-color: transparent;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+
+  &__btn {
+    height: 85px;
+    background-color: $color-grey-dark-1;
+    color: $color-primary;
+    margin-left: 2px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 16px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    cursor: pointer;
+  }
+
+  &__btn:after{
+    top: 0;
+    z-index: -1;
+    transform: translate3D(-101%,0,0);
+  }
+
+  &__btn:hover:after{
+    transform: translate3D(0,0,0);
+    transition: all .5s;
+  }
+
+  .buttonfx{
+    outline: none;
+    background: transparent;
+    border: none;
+    border-bottom: 4px solid #eee;
+    letter-spacing: 0.0625em;
+    padding: 8px 10px;
+    text-transform: uppercase;
+    line-height: 2;
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    text-decoration: none;
+    overflow: hidden;
+    transition: all 1s;
+    -webkit-transition: all 1s;
+    -moz-transition: all 1s;
+    -ms-transition: all 1s;
+    -o-transition: all 1s;
+}
+
+  .buttonfx:before,
+  .buttonfx:after{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    background: $color-primary;
+    z-index: -1;
+    transform: translate3D(0,-100%,0);
+    transition: all 1s;
+    -webkit-transition: all 1s;
+    -moz-transition: all 1s;
+    -ms-transition: all 1s;
+    -o-transition: all 1s;
+  }
+
+  .buttonfx:before{
+    background: $color-grey-dark-1; /* button default background color */
+    z-index: -2;
+    transform: translate3D(0,0,0);
+  }
+
+  .buttonfx:hover{
+    color: white;
+  }
+
+  .buttonfx:hover:after{
+    transform: translate3D(0,0,0);
+    transition: all 1s;
+    -webkit-transition: all 1s;
+    -moz-transition: all 1s;
+    -ms-transition: all 1s;
+    -o-transition: all 1s;
+  }
+
+  .slideleft:after{
+    top: 0;
+    z-index: -1;
+    transform: translate3D(-101%,0,0);
+  }
+
+  .slideleft:hover:after{
+    transform: translate3D(0,0,0);
+    transition: all 1s;
+    -webkit-transition: all 1s;
+    -moz-transition: all 1s;
+    -ms-transition: all 1s;
+    -o-transition: all 1s;
+  }
+}

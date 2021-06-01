@@ -1,0 +1,186 @@
+<div class="container">
+  <div class="container__issue">
+    <h2>Project Backlog</h2>
+    <hr>
+    <div class="loadContainer" *ngIf="issuesLoading">
+      <div class="loader"></div>
+    </div>
+    <div class="container__issue__list" *ngIf="!issuesLoading">
+      <div
+        class="container__issue__list__item"
+        *ngFor="let issue of issues
+        | paginate:
+          {
+            id: 'issue',
+            itemsPerPage: 5,
+            currentPage: p
+          }
+        "
+        (click)="focusIssue(issue)"
+      >
+        <p>{{ issue.name }}</p>
+        <p>{{ issue.time }} hours</p>
+      </div>
+      <div class="container__issue__list__item__error" *ngIf="issues.length == 0">
+        <h4>No Issues found! Try creating a few!</h4>
+      </div>
+      <style>
+
+        .projectPagination /deep/ .ngx-pagination .current {
+          background: rgb(41, 224, 209);
+          border: 2px solid rgb(84, 85, 84);
+          border-radius: 20px;
+        }
+
+        .projectPagination /deep/ .ngx-pagination a {
+          border-radius: 20px;
+          color: #fff;
+          margin-left: 10px;
+          margin-right: 10;
+        }
+
+        .projectPagination /deep/ .ngx-pagination a:hover {
+          background: rgb(41, 224, 209);
+        }
+
+
+      </style>
+      <pagination-controls
+        class="projectPagination"
+        (pageChange)="p = $event"
+        id="issue"
+        *ngIf="issues.length > 5">
+      </pagination-controls>
+    </div>
+  </div>
+
+  <div class="container__btn">
+    <button
+      class="issueBtn"
+      (click)="preCreateIssue()"
+      *ngIf="!createIssue && !createSprint"
+      >Create Issue
+    </button>
+
+    <button
+      class="sprintBtn"
+      (click)="preCreateSprint()"
+      *ngIf="!createIssue && !createSprint"
+      >Create Sprint
+    </button>
+  </div>
+</div>
+
+<div class="container__createIssue" *ngIf="createIssue">
+  <button
+    class="xbtn"
+    (click)="cancelCreateIssue()"
+    >X
+  </button>
+
+  <h4>Create an Issue</h4>
+
+  <form class="issueForm" [formGroup]="issueForm" (ngSubmit)="onSubmitIssue()">
+    <div class="issueForm__container">
+      <div class="issueForm__label">
+        <label for="name">Name: </label>
+      </div>
+      <input
+        type="text"
+        id="name"
+        class="issueForm__input"
+        placeholder="Name"
+        formControlName="name"
+      >
+    </div>
+
+    <div class="issueForm__container">
+      <div class="issueForm__label">
+        <label for="desc">Description: </label>
+      </div>
+      <textarea
+        id="desc"
+        class="issueForm__textarea"
+        rows=3
+        cols=34
+        placeholder="Description"
+        formControlName="desc"
+      ></textarea>
+    </div>
+
+    <div class="issueForm__container">
+      <div class="issueForm__label">
+        <label for="time">Est Time: </label>
+      </div>
+      <input
+        type="number"
+        id="time"
+        class="issueForm__input"
+        placeholder="2"
+        formControlName="time"
+      >
+    </div>
+
+    <button
+      type="submit"
+      class="issueForm__btn"
+      [disabled]="!issueForm.valid"
+      >Create Issue
+    </button>
+  </form>
+</div>
+
+<div class="container__createSprint" *ngIf="createSprint">
+  <button
+    class="xbtn"
+    (click)="cancelCreateSprint()"
+    >X
+  </button>
+</div>
+
+<div class="container__issue__focus" *ngIf="issuePopup != null">
+  <button
+    class="xbtn"
+    (click)="closeIssue()"
+    >X
+  </button>
+  <h2>Issue Focus</h2>
+  <div class="container__issue__focus__container">
+    <label for="name">Name: </label>
+    <input
+      type="text"
+      class="container__issue__focus__input"
+      value="{{ issuePopup.name }}"
+      (click)="preEditName()"
+      (clickOutside)="cancelEditName()"
+    >
+  </div>
+  <br>
+  <div class="container__issue__focus__container">
+    <label for="desc">Description: </label>
+    <textarea
+      class="container__issue__focus__textarea"
+      rows=3
+      cols=34
+      (click)="preEditDesc()"
+      (clickOutside)="cancelEditDesc()"
+    >{{ issuePopup.desc }}</textarea>
+  </div>
+  <br>
+  <div class="container__issue__focus__container">
+    <label for="time">Est Hours: </label>
+    <input
+      type="number"
+      class="container__issue__focus__input"
+      value="{{ issuePopup.time }}"
+      (click)="preEditTime()"
+      (clickOutside)="cancelEditTime()"
+    >
+  </div>
+  <button
+    class="deleteBtn"
+    type="button"
+    (click)="deleteIssue(issuePopup)"
+  >Delete
+  </button>
+</div>

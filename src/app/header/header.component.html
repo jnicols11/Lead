@@ -12,7 +12,7 @@
           ><p>Home</p>
         </button>
       </li>
-      <li class="navbar__info__list__item">
+      <li class="navbar__info__list__item" *ngIf="localData.getItem('currentUser') != ''">
         <button
           id="projectBtn"
           class="navbar__info__list__item__btn"

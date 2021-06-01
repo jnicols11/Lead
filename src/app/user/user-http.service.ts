@@ -6,8 +6,13 @@ import { User } from "./user.model";
 @Injectable({ providedIn: 'root' })
 export class UserHttpService {
   error = new Subject<string>();
+  loggedUser = new Subject<number>();
 
   constructor(private http: HttpClient) { }
+
+  updateLoggedUser(id: number) {
+    this.loggedUser.next(id);
+  }
 
   getUser(id: number): any {
     return this.http.get(

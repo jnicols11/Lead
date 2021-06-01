@@ -20,6 +20,7 @@ export class ProjectComponent implements OnInit {
   constructor(private projectService: ProjectHttpService, private router: Router) { }
 
   ngOnInit(): void {
+    console.log(localStorage.getItem('focusedProject'));
     this.projectService.getUserProjects(+localStorage.getItem('currentUser'))
     .subscribe(responseData => {
       console.log(responseData);
@@ -68,8 +69,8 @@ export class ProjectComponent implements OnInit {
     this.createProject = false;
   }
 
-  goToProject(projectID: String) {
-    console.log(projectID);
+  goToProject(projectID: string) {
+    this.router.navigate(['/project'], { queryParams: { id: projectID } });
   }
 
   private initForm() {

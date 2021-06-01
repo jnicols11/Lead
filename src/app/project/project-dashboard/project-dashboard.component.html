@@ -1,0 +1,25 @@
+<div class="component_container">
+  <router-outlet></router-outlet>
+</div>
+<div class="sidebar">
+  <button
+    class="sidebar__btn buttonfx slideleft"
+    (click)="goToBacklog()"
+    >Backlog
+  </button>
+  <button
+    class="sidebar__btn buttonfx slideleft"
+    (click)="goToSprints()"
+    >Sprints
+  </button>
+  <button
+    class="sidebar__btn buttonfx slideleft"
+    (click)="goToReports()"
+    >Reports
+  </button>
+  <button
+    class="sidebar__btn buttonfx slideleft"
+    (click)="goToManage()"
+    >Manage Project
+  </button>
+</div>
