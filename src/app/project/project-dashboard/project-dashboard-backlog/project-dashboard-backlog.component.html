@@ -5,11 +5,16 @@
     <div class="loadContainer" *ngIf="issuesLoading">
       <div class="loader"></div>
     </div>
-    <div class="container__issue__list" *ngIf="!issuesLoading" cdkDropList (cdkDropListDropped)="issueDrop($event)">
+    <div
+      class="container__issue__list"
+      *ngIf="!issuesLoading"
+      cdkDropList
+      #issueList="cdkDropList"
+      [cdkDropListConnectedTo]="[sprintList]"
+      (cdkDropListDropped)="issueDrop($event)"
+      >
       <div
         class="container__issue__list__item"
-        cdkDragBoundary=".container__issue"
-        cdkDragLockAxis="y"
         cdkDrag
         *ngFor="let issue of issues
         | paginate:
@@ -59,17 +64,17 @@
 
   <div class="container__btn">
     <button
-      class="issueBtn"
-      (click)="preCreateIssue()"
-      *ngIf="!createIssue && !createSprint"
-      >Create Issue
-    </button>
-
-    <button
       class="sprintBtn"
       (click)="preCreateSprint()"
       *ngIf="!createIssue && !createSprint"
       >Create Sprint
+    </button>
+
+    <button
+      class="issueBtn"
+      (click)="preCreateIssue()"
+      *ngIf="!createIssue && !createSprint"
+      >Create Issue
     </button>
   </div>
 </div>
@@ -139,6 +144,40 @@
     (click)="cancelCreateSprint()"
     >X
   </button>
+
+  <h4>Create a Sprint</h4>
+  <form>
+    <div class="container__createSprint__field">
+      <label
+        for="sprintName"
+        class="container__createSprint__field__label"
+        >Name:
+      </label>
+      <input
+        type="text"
+        placeholder="Sprint Name"
+        class="container__createSprint__field__input"
+      >
+    </div>
+    <p>Drag issues from the backlog to add them to this sprint!</p>
+    <hr>
+    <div
+      cdkDropList
+      class="container__createSprint__list"
+      #sprintList="cdkDropList"
+      [cdkDropListData]="issuesSprint"
+      [cdkDropListConnectedTo]="[issueList]"
+      (cdkDropListDropped)="sprintDrop($event)">
+        <h5>Selected Issues</h5>
+        <div class="container__createSprint__list__item" *ngFor="let issue of issuesSprint" cdkDrag>
+        </div>
+    </div>
+    <button
+      type="submit"
+      class="container__createSprint__subBtn"
+      >Create Sprint
+    </button>
+  </form>
 </div>
 
 <div class="container__issue__focus" *ngIf="issuePopup != null">

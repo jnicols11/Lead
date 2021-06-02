@@ -1,4 +1,4 @@
-import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -26,6 +26,7 @@ export class ProjectDashboardBacklogComponent implements OnInit {
   issueName: string;
   issueDesc: string;
   issueTime: number;
+  issuesSprint: Issue[];
 
   constructor(private projectService: ProjectHttpService, private route: ActivatedRoute) { }
 
@@ -43,9 +44,25 @@ export class ProjectDashboardBacklogComponent implements OnInit {
   }
 
   issueDrop(event: CdkDragDrop<string[]>) {
-    moveItemInArray(this.issues, event.previousIndex, event.currentIndex);
+    if (event.previousContainer === event.container) {
+      moveItemInArray(this.issues, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(event.previousContainer.data,
+                        event.container.data,
+                        event.previousIndex,
+                        event.currentIndex);
+    }
+  }
 
-    // TODO persist state of issues array
+  sprintDrop(event: CdkDragDrop<string[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(event.previousContainer.data,
+                        event.container.data,
+                        event.previousIndex,
+                        event.currentIndex);
+    }
   }
 
   preCreateIssue() {
