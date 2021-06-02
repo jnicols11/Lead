@@ -26,7 +26,7 @@ export class ProjectDashboardBacklogComponent implements OnInit {
   issueName: string;
   issueDesc: string;
   issueTime: number;
-  issuesSprint: Issue[];
+  issuesSprint: Issue[] = [];
 
   constructor(private projectService: ProjectHttpService, private route: ActivatedRoute) { }
 
@@ -47,8 +47,8 @@ export class ProjectDashboardBacklogComponent implements OnInit {
     if (event.previousContainer === event.container) {
       moveItemInArray(this.issues, event.previousIndex, event.currentIndex);
     } else {
-      transferArrayItem(event.previousContainer.data,
-                        event.container.data,
+      transferArrayItem(this.issuesSprint,
+                        this.issues,
                         event.previousIndex,
                         event.currentIndex);
     }
@@ -56,10 +56,10 @@ export class ProjectDashboardBacklogComponent implements OnInit {
 
   sprintDrop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
-      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+      moveItemInArray(this.issuesSprint, event.previousIndex, event.currentIndex);
     } else {
-      transferArrayItem(event.previousContainer.data,
-                        event.container.data,
+      transferArrayItem(this.issues,
+                        this.issuesSprint,
                         event.previousIndex,
                         event.currentIndex);
     }

@@ -9,8 +9,8 @@
       class="container__issue__list"
       *ngIf="!issuesLoading"
       cdkDropList
-      #issueList="cdkDropList"
-      [cdkDropListConnectedTo]="[sprintList]"
+      id="issueList"
+      [cdkDropListConnectedTo]="['sprintList']"
       (cdkDropListDropped)="issueDrop($event)"
       >
       <div
@@ -164,12 +164,13 @@
     <div
       cdkDropList
       class="container__createSprint__list"
-      #sprintList="cdkDropList"
-      [cdkDropListData]="issuesSprint"
-      [cdkDropListConnectedTo]="[issueList]"
+      id="sprintList"
+      [cdkDropListConnectedTo]="['issueList']"
       (cdkDropListDropped)="sprintDrop($event)">
         <h5>Selected Issues</h5>
         <div class="container__createSprint__list__item" *ngFor="let issue of issuesSprint" cdkDrag>
+          <p>{{ issue.name }}</p>
+          <p>{{ issue.time }}</p>
         </div>
     </div>
     <button
