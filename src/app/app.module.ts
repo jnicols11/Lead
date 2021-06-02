@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ProjectComponent } from './project/project.component';
 import { UserComponent } from './user/user.component';
 import { UserLoginComponent } from './user/user-login/user-login.component';
@@ -42,7 +43,8 @@ import { ProjectDashboardManageComponent } from './project/project-dashboard/pro
     HttpClientModule,
     AppRoutingModule,
     NgxPaginationModule,
-    ClickOutsideModule
+    ClickOutsideModule,
+    DragDropModule
   ],
   providers: [],
   bootstrap: [AppComponent]

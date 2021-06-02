@@ -1,3 +1,4 @@
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -22,6 +23,9 @@ export class ProjectDashboardBacklogComponent implements OnInit {
   issuePopup: Issue = null;
   issueForm: FormGroup;
   error = new Subject<string>();
+  issueName: string;
+  issueDesc: string;
+  issueTime: number;
 
   constructor(private projectService: ProjectHttpService, private route: ActivatedRoute) { }
 
@@ -36,6 +40,12 @@ export class ProjectDashboardBacklogComponent implements OnInit {
 
     // populate issues
     this.populateIssues();
+  }
+
+  issueDrop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.issues, event.previousIndex, event.currentIndex);
+
+    // TODO persist state of issues array
   }
 
   preCreateIssue() {
@@ -112,8 +122,53 @@ export class ProjectDashboardBacklogComponent implements OnInit {
     // submit sprint data
   }
 
+  onEditName(issueName: string) {
+    // check if name changed
+    if (issueName == this.issuePopup.name) {
+      // do nothing name did not change
+      this.cancelEditName();
+    } else {
+      // name changed update name in database
+      this.issuePopup.name = issueName;
+
+      // update issue
+      this.updateIssue();
+    }
+  }
+
+  onEditDesc(issueDesc: string) {
+    // check if description changed
+    if (issueDesc == this.issuePopup.desc) {
+      // do nothing description did not change
+      this.cancelEditDesc();
+    } else {
+      // description changed update in database
+      this.issuePopup.desc = issueDesc;
+
+      // update issue
+      this.updateIssue();
+    }
+  }
+
+  onEditTime(issueTime: number) {
+    // check if time changed
+    if (issueTime == this.issuePopup.time) {
+      // do nothing time did not change
+      this.cancelEditTime();
+    } else {
+      // time changed attempt to update in DB
+      this.issuePopup.time = issueTime;
+
+      // update issue
+      this.updateIssue();
+    }
+  }
+
   focusIssue(issue: Issue) {
     this.issuePopup = issue;
+    this.issueName = issue.name;
+    this.issueDesc = issue.desc;
+    this.issueTime = issue.time;
   }
 
   deleteIssue(issue: Issue) {
@@ -123,6 +178,10 @@ export class ProjectDashboardBacklogComponent implements OnInit {
         responseData => {
           // refresh the backlog
           this.populateIssues();
+
+          // reload content
+          location.reload();
+
         }, error => {
           this.error.next(error.message);
         }
@@ -174,5 +233,16 @@ export class ProjectDashboardBacklogComponent implements OnInit {
       'desc': new FormControl(null),
       'time': new FormControl(null, [Validators.required, Validators.min(1)])
     });
+  }
+
+  private updateIssue() {
+    this.projectService.updateIssue(this.issuePopup)
+        .subscribe(
+          responseData => {
+            console.log(responseData);
+          }, error => {
+            this.error.next(error.message);
+          }
+        );
   }
 }

@@ -5,9 +5,12 @@
     <div class="loadContainer" *ngIf="issuesLoading">
       <div class="loader"></div>
     </div>
-    <div class="container__issue__list" *ngIf="!issuesLoading">
+    <div class="container__issue__list" *ngIf="!issuesLoading" cdkDropList (cdkDropListDropped)="issueDrop($event)">
       <div
         class="container__issue__list__item"
+        cdkDragBoundary=".container__issue"
+        cdkDragLockAxis="y"
+        cdkDrag
         *ngFor="let issue of issues
         | paginate:
           {
@@ -148,34 +151,83 @@
   <div class="container__issue__focus__container">
     <label for="name">Name: </label>
     <input
+      id="name"
       type="text"
       class="container__issue__focus__input"
-      value="{{ issuePopup.name }}"
+      [(ngModel)]="issueName"
       (click)="preEditName()"
       (clickOutside)="cancelEditName()"
+      #name="ngModel"
     >
+  </div>
+  <div class="container__issue__focus__edit" *ngIf="editName">
+    <button
+      class="issueEditBtn"
+      type="button"
+      (click)="onEditName(issueName)"
+      >✓
+    </button>
+    <button
+      class="issueEditBtn"
+      type="button"
+      (click)="cancelEditName()"
+      >X
+    </button>
   </div>
   <br>
   <div class="container__issue__focus__container">
     <label for="desc">Description: </label>
     <textarea
+      id="desc"
       class="container__issue__focus__textarea"
       rows=3
       cols=34
+      [(ngModel)]="issueDesc"
       (click)="preEditDesc()"
       (clickOutside)="cancelEditDesc()"
-    >{{ issuePopup.desc }}</textarea>
+      #desc="ngModel"
+    ></textarea>
+  </div>
+  <div class="container__issue__focus__edit" *ngIf="editDesc">
+    <button
+      class="issueEditBtn"
+      type="button"
+      (click)="onEditDesc(issueDesc)"
+      >✓
+    </button>
+    <button
+      class="issueEditBtn"
+      type="button"
+      (click)="cancelEditDesc()"
+      >X
+    </button>
   </div>
   <br>
   <div class="container__issue__focus__container">
     <label for="time">Est Hours: </label>
     <input
+      id="time"
       type="number"
       class="container__issue__focus__input"
-      value="{{ issuePopup.time }}"
+      [(ngModel)]="issueTime"
       (click)="preEditTime()"
       (clickOutside)="cancelEditTime()"
+      #time="ngModel"
     >
+  </div>
+  <div class="container__issue__focus__edit" *ngIf="editTime">
+    <button
+      class="issueEditBtn"
+      type="button"
+      (click)="onEditTime(issueTime)"
+      >✓
+    </button>
+    <button
+      class="issueEditBtn"
+      type="button"
+      (click)="cancelEditTime()"
+      >X
+    </button>
   </div>
   <button
     class="deleteBtn"

@@ -43,9 +43,9 @@ export class ProjectHttpService {
     )
   }
 
-  deleteIssue(issue: Issue) {
-    return this.http.delete(
-      'http://localhost:3010/issue/deleteIssue/' + issue.id,
+  getProjectBacklogIssues(projectID: string) {
+    return this.http.get(
+      'http://localhost:3010/issue/getProjectIssues/' + projectID,
       {
         observe: 'response',
         responseType: 'json'
@@ -53,9 +53,20 @@ export class ProjectHttpService {
     )
   }
 
-  getProjectBacklogIssues(projectID: string) {
-    return this.http.get(
-      'http://localhost:3010/issue/getProjectIssues/' + projectID,
+  updateIssue(issue: Issue) {
+    return this.http.patch(
+      'http://localhost:3010/issue/updateIssue/' + issue.id,
+      issue,
+      {
+        observe: 'response',
+        responseType: 'json'
+      }
+    )
+  }
+
+  deleteIssue(issue: Issue) {
+    return this.http.delete(
+      'http://localhost:3010/issue/deleteIssue/' + issue.id,
       {
         observe: 'response',
         responseType: 'json'
