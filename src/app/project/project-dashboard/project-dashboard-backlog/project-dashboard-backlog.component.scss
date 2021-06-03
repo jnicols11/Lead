@@ -237,6 +237,7 @@
         background-color: $color-grey-dark-1;
         margin-bottom: 3%;
         color: $color-primary;
+        cursor: pointer;
       }
 
       &__item.cdk-drag-placeholder {

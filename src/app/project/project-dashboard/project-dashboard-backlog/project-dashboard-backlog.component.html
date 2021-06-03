@@ -15,16 +15,16 @@
       >
       <div
         class="container__issue__list__item"
-        cdkDrag
         *ngFor="let issue of issues
         | paginate:
           {
             id: 'issue',
             itemsPerPage: 5,
-            currentPage: p
+            currentPage: this.pageNumber
           }
         "
         (click)="focusIssue(issue)"
+        cdkDrag
       >
         <p>{{ (issue.name.length > 30) ? (issue.name | slice:0:30) + '...' : (issue.name) }}</p>
         <p>{{ issue.time }} hours</p>
@@ -55,9 +55,9 @@
       </style>
       <pagination-controls
         class="projectPagination"
-        (pageChange)="p = $event"
+        (pageChange)="setPageNumber($event)"
         id="issue"
-        *ngIf="issues.length > 5">
+        *ngIf="issues.length > 5 || createSprint">
       </pagination-controls>
     </div>
   </div>
@@ -171,6 +171,7 @@
         <h5>Selected Issues</h5>
         <div
           class="container__createSprint__list__item"
+          (click)="focusIssue(issue)"
           *ngFor="let issue of issuesSprint"
           cdkDrag>
           <p>{{ (issue.name.length > 20) ? (issue.name | slice:0:20) + '...' : (issue.name) }}</p>
