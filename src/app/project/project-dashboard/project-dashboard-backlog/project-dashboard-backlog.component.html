@@ -26,7 +26,7 @@
         "
         (click)="focusIssue(issue)"
       >
-        <p>{{ issue.name }}</p>
+        <p>{{ (issue.name.length > 30) ? (issue.name | slice:0:30) + '...' : (issue.name) }}</p>
         <p>{{ issue.time }} hours</p>
       </div>
       <div class="container__issue__list__item__error" *ngIf="issues.length == 0">
@@ -173,7 +173,7 @@
           class="container__createSprint__list__item"
           *ngFor="let issue of issuesSprint"
           cdkDrag>
-          <p>{{ issue.name }}</p>
+          <p>{{ (issue.name.length > 20) ? (issue.name | slice:0:20) + '...' : (issue.name) }}</p>
           <p>{{ issue.time }}</p>
         </div>
     </div>
