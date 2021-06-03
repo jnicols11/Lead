@@ -14,21 +14,22 @@ import { Sprint } from '../models/sprint.model';
 })
 export class ProjectDashboardBacklogComponent implements OnInit {
   issuesLoading = true;
+  sprintLoading = false;
   createIssue = false;
   createSprint = false;
   editName = false;
   editDesc = false;
   editTime = false;
   projectID: string;
+  issueName: string;
+  issueDesc: string;
+  issueTime: number;
   issues: Issue[] = [];
   issuesSprint: Issue[] = [];
   issuePopup: Issue = null;
   issueForm: FormGroup;
   sprintForm: FormGroup;
   error = new Subject<string>();
-  issueName: string;
-  issueDesc: string;
-  issueTime: number;
 
   constructor(private projectService: ProjectHttpService, private route: ActivatedRoute) { }
 
@@ -139,6 +140,8 @@ export class ProjectDashboardBacklogComponent implements OnInit {
   }
 
   onSubmitSprint() {
+    this.sprintLoading = true;
+
     // populate sprint model
     const sprint = new Sprint(
       this.projectID,
@@ -152,13 +155,29 @@ export class ProjectDashboardBacklogComponent implements OnInit {
       .subscribe(
         responseData => {
           console.log(responseData);
+
+          // update status of each issue in sprint
+          this.issuesSprint.forEach(issue => {
+            issue.backlogID = '';
+            issue.sprintID = responseData.body['_id'];
+
+            // update issue in database
+            this.projectService.updateIssue(issue)
+              .subscribe(
+                updateResponse => {
+                  // success
+                }, error => {
+                  this.error.next(error.message);
+                }
+              )
+          });
+
+          this.issuesSprint = [];
+          this.sprintLoading = false;
         }, error => {
           this.error.next(error.message);
         }
-      )
-
-    // update status of each issue in sprint
-
+      );
   }
 
   onEditName(issueName: string) {
