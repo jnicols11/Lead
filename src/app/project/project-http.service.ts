@@ -2,6 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Subject } from "rxjs";
 import { Issue } from "./project-dashboard/models/issue.model";
+import { Sprint } from "./project-dashboard/models/sprint.model";
 import { Project } from "./project.model";
 
 @Injectable({ providedIn: 'root' })
@@ -67,6 +68,17 @@ export class ProjectHttpService {
   deleteIssue(issue: Issue) {
     return this.http.delete(
       'http://localhost:3010/issue/deleteIssue/' + issue.id,
+      {
+        observe: 'response',
+        responseType: 'json'
+      }
+    )
+  }
+
+  createSprint(sprint: Sprint) {
+    return this.http.post(
+      'http://localhost:3010/sprint/createSprint',
+      sprint,
       {
         observe: 'response',
         responseType: 'json'

@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Subject } from 'rxjs';
 import { ProjectHttpService } from '../../project-http.service';
 import { Issue } from '../models/issue.model';
+import { Sprint } from '../models/sprint.model';
 
 @Component({
   selector: 'app-project-dashboard-backlog',
@@ -20,13 +21,14 @@ export class ProjectDashboardBacklogComponent implements OnInit {
   editTime = false;
   projectID: string;
   issues: Issue[] = [];
+  issuesSprint: Issue[] = [];
   issuePopup: Issue = null;
   issueForm: FormGroup;
+  sprintForm: FormGroup;
   error = new Subject<string>();
   issueName: string;
   issueDesc: string;
   issueTime: number;
-  issuesSprint: Issue[] = [];
 
   constructor(private projectService: ProjectHttpService, private route: ActivatedRoute) { }
 
@@ -71,6 +73,7 @@ export class ProjectDashboardBacklogComponent implements OnInit {
   }
 
   preCreateSprint() {
+    this.initSprintForm();
     this.createSprint = true;
   }
 
@@ -136,7 +139,26 @@ export class ProjectDashboardBacklogComponent implements OnInit {
   }
 
   onSubmitSprint() {
-    // submit sprint data
+    // populate sprint model
+    const sprint = new Sprint(
+      this.projectID,
+      localStorage.getItem('currentUser'),
+      this.sprintForm.value['name'],
+      this.issuesSprint
+    );
+
+    // send sprint to project service
+    this.projectService.createSprint(sprint)
+      .subscribe(
+        responseData => {
+          console.log(responseData);
+        }, error => {
+          this.error.next(error.message);
+        }
+      )
+
+    // update status of each issue in sprint
+
   }
 
   onEditName(issueName: string) {
@@ -249,6 +271,12 @@ export class ProjectDashboardBacklogComponent implements OnInit {
       'name': new FormControl(null, Validators.required),
       'desc': new FormControl(null),
       'time': new FormControl(null, [Validators.required, Validators.min(1)])
+    });
+  }
+
+  private initSprintForm() {
+    this.sprintForm = new FormGroup({
+      'name': new FormControl(null, Validators.required)
     });
   }
 

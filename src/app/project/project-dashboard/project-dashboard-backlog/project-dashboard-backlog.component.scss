@@ -274,6 +274,17 @@
       -moz-transition: all .5s;
       -ms-transition: all .5s;
       -o-transition: all .5s;
+      cursor: pointer;
+    }
+
+    &__subBtn:disabled {
+      cursor: default;
+      opacity: 20%;
+    }
+
+    &__subBtn:disabled:hover {
+      background-color: $color-grey-dark-1;
+      color: $color-primary;
     }
 
     &__subBtn:hover {

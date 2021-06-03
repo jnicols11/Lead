@@ -146,7 +146,7 @@
   </button>
 
   <h4>Create a Sprint</h4>
-  <form>
+  <form [formGroup]="sprintForm" (ngSubmit)="onSubmitSprint()">
     <div class="container__createSprint__field">
       <label
         for="sprintName"
@@ -157,6 +157,7 @@
         type="text"
         placeholder="Sprint Name"
         class="container__createSprint__field__input"
+        formControlName="name"
       >
     </div>
     <p>Drag issues from the backlog to add them to this sprint!</p>
@@ -168,7 +169,10 @@
       [cdkDropListConnectedTo]="['issueList']"
       (cdkDropListDropped)="sprintDrop($event)">
         <h5>Selected Issues</h5>
-        <div class="container__createSprint__list__item" *ngFor="let issue of issuesSprint" cdkDrag>
+        <div
+          class="container__createSprint__list__item"
+          *ngFor="let issue of issuesSprint"
+          cdkDrag>
           <p>{{ issue.name }}</p>
           <p>{{ issue.time }}</p>
         </div>
@@ -176,6 +180,7 @@
     <button
       type="submit"
       class="container__createSprint__subBtn"
+      [disabled]="!sprintForm.valid || issuesSprint.length < 1"
       >Create Sprint
     </button>
   </form>
