@@ -61,7 +61,7 @@ export class ProjectDashboardBacklogComponent implements OnInit {
 
   issueDrop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
-      moveItemInArray(this.issues, event.previousIndex, event.currentIndex);
+      moveItemInArray(this.issues, event.previousIndex + (5 * (this.pageNumber -1)), event.currentIndex + (5 * (this.pageNumber -1)));
     } else {
       transferArrayItem(this.issuesSprint,
                         this.issues,
