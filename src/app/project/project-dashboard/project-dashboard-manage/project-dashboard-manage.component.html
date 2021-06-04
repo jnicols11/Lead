@@ -1,1 +1,49 @@
-<p>project-dashboard-manage works!</p>
+<div class="container">
+  <div class="container__info">
+    <h2>Project Info</h2>
+    <div class="container__info__field">
+      <label for="name">Name: </label>
+      <input
+        type="text"
+        [(ngModel)]="project.name"
+      >
+    </div>
+    <div class="container__info__field">
+      <label for="desc">Description: </label>
+      <textarea
+        rows=6
+        cols=40
+        [(ngModel)]="project.desc"
+      ></textarea>
+    </div>
+    <div class="container__info__field">
+      <label for="deadline">Deadline: </label>
+      <input
+        type="date"
+        [(ngModel)]="deadline"
+      >
+    </div>
+  </div>
+
+  <div class="container__access">
+    <h2>Project Access</h2>
+  </div>
+</div>
+
+<div class="container__delete">
+  <p>Please type the name of your project to confirm deleting</p>
+  <p>Project Name: {{ project.name }}</p>
+  <input
+    type="text"
+    placeholder="Project name"
+    [(ngModel)]="inputDeleteName"
+  >
+  <br>
+  <button
+    class="deleteProjectBtn"
+    type="button"
+    (click)="deleteProject()"
+    [disabled]="inputDeleteName != this.project.name || loading"
+    >Delete Project
+  </button>
+</div>

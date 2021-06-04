@@ -20,6 +20,7 @@ import { ProjectDashboardBacklogComponent } from './project/project-dashboard/pr
 import { ProjectDashboardSprintsComponent } from './project/project-dashboard/project-dashboard-sprints/project-dashboard-sprints.component';
 import { ProjectDashboardReportsComponent } from './project/project-dashboard/project-dashboard-reports/project-dashboard-reports.component';
 import { ProjectDashboardManageComponent } from './project/project-dashboard/project-dashboard-manage/project-dashboard-manage.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,7 @@ import { ProjectDashboardManageComponent } from './project/project-dashboard/pro
     ClickOutsideModule,
     DragDropModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

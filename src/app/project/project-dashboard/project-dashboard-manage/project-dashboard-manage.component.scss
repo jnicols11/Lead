@@ -1,0 +1,158 @@
+@import '../../../app.component.scss';
+
+.container {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 5%;
+
+  &__info {
+    width: 40%;
+    background-color: $color-grey-dark-1;
+    border: 2px solid $color-primary;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+
+    &__field {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 7%;
+
+      & label {
+        color: $color-primary;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        padding: 0 5%;
+      }
+
+      & input {
+        width: 45%;
+        padding: 0 2%;
+        height: 30px;
+        border: 2px solid $color-primary;
+        border-radius: 20px;
+        -webkit-border-radius: 20px;
+        -moz-border-radius: 20px;
+        -ms-border-radius: 20px;
+        -o-border-radius: 20px;
+      }
+
+      & input:focus {
+        outline: none;
+      }
+
+      & textarea {
+        padding: 1% 2%;
+        resize: none;
+        border: 2px solid $color-primary;
+        border-radius: 20px;
+        -webkit-border-radius: 20px;
+        -moz-border-radius: 20px;
+        -ms-border-radius: 20px;
+        -o-border-radius: 20px;
+      }
+
+      & textarea:focus {
+        outline: none;
+      }
+    }
+  }
+
+  &__access {
+    width: 40%;
+    background-color: $color-grey-dark-1;
+    border: 2px solid $color-primary;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    height: 250px;
+  }
+
+  &__delete {
+    margin-top: 2%;
+    width: 80%;
+    margin-left: 10%;
+    background-color: $color-grey-dark-1;
+    border: 2px solid $color-primary;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+
+    & p {
+      margin-top: 5%;
+      margin-bottom: 4%;
+      font-size: 16px;
+      color: $color-primary;
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+      text-align: center;
+    }
+
+    & input {
+      width: 30%;
+      height: 35px;
+      color: $color-primary;
+      margin-left: 34%;
+      margin-bottom: 2%;
+      padding-left: 1%;
+      background-color: $color-grey-dark-1;
+      border: 2px solid $color-primary;
+      border-radius: 20px;
+      -webkit-border-radius: 20px;
+      -moz-border-radius: 20px;
+      -ms-border-radius: 20px;
+      -o-border-radius: 20px;
+    }
+
+    & input:focus {
+      outline: none;
+    }
+  }
+
+  & h2 {
+    color: $color-primary;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+  }
+}
+
+.deleteProjectBtn {
+  margin-left: 41.5%;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  background-color: transparent;
+  width: 16%;
+  height: 45px;
+  color: red;
+  border: 2px solid red;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  transition: all .6s;
+  -webkit-transition: all .6s;
+  -moz-transition: all .6s;
+  -ms-transition: all .6s;
+  -o-transition: all .6s;
+  cursor: pointer;
+}
+
+.deleteProjectBtn:hover {
+  background-color: red;
+  color: #fff;
+}
+
+.deleteProjectBtn:disabled {
+  opacity: 20%;
+  cursor: default;
+}
+
+.deleteProjectBtn:disabled:hover {
+  background-color: transparent;
+  color: red;
+}

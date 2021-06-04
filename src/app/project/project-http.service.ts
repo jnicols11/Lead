@@ -23,9 +23,29 @@ export class ProjectHttpService {
     )
   }
 
+  getProjectById(projectID: string) {
+    return this.http.get(
+      'http://localhost:3010/project/getProjectById/' + projectID,
+      {
+        observe: 'response',
+        responseType: 'json'
+      }
+    )
+  }
+
   getUserProjects(id: number) {
     return this.http.get(
       'http://localhost:3010/project/getUserProjects/' + id,
+      {
+        observe: 'response',
+        responseType: 'json'
+      }
+    )
+  }
+
+  deleteProject(projectID: string) {
+    return this.http.delete(
+      'http://localhost:3010/project/deleteProject' + projectID,
       {
         observe: 'response',
         responseType: 'json'
