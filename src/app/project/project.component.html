@@ -81,7 +81,7 @@
       (click)="goToProject(project.id)"
     >
       <h4>{{ project.name }}</h4>
-      <p>{{ project.desc }}</p>
+      <p>{{ (project.desc.length > 26) ? (project.desc | slice:0:26) + '...' : (project.desc) }}</p>
       <p>{{ project.deadline | date }}</p>
     </div>
     <style>
