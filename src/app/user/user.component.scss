@@ -37,6 +37,7 @@
       color: $color-primary;
       cursor: pointer;
       width: 70%;
+      padding-left: 1%;
       height: 25px;
       background-color: $color-grey-dark-1;
       margin-top: 1%;
@@ -62,6 +63,10 @@
 
     &__input::selection {
       background-color: $color-grey-dark-1;
+    }
+
+    &__input:focus {
+      outline: none;
     }
   }
 

@@ -29,6 +29,8 @@
       & input {
         width: 45%;
         padding: 0 2%;
+        color: $color-primary;
+        background-color: $color-grey-dark-1;
         height: 30px;
         border: 2px solid $color-primary;
         border-radius: 20px;
@@ -42,9 +44,16 @@
         outline: none;
       }
 
+      & input::-webkit-calendar-picker-indicator {
+        filter: invert(1);
+      }
+
       & textarea {
         padding: 1% 2%;
         resize: none;
+        color: $color-primary;
+        background-color: $color-grey-dark-1;
+        line-height: 200%;
         font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
         border: 2px solid $color-primary;
         border-radius: 20px;
@@ -83,7 +92,7 @@
   }
 
   &__delete {
-    margin-top: 5%;
+    margin-top: 3%;
     width: 90%;
     margin-left: auto;
     margin-right: auto;
