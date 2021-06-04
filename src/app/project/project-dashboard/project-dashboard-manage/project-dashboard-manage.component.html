@@ -6,6 +6,8 @@
       <input
         type="text"
         [(ngModel)]="project.name"
+        (click)="preEditName()"
+        (clickOutside)="cancelEditName()"
       >
     </div>
     <div class="container__info__field">
@@ -14,6 +16,8 @@
         rows=6
         cols=40
         [(ngModel)]="project.desc"
+        (click)="preEditDesc()"
+        (clickOutside)="cancelEditDesc()"
       ></textarea>
     </div>
     <div class="container__info__field">
@@ -21,6 +25,8 @@
       <input
         type="date"
         [(ngModel)]="deadline"
+        (click)="preEditDeadline()"
+        (clickOutside)="cancelEditDeadline()"
       >
     </div>
   </div>
@@ -35,7 +41,7 @@
   <p>Project Name: {{ project.name }}</p>
   <input
     type="text"
-    placeholder="Project name"
+    placeholder="Project Name"
     [(ngModel)]="inputDeleteName"
   >
   <br>

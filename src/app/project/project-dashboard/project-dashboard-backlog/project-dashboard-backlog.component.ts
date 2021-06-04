@@ -60,7 +60,6 @@ export class ProjectDashboardBacklogComponent implements OnInit {
   }
 
   issueDrop(event: CdkDragDrop<string[]>) {
-    console.log(this.pageNumber);
     if (event.previousContainer === event.container) {
       moveItemInArray(this.issues, event.previousIndex, event.currentIndex);
     } else {
@@ -72,7 +71,6 @@ export class ProjectDashboardBacklogComponent implements OnInit {
   }
 
   sprintDrop(event: CdkDragDrop<string[]>) {
-    console.log(this.pageNumber);
     if (event.previousContainer === event.container) {
       moveItemInArray(this.issuesSprint, event.previousIndex, event.currentIndex);
     } else {

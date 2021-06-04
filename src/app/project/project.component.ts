@@ -20,10 +20,8 @@ export class ProjectComponent implements OnInit {
   constructor(private projectService: ProjectHttpService, private router: Router) { }
 
   ngOnInit(): void {
-    console.log(localStorage.getItem('focusedProject'));
     this.projectService.getUserProjects(+localStorage.getItem('currentUser'))
     .subscribe(responseData => {
-      console.log(responseData);
       for(let i = 0; i < responseData.body['length']; i++) {
         const name = responseData.body[i].name;
         const desc = responseData.body[i].desc;
@@ -51,7 +49,6 @@ export class ProjectComponent implements OnInit {
     this.projectService.createProject(project)
     .subscribe(
       responseData => {
-        console.log(responseData);
         this.createProject = false;
         location.reload();
       }, error => {

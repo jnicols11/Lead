@@ -12,9 +12,12 @@ import { Project } from '../../project.model';
 })
 export class ProjectDashboardManageComponent implements OnInit {
   loading = true;
-  project: Project = new Project;
+  editName = false;
+  editDesc = false;
+  editDeadline = false;
   inputDeleteName: string;
   deadline: string;
+  project: Project = new Project;
   error = new Subject<string>();
 
   constructor(
@@ -44,6 +47,30 @@ export class ProjectDashboardManageComponent implements OnInit {
             )
         }
       );
+  }
+
+  preEditName() {
+    this.editName = true;
+  }
+
+  preEditDesc() {
+    this.editDesc = true;
+  }
+
+  preEditDeadline() {
+    this.editDeadline = true;
+  }
+
+  cancelEditName() {
+    this.editName = false;
+  }
+
+  cancelEditDesc() {
+    this.editDesc = false;
+  }
+
+  cancelEditDeadline() {
+    this.editDeadline = false;
   }
 
   deleteProject() {
