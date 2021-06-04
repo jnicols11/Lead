@@ -31,6 +31,7 @@ export class ProjectDashboardBacklogComponent implements OnInit {
   sprintForm: FormGroup;
   error = new Subject<string>();
   pageNumber = 1;
+  sprintPageNumber = 1;
 
   constructor(private projectService: ProjectHttpService, private route: ActivatedRoute) { }
 
@@ -59,6 +60,10 @@ export class ProjectDashboardBacklogComponent implements OnInit {
     this.pageNumber = num;
   }
 
+  setSprintPageNumber(num: number) {
+    this.sprintPageNumber = num;
+  }
+
   issueDrop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(this.issues, event.previousIndex + (5 * (this.pageNumber -1)), event.currentIndex + (5 * (this.pageNumber -1)));
@@ -67,6 +72,10 @@ export class ProjectDashboardBacklogComponent implements OnInit {
                         this.issues,
                         event.previousIndex,
                         event.currentIndex + (5 * (this.pageNumber -1)));
+
+      if (this.issuesSprint.length <= this.sprintPageNumber * 5) {
+        this.sprintPageNumber = this.sprintPageNumber - 1;
+      }
     }
   }
 
@@ -78,6 +87,10 @@ export class ProjectDashboardBacklogComponent implements OnInit {
                         this.issuesSprint,
                         event.previousIndex + (5 * (this.pageNumber -1)),
                         event.currentIndex);
+
+      if (this.issues.length <= this.pageNumber * 5) {
+        this.pageNumber = this.pageNumber - 1;
+      }
     }
   }
 

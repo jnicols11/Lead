@@ -57,7 +57,7 @@
         class="projectPagination"
         (pageChange)="setPageNumber($event)"
         id="issue"
-        *ngIf="issues.length > 5 || createSprint">
+        *ngIf="issues.length > 5">
       </pagination-controls>
     </div>
   </div>
@@ -172,11 +172,45 @@
         <div
           class="container__createSprint__list__item"
           (click)="focusIssue(issue)"
-          *ngFor="let issue of issuesSprint"
+          *ngFor="let issue of issuesSprint
+          | paginate:
+          {
+            id: 'sprint',
+            itemsPerPage: 4,
+            currentPage: this.sprintPageNumber
+          }"
           cdkDrag>
           <p>{{ (issue.name.length > 20) ? (issue.name | slice:0:20) + '...' : (issue.name) }}</p>
           <p>{{ issue.time }}</p>
         </div>
+        <style>
+
+          .sprintPagination /deep/ .ngx-pagination .current {
+            background: rgb(84, 85, 84);
+            border: 2px solid rgb(41, 224, 209);
+            border-radius: 20px;
+          }
+
+          .sprintPagination /deep/ .ngx-pagination a {
+            border-radius: 20px;
+            color: rgb(84, 85, 84);
+            margin-left: 10px;
+            margin-right: 10;
+          }
+
+          .sprintPagination /deep/ .ngx-pagination a:hover {
+            background: rgb(41, 224, 209);
+            border: 2px solid rgb(84, 85, 84);
+          }
+
+
+        </style>
+        <pagination-controls
+          class="sprintPagination"
+          (pageChange)="setSprintPageNumber($event)"
+          id="sprint"
+          *ngIf="issuesSprint.length > 4">
+        </pagination-controls>
     </div>
     <button
       type="submit"
