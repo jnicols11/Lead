@@ -45,7 +45,7 @@ export class ProjectHttpService {
 
   deleteProject(projectID: string) {
     return this.http.delete(
-      'http://localhost:3010/project/deleteProject' + projectID,
+      'http://localhost:3010/project/deleteProject/' + projectID,
       {
         observe: 'response',
         responseType: 'json'

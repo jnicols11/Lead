@@ -47,6 +47,13 @@ export class ProjectDashboardManageComponent implements OnInit {
   }
 
   deleteProject() {
-
+    this.projectService.deleteProject(this.project.id)
+      .subscribe(
+        responseData => {
+          this.router.navigate(['/projects']);
+        }, error => {
+          this.error.next(error.message);
+        }
+      )
   }
 }
