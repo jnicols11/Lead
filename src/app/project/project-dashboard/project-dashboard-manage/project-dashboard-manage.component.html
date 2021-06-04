@@ -5,29 +5,71 @@
       <label for="name">Name: </label>
       <input
         type="text"
-        [(ngModel)]="project.name"
+        [(ngModel)]="inputProjectName"
         (click)="preEditName()"
         (clickOutside)="cancelEditName()"
       >
+    </div>
+    <div class="container__info__edit" *ngIf="editName">
+      <button
+        class="projectEditBtn"
+        type="button"
+        (click)="onEditName()"
+        >✓
+      </button>
+      <button
+        class="projectEditBtn"
+        type="button"
+        (click)="cancelEditName()"
+        >X
+      </button>
     </div>
     <div class="container__info__field">
       <label for="desc">Description: </label>
       <textarea
         rows=6
         cols=40
-        [(ngModel)]="project.desc"
+        [(ngModel)]="inputProjectDesc"
         (click)="preEditDesc()"
         (clickOutside)="cancelEditDesc()"
       ></textarea>
+    </div>
+    <div class="container__info__edit" *ngIf="editDesc">
+      <button
+        class="projectEditBtn"
+        type="button"
+        (click)="onEditDesc()"
+        >✓
+      </button>
+      <button
+        class="projectEditBtn"
+        type="button"
+        (click)="cancelEditDesc()"
+        >X
+      </button>
     </div>
     <div class="container__info__field">
       <label for="deadline">Deadline: </label>
       <input
         type="date"
-        [(ngModel)]="deadline"
+        [(ngModel)]="inputProjectDeadline"
         (click)="preEditDeadline()"
         (clickOutside)="cancelEditDeadline()"
       >
+    </div>
+    <div class="container__info__edit" *ngIf="editDeadline">
+      <button
+        class="projectEditBtn"
+        type="button"
+        (click)="onEditDeadline()"
+        >✓
+      </button>
+      <button
+        class="projectEditBtn"
+        type="button"
+        (click)="cancelEditDeadline()"
+        >X
+      </button>
     </div>
   </div>
 

@@ -43,6 +43,17 @@ export class ProjectHttpService {
     )
   }
 
+  updateProject(project: Project) {
+    return this.http.patch(
+      'http://localhost:3010/project/updateProject/' + project.id,
+      project,
+      {
+        observe: 'response',
+        responseType: 'json'
+      }
+    )
+  }
+
   deleteProject(projectID: string) {
     return this.http.delete(
       'http://localhost:3010/project/deleteProject/' + projectID,

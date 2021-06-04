@@ -15,6 +15,9 @@ export class ProjectDashboardManageComponent implements OnInit {
   editName = false;
   editDesc = false;
   editDeadline = false;
+  inputProjectName: string;
+  inputProjectDesc: string;
+  inputProjectDeadline: string;
   inputDeleteName: string;
   deadline: string;
   project: Project = new Project;
@@ -41,6 +44,9 @@ export class ProjectDashboardManageComponent implements OnInit {
                 this.deadline = this.datePipe.transform(this.project.deadline, 'yyyy-MM-dd');
                 this.project.userID = responseData.body['userID'];
                 this.project.id = responseData.body['_id'];
+                this.inputProjectName = this.project.name;
+                this.inputProjectDesc = this.project.desc;
+                this.inputProjectDeadline = this.deadline;
               }, error => {
                 this.error.next(error.message);
               }
@@ -59,6 +65,69 @@ export class ProjectDashboardManageComponent implements OnInit {
 
   preEditDeadline() {
     this.editDeadline = true;
+  }
+
+  onEditName() {
+    // check for change
+    if (this.project.name === this.inputProjectName) {
+      // nothing happended do nothing
+      this.cancelEditName();
+    } else {
+      // update project name
+      this.project.name = this.inputProjectName;
+
+      // send http request to update in DB
+      this.projectService.updateProject(this.project)
+        .subscribe(
+          responseData => {
+            console.log(responseData);
+          }, error => {
+            this.error.next(error.message);
+          }
+        );
+    }
+  }
+
+  onEditDesc() {
+    // check for change
+    if (this.project.desc === this.inputProjectDesc) {
+      // nothing happended do nothing
+      this.cancelEditDesc();
+    } else {
+      // update project description
+      this.project.desc = this.inputProjectDesc;
+
+      // send http request to update in DB
+      this.projectService.updateProject(this.project)
+        .subscribe(
+          responseData => {
+            console.log(responseData);
+          }, error => {
+            this.error.next(error.message);
+          }
+        );
+    }
+  }
+
+  onEditDeadline() {
+    // check for change
+    if (this.deadline === this.inputProjectDeadline) {
+      // nothing happended do nothing
+      this.cancelEditDeadline();
+    } else {
+      // update project deadline
+      this.project.deadline = new Date(this.inputProjectDeadline);
+
+      // send http request to update in DB
+      this.projectService.updateProject(this.project)
+        .subscribe(
+          responseData => {
+            console.log(responseData);
+          }, error => {
+            this.error.next(error.message);
+          }
+        );
+    }
   }
 
   cancelEditName() {
