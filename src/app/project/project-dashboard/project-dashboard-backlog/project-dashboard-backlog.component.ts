@@ -72,8 +72,9 @@ export class ProjectDashboardBacklogComponent implements OnInit {
                         this.issues,
                         event.previousIndex,
                         event.currentIndex + (5 * (this.pageNumber -1)));
+        console.log(this.issuesSprint);
 
-      if (this.issuesSprint.length <= this.sprintPageNumber * 5) {
+      if (this.issuesSprint.length <= this.sprintPageNumber * 5 && this.sprintPageNumber > 0) {
         this.sprintPageNumber = this.sprintPageNumber - 1;
       }
     }
@@ -87,8 +88,9 @@ export class ProjectDashboardBacklogComponent implements OnInit {
                         this.issuesSprint,
                         event.previousIndex + (5 * (this.pageNumber -1)),
                         event.currentIndex);
+      console.log(this.issues);
 
-      if (this.issues.length <= this.pageNumber * 5) {
+      if (this.issues.length <= this.pageNumber * 5 && this.pageNumber > 0) {
         this.pageNumber = this.pageNumber - 1;
       }
     }
