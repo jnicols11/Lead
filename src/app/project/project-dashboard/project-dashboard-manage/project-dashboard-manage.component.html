@@ -75,6 +75,20 @@
 
   <div class="container__access">
     <h2>Project Access</h2>
+    <div class="container__access__addUser">
+      <p>Enter a Username or Email to add user to this project</p>
+      <input
+        type="text"
+        placeholder="Username or Email"
+        [(ngModel)]="inputAddUser"
+      >
+      <br>
+      <button
+        type="button"
+        (click)="addUserToProject()"
+        [disabled]="inputAddUser === ''"
+      >Add User!</button>
+    </div>
   </div>
 </div>
 

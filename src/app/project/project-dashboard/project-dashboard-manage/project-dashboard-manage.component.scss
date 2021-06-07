@@ -89,6 +89,76 @@
     -ms-border-radius: 20px;
     -o-border-radius: 20px;
     height: 250px;
+
+    &__addUser {
+      width: 80%;
+      margin-left: auto;
+      margin-right: auto;
+
+      & p {
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        color: $color-primary;
+        text-align: center;
+        margin-bottom: 7%;
+      }
+
+      & input {
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 2%;
+        height: 25px;
+        width: 45%;
+        padding-left: 2%;
+        color: $color-primary;
+        background-color: $color-grey-dark-1;
+        border: 2px solid $color-primary;
+        border-radius: 20px;
+        -webkit-border-radius: 20px;
+        -moz-border-radius: 20px;
+        -ms-border-radius: 20px;
+        -o-border-radius: 20px;
+      }
+
+      & input:focus {
+        outline: none;
+      }
+
+      & button {
+        display: block;
+        margin: 0 auto;
+        background-color: $color-grey-dark-1;
+        width: 30%;
+        height: 30px;
+        color: $color-primary;
+        border: 2px solid $color-primary;
+        border-radius: 20px;
+        -webkit-border-radius: 20px;
+        -moz-border-radius: 20px;
+        -ms-border-radius: 20px;
+        -o-border-radius: 20px;
+        transition: all .5s;
+        -webkit-transition: all .5s;
+        -moz-transition: all .5s;
+        -ms-transition: all .5s;
+        -o-transition: all .5s;
+        cursor: pointer;
+      }
+
+      & button:hover {
+        background-color: $color-primary;
+        color: $color-grey-dark-1;
+      }
+
+      & button:disabled {
+        opacity: 20%;
+        cursor: default;
+      }
+
+      & button:disabled:hover {
+        background-color: $color-grey-dark-1;
+        color: $color-primary;
+      }
+    }
   }
 
   &__delete {

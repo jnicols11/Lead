@@ -24,6 +24,16 @@ export class UserHttpService {
     )
   }
 
+  getUserByText(name: string) {
+    return this.http.get(
+      'http://localhost/LeadAPI/api/getUserByUsernameOrEmail/' + name,
+      {
+        observe: 'response',
+        responseType: 'json'
+      }
+    )
+  }
+
   register(user: User) {
     // make Https call to API
     return this.http.post(

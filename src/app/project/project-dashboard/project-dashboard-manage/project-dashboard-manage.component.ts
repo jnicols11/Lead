@@ -2,6 +2,7 @@ import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
+import { UserHttpService } from 'src/app/user/user-http.service';
 import { ProjectHttpService } from '../../project-http.service';
 import { Project } from '../../project.model';
 
@@ -18,6 +19,7 @@ export class ProjectDashboardManageComponent implements OnInit {
   inputProjectName: string;
   inputProjectDesc: string;
   inputProjectDeadline: string;
+  inputAddUser: string = '';
   inputDeleteName: string;
   deadline: string;
   project: Project = new Project;
@@ -25,6 +27,7 @@ export class ProjectDashboardManageComponent implements OnInit {
 
   constructor(
     private projectService: ProjectHttpService,
+    private userService: UserHttpService,
     private route: ActivatedRoute,
     private router: Router,
     private datePipe: DatePipe
@@ -140,6 +143,30 @@ export class ProjectDashboardManageComponent implements OnInit {
 
   cancelEditDeadline() {
     this.editDeadline = false;
+  }
+
+  addUserToProject() {
+    // find user by username or email
+    this.userService.getUserByText(this.inputAddUser)
+      .subscribe(
+        responseData => {
+          // add user project users list
+          this.project.users.push(responseData.body['ID']);
+
+          // update project
+          this.projectService.updateProject(this.project)
+            .subscribe(
+              newResponse => {
+                console.log(newResponse);
+              }, error => {
+                this.error.next(error.message);
+              }
+            )
+        }, error => {
+          // present error to user no account was found
+          this.error.next(error.message);
+        }
+      )
   }
 
   deleteProject() {
