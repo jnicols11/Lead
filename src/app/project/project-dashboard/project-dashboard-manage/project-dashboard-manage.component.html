@@ -87,8 +87,37 @@
         type="button"
         (click)="addUserToProject()"
         [disabled]="inputAddUser === ''"
-      >Add User!</button>
+        >Add User!
+      </button>
+      <div class="loadContainer" *ngIf="addUserLoading">
+        <div class="loader"></div>
+      </div>
+      <p
+        style="color: red;"
+        *ngIf="addUserFail"
+        (clickOutside)="closePopups()"
+        >No account found! Please try again!
+      </p>
+      <p
+        style="color: red;"
+        *ngIf="addUserError"
+        (clickOutside)="closePopups()"
+        >Something went wrong!
+      </p>
+      <p
+        class="successText"
+        *ngIf="addUserSuccess"
+        (clickOutside)="closePopups()"
+        >{{ addedName }} has been added to the project!
+      </p>
     </div>
+    <button
+      type="button"
+      class="container__access__manageBtn"
+      (click)="manageProjectUsers()"
+      *ngIf="!addUserLoading"
+      >Manage Users
+    </button>
   </div>
 </div>
 

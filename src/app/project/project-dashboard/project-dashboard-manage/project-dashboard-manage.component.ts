@@ -13,6 +13,10 @@ import { Project } from '../../project.model';
 })
 export class ProjectDashboardManageComponent implements OnInit {
   loading = true;
+  addUserLoading = false;
+  addUserSuccess = false;
+  addUserFail = false;
+  addUserError = false;
   editName = false;
   editDesc = false;
   editDeadline = false;
@@ -20,6 +24,7 @@ export class ProjectDashboardManageComponent implements OnInit {
   inputProjectDesc: string;
   inputProjectDeadline: string;
   inputAddUser: string = '';
+  addedName: string;
   inputDeleteName: string;
   deadline: string;
   project: Project = new Project;
@@ -146,27 +151,42 @@ export class ProjectDashboardManageComponent implements OnInit {
   }
 
   addUserToProject() {
+    // set loading status
+    this.addUserLoading = true;
     // find user by username or email
     this.userService.getUserByText(this.inputAddUser)
       .subscribe(
         responseData => {
           // add user project users list
           this.project.users.push(responseData.body['ID']);
+          this.addedName = responseData.body['username'];
 
           // update project
           this.projectService.updateProject(this.project)
             .subscribe(
               newResponse => {
-                console.log(newResponse);
+                this.addUserLoading = false;
+                this.addUserSuccess = true;
               }, error => {
+                // present internal error to user
+                this.addUserError = true;
+                this.addUserLoading = false;
+
                 this.error.next(error.message);
               }
             )
         }, error => {
           // present error to user no account was found
+          this.addUserFail = true;
+          this.addUserLoading = false;
+
           this.error.next(error.message);
         }
       )
+  }
+
+  manageProjectUsers() {
+
   }
 
   deleteProject() {
@@ -178,5 +198,11 @@ export class ProjectDashboardManageComponent implements OnInit {
           this.error.next(error.message);
         }
       )
+  }
+
+  closePopups() {
+    this.addUserError = false;
+    this.addUserFail = false;
+    this.addUserSuccess = false;
   }
 }

@@ -115,6 +115,10 @@
         border: 2px solid $color-grey-dark-1;
       }
 
+      &__input:focus {
+        outline: none;
+      }
+
       &__textarea {
         resize: none;
         padding-left: 1%;
@@ -125,6 +129,10 @@
         -moz-border-radius: 20px;
         -ms-border-radius: 20px;
         -o-border-radius: 20px;
+      }
+
+      &__textarea:focus {
+        outline: none;
       }
 
       &__edit {
@@ -204,6 +212,10 @@
         -moz-border-radius: 20px;
         -ms-border-radius: 20px;
         -o-border-radius: 20px;
+      }
+
+      &__input:focus {
+        outline: none;
       }
     }
 
@@ -397,6 +409,10 @@
     -o-border-radius: 20px;
   }
 
+  &__input:focus {
+    outline: none;
+  }
+
   &__textarea {
     resize: none;
     padding-left: 10px;
@@ -406,6 +422,10 @@
     -moz-border-radius: 20px;
     -ms-border-radius: 20px;
     -o-border-radius: 20px;
+  }
+
+  &__textarea:focus {
+    outline: none;
   }
 
   &__btn {
