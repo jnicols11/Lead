@@ -52,6 +52,7 @@ export class ProjectDashboardManageComponent implements OnInit {
                 this.deadline = this.datePipe.transform(this.project.deadline, 'yyyy-MM-dd');
                 this.project.userID = responseData.body['userID'];
                 this.project.id = responseData.body['_id'];
+                this.project.users = responseData.body['users'];
                 this.inputProjectName = this.project.name;
                 this.inputProjectDesc = this.project.desc;
                 this.inputProjectDeadline = this.deadline;
@@ -186,7 +187,7 @@ export class ProjectDashboardManageComponent implements OnInit {
   }
 
   manageProjectUsers() {
-
+    // TODO
   }
 
   deleteProject() {
