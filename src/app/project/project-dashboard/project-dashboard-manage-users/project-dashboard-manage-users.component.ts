@@ -32,7 +32,7 @@ export class ProjectDashboardManageUsersComponent implements OnInit {
               projectData => {
                 const users = projectData.body['users'];
                 users.forEach(id => {
-                  this.userService.getUser(+id)
+                  this.userService.getUser(id.id)
                     .subscribe(
                       userData => {
                         // populate user model
@@ -46,13 +46,12 @@ export class ProjectDashboardManageUsersComponent implements OnInit {
 
                         // push user to component user array
                         this.users.push(user);
+                        this.loading = false;
                       }, error => {
                         this.error.next(error.message);
                       }
                     )
                 });
-
-                this.loading = false;
               }, error => {
                 this.loading = false;
                 this.loadFailed = true;
@@ -63,4 +62,7 @@ export class ProjectDashboardManageUsersComponent implements OnInit {
       )
   }
 
+  onFocusUser(user: User) {
+    console.log(user);
+  }
 }

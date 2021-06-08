@@ -159,7 +159,7 @@ export class ProjectDashboardManageComponent implements OnInit {
       .subscribe(
         responseData => {
           // add user project users list
-          this.project.users.push(responseData.body['ID']);
+          this.project.users.push({ id: responseData.body['ID'], role: 'member' });
           this.addedName = responseData.body['username'];
 
           // update project

@@ -4,7 +4,7 @@ export class Project {
   public desc: string;
   public deadline: Date;
   public id: string;
-  public users: number[];
+  public users: { id: number, role: string }[];
 
   constructor( userID?: number, name?: string, desc?: string, deadline?: Date, id?: string) {
     this.userID = userID;
@@ -12,6 +12,6 @@ export class Project {
     this.desc = desc;
     this.deadline = deadline;
     this.id = id;
-    this.users = [this.userID];
+    this.users = [{ id: this.userID, role: 'owner' }];
   }
 }

@@ -1,0 +1,97 @@
+@import '../../../app.component.scss';
+
+.container {
+  background-color: $color-grey-dark-1;
+  border: 2px solid $color-primary;
+  height: 80vh;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  margin-top: -30px;
+
+  &__list {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    grid-template-rows: 20vh 20vh 20vh 20vh;
+
+    &__userbox {
+      color: $color-primary;
+      width: 20vh;
+      border: 2px solid $color-primary;
+      border-radius: 20px;
+      -webkit-border-radius: 20px;
+      -moz-border-radius: 20px;
+      -ms-border-radius: 20px;
+      -o-border-radius: 20px;
+      padding: 1%;
+      display: flex;
+      justify-self: center;
+      align-self: center;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+
+      & p {
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+      }
+
+      & i {
+        margin-top: 8%;
+        margin-bottom: 2%;
+        font-size: 35px;
+      }
+    }
+  }
+}
+
+.loadContainer {
+  margin-top: 15%;
+
+  & h4 {
+    text-align: center;
+    font-size: 25px;
+    color: $color-grey-dark-1;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  }
+}
+
+.loader,
+.loader:after {
+  border-radius: 50%;
+  width: 10em;
+  height: 10em;
+}
+.loader {
+  margin: 60px auto;
+  font-size: 10px;
+  text-indent: -9999em;
+  border-top: 1.1em solid #FFF;
+  border-right: 1.1em solid #FFF;
+  border-bottom: 1.1em solid #FFF;
+  border-left: 1.1em solid $color-primary;
+  transform: translateZ(0);
+  -webkit-animation: load8 .8s infinite linear;
+  animation: load8 .8s infinite linear;
+}
+@-webkit-keyframes load8 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes load8 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}

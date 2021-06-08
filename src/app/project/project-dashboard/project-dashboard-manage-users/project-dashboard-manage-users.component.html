@@ -1,3 +1,15 @@
+<head>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<div class="loadContainer" *ngIf="loading">
+  <h4>Please Wait</h4>
+  <div class="loader"></div>
+</div>
 <div class="container" *ngIf="!loading">
-
+  <div class="container__list">
+    <div class="container__list__userbox" *ngFor="let user of users" (click)="onFocusUser(user)">
+      <p>{{ user.name }}</p>
+      <i class='large material-icons'>person</i>
+    </div>
+  </div>
 </div>
