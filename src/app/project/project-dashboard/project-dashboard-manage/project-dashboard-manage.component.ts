@@ -187,7 +187,7 @@ export class ProjectDashboardManageComponent implements OnInit {
   }
 
   manageProjectUsers() {
-    // TODO
+    this.router.navigate(['/project/manageUsers'], { queryParams: { id: this.project.id } });
   }
 
   deleteProject() {

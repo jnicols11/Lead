@@ -21,6 +21,7 @@ import { ProjectDashboardSprintsComponent } from './project/project-dashboard/pr
 import { ProjectDashboardReportsComponent } from './project/project-dashboard/project-dashboard-reports/project-dashboard-reports.component';
 import { ProjectDashboardManageComponent } from './project/project-dashboard/project-dashboard-manage/project-dashboard-manage.component';
 import { DatePipe } from '@angular/common';
+import { ProjectDashboardManageUsersComponent } from './project/project-dashboard/project-dashboard-manage-users/project-dashboard-manage-users.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { DatePipe } from '@angular/common';
     ProjectDashboardBacklogComponent,
     ProjectDashboardSprintsComponent,
     ProjectDashboardReportsComponent,
-    ProjectDashboardManageComponent
+    ProjectDashboardManageComponent,
+    ProjectDashboardManageUsersComponent
   ],
   imports: [
     BrowserModule,

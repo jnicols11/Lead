@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { ProjectDashboardBacklogComponent } from './project/project-dashboard/project-dashboard-backlog/project-dashboard-backlog.component';
+import { ProjectDashboardManageUsersComponent } from './project/project-dashboard/project-dashboard-manage-users/project-dashboard-manage-users.component';
 import { ProjectDashboardManageComponent } from './project/project-dashboard/project-dashboard-manage/project-dashboard-manage.component';
 import { ProjectDashboardReportsComponent } from './project/project-dashboard/project-dashboard-reports/project-dashboard-reports.component';
 import { ProjectDashboardSprintsComponent } from './project/project-dashboard/project-dashboard-sprints/project-dashboard-sprints.component';
@@ -19,7 +20,8 @@ const routes: Routes = [
     { path: 'backlog', component: ProjectDashboardBacklogComponent },
     { path: 'sprints', component: ProjectDashboardSprintsComponent },
     { path: 'reports', component: ProjectDashboardReportsComponent },
-    { path: 'manage', component: ProjectDashboardManageComponent }
+    { path: 'manage', component: ProjectDashboardManageComponent },
+    { path: 'manageUsers', component: ProjectDashboardManageUsersComponent }
   ] },
   { path: 'register', component: UserRegComponent },
   { path: 'login', component: UserLoginComponent },
