@@ -12,6 +12,7 @@ import { ProjectHttpService } from '../../project-http.service';
 })
 export class ProjectDashboardManageUsersComponent implements OnInit {
   users: User[] = [];
+  focusedUser: User = null;
   loading = true;
   loadFailed = false;
   error = new Subject<string>();
@@ -41,7 +42,8 @@ export class ProjectDashboardManageUsersComponent implements OnInit {
                           userData.body['username'],
                           userData.body['email'],
                           null,
-                          userData.body['ID']
+                          userData.body['ID'],
+                          id.role
                         );
 
                         // push user to component user array
@@ -63,6 +65,14 @@ export class ProjectDashboardManageUsersComponent implements OnInit {
   }
 
   onFocusUser(user: User) {
-    console.log(user);
+    this.focusedUser = user;
+  }
+
+  closeUserFocus() {
+    this.focusedUser = null;
+  }
+
+  removeUserFromProject() {
+
   }
 }

@@ -12,4 +12,29 @@
       <i class='large material-icons'>person</i>
     </div>
   </div>
+
+  <div class="container__focus" *ngIf="focusedUser != null">
+    <button
+      class="xbtn"
+      type="button"
+      (click)="closeUserFocus()"
+      >X
+    </button>
+    <h2>{{ focusedUser.name }}</h2>
+    <p>Username: {{ focusedUser.username }}</p>
+    <p>Email: {{ focusedUser.email }}</p>
+    <div class="container__focus__role">
+      <p>Role: </p>
+      <select name="role" id="role">
+        <option value="member" [selected]="focusedUser.role == 'member'">Member</option>
+        <option value="admin" [selected]="focusedUser.role == 'admin'">Admin</option>
+      </select>
+    </div>
+    <button
+      class="container__focus__removeBtn"
+      type="button"
+      (click)="removeFromProject()"
+      >Remove User
+    </button>
+  </div>
 </div>
