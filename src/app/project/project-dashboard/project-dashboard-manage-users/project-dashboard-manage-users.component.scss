@@ -85,7 +85,7 @@
 
       & select {
         height: 35px;
-        width: 40%;
+        width: 50%;
         color: $color-grey-dark-1;
         background-color: $color-primary;
         border: 2px solid $color-grey-light-1;
@@ -94,6 +94,7 @@
         -moz-border-radius: 20px;
         -ms-border-radius: 20px;
         -o-border-radius: 20px;
+        cursor: pointer;
       }
 
       & select:focus {
@@ -118,6 +119,7 @@
       -moz-transition: all .5s;
       -ms-transition: all .5s;
       -o-transition: all .5s;
+      cursor: pointer;
     }
 
     &__removeBtn:hover {
