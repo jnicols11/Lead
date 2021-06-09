@@ -76,7 +76,7 @@
     </div>
   </div>
 
-  <div class="container__access" *ngIf="userRole.toLowerCase() == 'admin'">
+  <div class="container__access" *ngIf="userRole.toLowerCase() != 'member'">
     <h2>Project Access</h2>
     <div class="container__access__addUser">
       <p>Enter a Username or Email to add user to this project</p>
