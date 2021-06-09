@@ -66,14 +66,14 @@
     <button
       class="sprintBtn"
       (click)="preCreateSprint()"
-      *ngIf="!createIssue && !createSprint"
+      *ngIf="!createIssue && !createSprint && userRole.toLowerCase() != 'member'"
       >Create Sprint
     </button>
 
     <button
       class="issueBtn"
       (click)="preCreateIssue()"
-      *ngIf="!createIssue && !createSprint"
+      *ngIf="!createIssue && !createSprint && userRole.toLowerCase() != 'member'"
       >Create Issue
     </button>
   </div>
@@ -235,6 +235,7 @@
       type="text"
       class="container__issue__focus__input"
       [(ngModel)]="issueName"
+      [disabled]="userRole.toLowerCase() == 'member'"
       (click)="preEditName()"
       (clickOutside)="cancelEditName()"
       #name="ngModel"
@@ -263,6 +264,7 @@
       rows=3
       cols=34
       [(ngModel)]="issueDesc"
+      [disabled]="userRole.toLowerCase() == 'member'"
       (click)="preEditDesc()"
       (clickOutside)="cancelEditDesc()"
       #desc="ngModel"
@@ -290,6 +292,7 @@
       type="number"
       class="container__issue__focus__input"
       [(ngModel)]="issueTime"
+      [disabled]="userRole.toLowerCase() == 'member'"
       (click)="preEditTime()"
       (clickOutside)="cancelEditTime()"
       #time="ngModel"
@@ -313,6 +316,7 @@
     class="deleteBtn"
     type="button"
     (click)="deleteIssue(issuePopup)"
+    [disabled]="userRole.toLowerCase() == 'member'"
   >Delete
   </button>
 </div>

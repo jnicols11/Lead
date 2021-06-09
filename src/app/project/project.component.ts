@@ -67,7 +67,24 @@ export class ProjectComponent implements OnInit {
   }
 
   goToProject(projectID: string) {
-    this.router.navigate(['/project'], { queryParams: { id: projectID } });
+    // set get user role in project from database
+    this.projectService.getProjectById(projectID)
+      .subscribe(
+        projectData => {
+          const users = projectData.body['users'];
+
+          users.forEach((user, index) => {
+            if(+user.id == +localStorage.getItem('currentUser')) {
+              localStorage.setItem('userProjectRole', users[index].role);
+
+              // navigate to dashboard
+              this.router.navigate(['/project'], { queryParams: { id: projectID } });
+            }
+          });
+        }, error => {
+          this.error.next(error.message);
+        }
+      )
   }
 
   private initForm() {

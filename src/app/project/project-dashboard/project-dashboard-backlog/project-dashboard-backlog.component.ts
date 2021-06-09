@@ -23,6 +23,7 @@ export class ProjectDashboardBacklogComponent implements OnInit {
   projectID: string;
   issueName: string;
   issueDesc: string;
+  userRole: string;
   issueTime: number;
   issues: Issue[] = [];
   issuesSprint: Issue[] = [];
@@ -36,6 +37,9 @@ export class ProjectDashboardBacklogComponent implements OnInit {
   constructor(private projectService: ProjectHttpService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    // set user role for permissions
+    this.userRole = localStorage.getItem('userProjectRole');
+
     // Set ProjectID
     this.route.queryParams
       .subscribe(

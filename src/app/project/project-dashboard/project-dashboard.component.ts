@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProjectHttpService } from '../project-http.service';
 
@@ -7,7 +7,7 @@ import { ProjectHttpService } from '../project-http.service';
   templateUrl: './project-dashboard.component.html',
   styleUrls: ['./project-dashboard.component.scss']
 })
-export class ProjectDashboardComponent implements OnInit {
+export class ProjectDashboardComponent implements OnInit, OnDestroy {
   projectID: string
 
   constructor(private projectService: ProjectHttpService, private route: ActivatedRoute, private router: Router) { }
@@ -35,4 +35,7 @@ export class ProjectDashboardComponent implements OnInit {
     this.router.navigate(['/project/manage'], { queryParams: { id: this.projectID } });
   }
 
+  ngOnDestroy() {
+    localStorage.setItem('userProjectRole', undefined);
+  }
 }

@@ -381,6 +381,17 @@
   border: 2px solid $color-primary;
 }
 
+.deleteBtn:disabled {
+  opacity: 20%;
+}
+
+.deleteBtn:disabled:hover {
+  cursor: default;
+  background-color: transparent;
+  border: 2px solid red;
+  color: red;
+}
+
 .issueForm {
 
   &__container {

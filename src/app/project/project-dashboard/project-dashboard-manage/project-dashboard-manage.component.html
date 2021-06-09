@@ -8,6 +8,7 @@
         [(ngModel)]="inputProjectName"
         (click)="preEditName()"
         (clickOutside)="cancelEditName()"
+        [disabled]="userRole.toLowerCase() == 'member'"
       >
     </div>
     <div class="container__info__edit" *ngIf="editName">
@@ -32,6 +33,7 @@
         [(ngModel)]="inputProjectDesc"
         (click)="preEditDesc()"
         (clickOutside)="cancelEditDesc()"
+        [disabled]="userRole.toLowerCase() == 'member'"
       ></textarea>
     </div>
     <div class="container__info__edit" *ngIf="editDesc">
@@ -55,6 +57,7 @@
         [(ngModel)]="inputProjectDeadline"
         (click)="preEditDeadline()"
         (clickOutside)="cancelEditDeadline()"
+        [disabled]="userRole.toLowerCase() == 'member'"
       >
     </div>
     <div class="container__info__edit" *ngIf="editDeadline">
@@ -73,7 +76,7 @@
     </div>
   </div>
 
-  <div class="container__access">
+  <div class="container__access" *ngIf="userRole.toLowerCase() == 'admin'">
     <h2>Project Access</h2>
     <div class="container__access__addUser">
       <p>Enter a Username or Email to add user to this project</p>
@@ -121,7 +124,8 @@
   </div>
 </div>
 
-<div class="container__delete">
+<div class="container__delete" *ngIf="userRole.toLowerCase() == 'owner'">
+  <h2>Delete Project</h2>
   <p>Please type the name of your project to confirm deleting</p>
   <p>Project Name: {{ project.name }}</p>
   <input

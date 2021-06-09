@@ -27,6 +27,7 @@ export class ProjectDashboardManageComponent implements OnInit {
   addedName: string;
   inputDeleteName: string;
   deadline: string;
+  userRole: string;
   project: Project = new Project;
   error = new Subject<string>();
 
@@ -39,6 +40,7 @@ export class ProjectDashboardManageComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
+    this.userRole = localStorage.getItem('userProjectRole');
     this.route.queryParams
       .subscribe(
         params => {
