@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Subject } from 'rxjs';
+import { UserHttpService } from 'src/app/user/user-http.service';
 import { User } from 'src/app/user/user.model';
 import { ProjectHttpService } from '../../project-http.service';
 import { Team } from '../models/team.model';
@@ -11,6 +13,7 @@ import { Team } from '../models/team.model';
 })
 export class ProjectDashboardTeamsComponent implements OnInit {
   teams: Team[];
+  users: User[];
   focusedTeam: Team = null;
   createTeam = false;
   selectLeader = false;
@@ -19,11 +22,13 @@ export class ProjectDashboardTeamsComponent implements OnInit {
   userRole: string;
   projectID: string;
   teamName: string = null;
-  teamLeader: User = null;
-  teamMembers: User[] = [];
+  teamLeader: number = null;
+  teamMembers: number[] = [];
+  error = new Subject<string>();
 
   constructor(
     private projectService: ProjectHttpService,
+    private userService: UserHttpService,
     private route: ActivatedRoute
   ) { }
 
@@ -43,11 +48,14 @@ export class ProjectDashboardTeamsComponent implements OnInit {
     // populate teams array
     if(this.userRole == 'member') {
       // get teams the user is affiliated with
-      this.projectService.getUserTeams(this.projectID, this.userID);
+      this.populateUserTeams();
     } else {
       // get all teams
-      this.projectService.getAllTeams(this.projectID);
+      this.populateTeams();
     }
+
+    // populate users array
+    this.populateUsers();
   }
 
   preCreateTeam() {
@@ -73,7 +81,21 @@ export class ProjectDashboardTeamsComponent implements OnInit {
   }
 
   onCreateTeam() {
-    // todo
+    const team = new Team(
+      this.projectID,
+      this.teamName,
+      this.teamLeader,
+      this.teamMembers
+    );
+
+    this.projectService.createTeam(team)
+      .subscribe(
+        responseData => {
+          console.log(responseData);
+        }, error => {
+          this.error.next(error.message);
+        }
+      )
   }
 
   onFocusTeam(team: Team) {
@@ -81,12 +103,28 @@ export class ProjectDashboardTeamsComponent implements OnInit {
     this.createTeam = false;
   }
 
-  onSelectLeader() {
-    // todo
+  onSelectLeader(user: User) {
+    this.teamLeader = user.id;
   }
 
-  onSelectMembers() {
-    // todo
+  onSelectMember(user: User) {
+    let done = false;
+    if(this.teamMembers.length == 0) {
+      this.teamMembers.push(user.id);
+    } else {
+      this.teamMembers.forEach((member, index) => {
+        if(member == user.id) {
+          // remove user from teamMembers and return
+          this.teamMembers.splice(index, 1);
+          done = true;
+        }
+      });
+
+      if(!done) {
+        // add user to teamMembers
+        this.teamMembers.push(user.id);
+      }
+    }
   }
 
   cancelFocusTeam() {
@@ -105,5 +143,46 @@ export class ProjectDashboardTeamsComponent implements OnInit {
   cancelSelectMembers() {
     this.selectMembers = false;
     this.createTeam = true;
+  }
+
+  private populateTeams() {
+    this.projectService.getAllTeams(this.projectID);
+  }
+
+  private populateUserTeams() {
+    this.projectService.getUserTeams(this.projectID, this.userID);
+  }
+
+  private populateUsers() {
+    this.users = [];
+    this.projectService.getProjectById(this.projectID)
+      .subscribe(
+        projectData => {
+          const users = projectData.body['users'];
+          users.forEach(id => {
+            this.userService.getUser(id.id)
+              .subscribe(
+                userData => {
+                  // populate user model
+                  let user = new User(
+                    userData.body['fullName'],
+                    userData.body['username'],
+                    userData.body['email'],
+                    null,
+                    userData.body['ID'],
+                    id.role
+                  );
+
+                  // push user to component user array
+                  this.users.push(user);
+                }, error => {
+                  this.error.next(error.message);
+                }
+              )
+          });
+        }, error => {
+          this.error.next(error.message);
+        }
+      );
   }
 }

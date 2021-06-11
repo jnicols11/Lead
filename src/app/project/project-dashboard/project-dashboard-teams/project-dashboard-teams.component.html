@@ -1,8 +1,11 @@
+<head>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
 <div class="container">
   <div class="container__top">
     <select>
       <option
-        *ngFor="team in teams"
+        *ngFor="let team of teams"
         (click)="onFocusTeam(team)"
         >{{ team.name }}
       </option>
@@ -72,9 +75,20 @@
       >X
     </button>
     <h2>Select a Leader</h2>
+    <div class="container__select__userList">
+      <div
+        class="container__select__userList__item"
+        *ngFor="let user of users"
+        (click)="onSelectLeader(user)"
+      >
+        <i class='small material-icons' *ngIf="user.id == teamLeader">star_border</i>
+        <p>{{ user.name }}</p>
+        <i class='large material-icons'>person</i>
+      </div>
+    </div>
     <button
       class="container__createTeam__subBtn"
-      (click)="onSelectLeader()"
+      (click)="cancelSelectLeader()"
       [disabled]="teamLeader == null"
       >Select
     </button>
@@ -88,9 +102,21 @@
       >X
     </button>
     <h2>Select Members</h2>
+    <div class="container__select__userList">
+      <div
+        class="container__select__userList__item"
+        *ngFor="let user of users"
+        (click)="onSelectMember(user)"
+        [hidden]="user == teamLeader"
+      >
+        <i class='small material-icons' *ngIf="teamMembers.includes(user.id)">check_circle</i>
+        <p>{{ user.name }}</p>
+        <i class='large material-icons'>person</i>
+      </div>
+    </div>
     <button
       class="container__createTeam__subBtn"
-      (click)="onSelectMembers()"
+      (click)="cancelSelectMembers()"
       [disabled]="teamMembers.length == 0"
       >Select
     </button>

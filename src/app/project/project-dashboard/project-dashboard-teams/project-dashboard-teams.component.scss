@@ -195,8 +195,45 @@
 
     & h2 {
       font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+      margin-bottom: 5%;
       color: $color-primary;
       text-align: center;
+    }
+
+    &__userList {
+      display: grid;
+      grid-template-columns: auto auto auto auto;
+      grid-template-rows: auto auto;
+
+      &__item {
+        margin: 0 auto;
+        margin-bottom: 15%;
+        width: 15vh;
+        padding: 2% 5%;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border: 2px solid $color-primary;
+        border-radius: 20px;
+        -webkit-border-radius: 20px;
+        -moz-border-radius: 20px;
+        -ms-border-radius: 20px;
+        -o-border-radius: 20px;
+
+        & p {
+          font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+          color: $color-primary;
+        }
+
+        & i {
+          color: $color-primary;
+        }
+      }
+
+      &__item:hidden {
+        opacity: 0%;
+      }
     }
   }
 }
