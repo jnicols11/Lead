@@ -109,7 +109,7 @@ export class ProjectDashboardTeamsComponent implements OnInit {
 
   onSelectMember(user: User) {
     let done = false;
-    if(this.teamMembers.length == 0) {
+    if(this.teamMembers.length == 0 && user.id != this.teamLeader) {
       this.teamMembers.push(user.id);
     } else {
       this.teamMembers.forEach((member, index) => {
@@ -120,7 +120,7 @@ export class ProjectDashboardTeamsComponent implements OnInit {
         }
       });
 
-      if(!done) {
+      if(!done && user.id != this.teamLeader) {
         // add user to teamMembers
         this.teamMembers.push(user.id);
       }

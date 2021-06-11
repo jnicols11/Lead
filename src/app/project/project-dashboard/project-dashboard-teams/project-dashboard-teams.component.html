@@ -109,6 +109,7 @@
         (click)="onSelectMember(user)"
         [hidden]="user == teamLeader"
       >
+        <i class='small material-icons' *ngIf="user.id == teamLeader">star_border</i>
         <i class='small material-icons' *ngIf="teamMembers.includes(user.id)">check_circle</i>
         <p>{{ user.name }}</p>
         <i class='large material-icons'>person</i>
