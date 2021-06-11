@@ -1,0 +1,98 @@
+<div class="container">
+  <div class="container__top">
+    <select>
+      <option
+        *ngFor="team in teams"
+        (click)="onFocusTeam(team)"
+        >{{ team.name }}
+      </option>
+    </select>
+    <h2>Teams</h2>
+    <button
+      type="button"
+      class="container__createBtn"
+      *ngIf="userRole != 'member'"
+      (click)="preCreateTeam()"
+      >Create Team
+    </button>
+  </div>
+
+  <div class="container__team" *ngIf="focusedTeam != null">
+
+  </div>
+
+  <div class="container__createTeam" *ngIf="createTeam">
+    <button
+      class="xBtn"
+      type="button"
+      (click)="cancelCreateTeam()"
+      >X
+    </button>
+    <h2>Create a Team</h2>
+    <div class="container__createTeam__field">
+      <label for="name">Team Name:</label>
+      <input
+        type="text"
+        placeholder="Team Name"
+        [(ngModel)]="teamName"
+      >
+    </div>
+    <div class="container__createTeam__field">
+      <label for="leader">Team Leader: </label>
+      <button
+        type="button"
+        class="container__createTeam__formBtn"
+        (click)="preSelectLeader()"
+        >Select Leader
+      </button>
+    </div>
+    <div class="container__createTeam__field">
+      <label for="members">Team Members: </label>
+      <button
+        type="button"
+        class="container__createTeam__formBtn"
+        (click)="preSelectMembers()"
+        >Select Members
+      </button>
+    </div>
+    <button
+      type="button"
+      class="container__createTeam__subBtn"
+      (click)="onCreateTeam()"
+      [disabled]="teamName == null || teamLeader == null || teamMembers.length == 0"
+      >Create Team
+    </button>
+  </div>
+
+  <div class="container__select" *ngIf="selectLeader">
+    <button
+      class="xBtn"
+      type="button"
+      (click)="cancelSelectLeader()"
+      >X
+    </button>
+    <h2>Select a Leader</h2>
+    <button
+      class="container__createTeam__subBtn"
+      (click)="onSelectLeader()"
+      [disabled]="teamLeader == null"
+      >Select
+    </button>
+  </div>
+
+  <div class="container__select" *ngIf="selectMembers">
+    <button
+      class="xBtn"
+      type="button"
+      (click)="cancelSelectMembers()"
+      >X
+    </button>
+    <h2>Select Members</h2>
+    <button
+      class="container__createTeam__subBtn"
+      (click)="onSelectMembers()"
+      [disabled]="teamMembers.length == 0"
+      >Select
+    </button>
+  </div>
+</div>

@@ -6,6 +6,7 @@ import { ProjectDashboardManageUsersComponent } from './project/project-dashboar
 import { ProjectDashboardManageComponent } from './project/project-dashboard/project-dashboard-manage/project-dashboard-manage.component';
 import { ProjectDashboardReportsComponent } from './project/project-dashboard/project-dashboard-reports/project-dashboard-reports.component';
 import { ProjectDashboardSprintsComponent } from './project/project-dashboard/project-dashboard-sprints/project-dashboard-sprints.component';
+import { ProjectDashboardTeamsComponent } from './project/project-dashboard/project-dashboard-teams/project-dashboard-teams.component';
 import { ProjectDashboardComponent } from './project/project-dashboard/project-dashboard.component';
 import { ProjectComponent } from './project/project.component';
 import { UserLoginComponent } from './user/user-login/user-login.component';
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'project', component: ProjectDashboardComponent, children: [
     { path: 'backlog', component: ProjectDashboardBacklogComponent },
     { path: 'sprints', component: ProjectDashboardSprintsComponent },
+    { path: 'teams', component: ProjectDashboardTeamsComponent },
     { path: 'reports', component: ProjectDashboardReportsComponent },
     { path: 'manage', component: ProjectDashboardManageComponent },
     { path: 'manageUsers', component: ProjectDashboardManageUsersComponent }

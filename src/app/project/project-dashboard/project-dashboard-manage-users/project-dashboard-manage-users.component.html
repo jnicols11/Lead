@@ -28,6 +28,7 @@
       <select id="role" (change)="updateUserRole($event.target.value)">
         <option value="member" [selected]="focusedUser.role == 'member'">Member</option>
         <option value="admin" [selected]="focusedUser.role == 'admin'">Admin</option>
+        <option value="owner" [selected]="focusedUser.role == 'owner'">Owner</option>
       </select>
     </div>
     <button

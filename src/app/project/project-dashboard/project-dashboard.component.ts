@@ -27,6 +27,10 @@ export class ProjectDashboardComponent implements OnInit, OnDestroy {
     this.router.navigate(['/project/sprints'], { queryParams: { id: this.projectID } });
   }
 
+  goToTeams() {
+    this.router.navigate(['/project/teams'], { queryParams: { id: this.projectID } });
+  }
+
   goToReports() {
     this.router.navigate(['/project/reports'], { queryParams: { id: this.projectID } });
   }
