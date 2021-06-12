@@ -3,10 +3,10 @@
 </head>
 <div class="container">
   <div class="container__top">
-    <select>
+    <select [(ngModel)]="focusedTeam">
       <option
         *ngFor="let team of teams"
-        (click)="onFocusTeam(team)"
+        [ngValue]="team"
         >{{ team.name }}
       </option>
     </select>
@@ -21,10 +21,10 @@
   </div>
 
   <div class="container__team" *ngIf="focusedTeam != null">
-
+    <h2>{{ focusedTeam.name }}</h2>
   </div>
 
-  <div class="container__createTeam" *ngIf="createTeam">
+  <div class="container__createTeam" *ngIf="createTeam && focusedTeam == null">
     <button
       class="xBtn"
       type="button"

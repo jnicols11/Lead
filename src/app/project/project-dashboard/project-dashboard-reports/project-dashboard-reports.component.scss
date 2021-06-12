@@ -1,0 +1,17 @@
+@import '../../../app.component.scss';
+
+.container {
+  margin: 0 auto;
+  width: 40%;
+  background-color: $color-grey-dark-1;
+  border: 2px solid $color-primary;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  & h2 {
+    color: $color-primary;
+    text-align: center;
+  }
+}

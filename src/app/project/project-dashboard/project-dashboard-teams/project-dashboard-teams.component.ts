@@ -12,7 +12,7 @@ import { Team } from '../models/team.model';
   styleUrls: ['./project-dashboard-teams.component.scss']
 })
 export class ProjectDashboardTeamsComponent implements OnInit {
-  teams: Team[];
+  teams: Team[] = [];
   users: User[];
   focusedTeam: Team = null;
   createTeam = false;
@@ -91,7 +91,7 @@ export class ProjectDashboardTeamsComponent implements OnInit {
     this.projectService.createTeam(team)
       .subscribe(
         responseData => {
-          console.log(responseData);
+          this.teams.push(team);
         }, error => {
           this.error.next(error.message);
         }
@@ -133,6 +133,7 @@ export class ProjectDashboardTeamsComponent implements OnInit {
 
   cancelCreateTeam() {
     this.createTeam = false;
+    this.focusedTeam = this.teams[0];
   }
 
   cancelSelectLeader() {
@@ -146,7 +147,25 @@ export class ProjectDashboardTeamsComponent implements OnInit {
   }
 
   private populateTeams() {
-    this.projectService.getAllTeams(this.projectID);
+    this.projectService.getAllTeams(this.projectID)
+      .subscribe(
+        teamData => {
+          for(let i = 0; i < teamData.body['length']; i++) {
+            const team = new Team(
+              this.projectID,
+              teamData.body[i]['name'],
+              teamData.body[i]['leader'],
+              teamData.body[i]['members']
+            );
+
+            this.teams.push(team);
+          }
+
+          this.focusedTeam = this.teams[0];
+        }, error => {
+          this.error.next(error.message);
+        }
+      )
   }
 
   private populateUserTeams() {

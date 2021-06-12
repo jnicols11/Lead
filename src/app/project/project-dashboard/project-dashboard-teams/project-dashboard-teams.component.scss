@@ -26,6 +26,8 @@
 
     & select {
       cursor: pointer;
+      color: $color-primary;
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
       width: 38%;
       height: 40px;
       background-color: $color-grey-dark-1;
@@ -35,12 +37,29 @@
       -moz-border-radius: 20px;
       -ms-border-radius: 20px;
       -o-border-radius: 20px;
-      padding-left: 5%;
-      padding-right: 5%;
+      padding: 0 1%;
     }
 
     & select:focus {
       outline: none;
+    }
+  }
+
+  &__team {
+    width: 65%;
+    margin: 0 auto;
+    margin-top: 7%;
+    border: 2px solid $color-primary;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+
+    & h2 {
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+      text-align: center;
+      color: $color-primary;
     }
   }
 
