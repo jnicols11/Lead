@@ -21,7 +21,54 @@
   </div>
 
   <div class="container__team" *ngIf="focusedTeam != null">
-    <h2>{{ focusedTeam.name }}</h2>
+    <h2>Team Info</h2>
+    <div class="container__team__field">
+      <label for="name">Team Name: </label>
+      <input
+        type="text"
+        [(ngModel)]="focusedTeam.name"
+        (click)="preEditTeam()"
+        (clickOutside)="cancelEditTeam()"
+      >
+    </div>
+    <div class="container__team__editCheck" *ngIf="editTeam">
+      <button
+        type="button"
+        class="container__team__editBtn"
+        (click)="onUpdateTeam()"
+        >✓
+      </button>
+      <button
+        type="button"
+        class="container__team__editBtn"
+        (click)="cancelEditTeam()"
+        >X
+      </button>
+    </div>
+    <div class="container__team__field">
+      <label for="members">Members: </label>
+      <button
+        type="button"
+        class="container__team__field__btn"
+        (click)="viewTeamMembers()"
+        >View
+      </button>
+    </div>
+    <div class="container__team__field">
+      <label for="sprints">Sprints: </label>
+      <button
+        type="button"
+        class="container__team__field__btn"
+        (click)="viewTeamSprints()"
+        >View
+      </button>
+    </div>
+    <button
+      type="button"
+      class="container__team__deleteBtn"
+      (click)="onDeleteTeam()"
+      >Delete Team
+    </button>
   </div>
 
   <div class="container__createTeam" *ngIf="createTeam && focusedTeam == null">

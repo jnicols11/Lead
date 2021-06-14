@@ -18,6 +18,7 @@ export class ProjectDashboardTeamsComponent implements OnInit {
   createTeam = false;
   selectLeader = false;
   selectMembers = false;
+  editTeam = false;
   userID: number;
   userRole: string;
   projectID: string;
@@ -80,6 +81,10 @@ export class ProjectDashboardTeamsComponent implements OnInit {
     this.selectLeader = false;
   }
 
+  preEditTeam() {
+    this.editTeam = true;
+  }
+
   onCreateTeam() {
     const team = new Team(
       this.projectID,
@@ -92,6 +97,29 @@ export class ProjectDashboardTeamsComponent implements OnInit {
       .subscribe(
         responseData => {
           this.teams.push(team);
+          this.createTeam = false;
+        }, error => {
+          this.error.next(error.message);
+        }
+      )
+  }
+
+  onUpdateTeam() {
+    this.projectService.updateTeam(this.focusedTeam)
+      .subscribe(
+        () => {
+          this.editTeam = false;
+        }, error => {
+          this.error.next(error.message);
+        }
+      )
+  }
+
+  onDeleteTeam() {
+    this.projectService.deleteTeam(this.focusedTeam)
+      .subscribe(
+        () => {
+          location.reload();
         }, error => {
           this.error.next(error.message);
         }
@@ -146,6 +174,10 @@ export class ProjectDashboardTeamsComponent implements OnInit {
     this.createTeam = true;
   }
 
+  cancelEditTeam() {
+    this.editTeam = false;
+  }
+
   private populateTeams() {
     this.projectService.getAllTeams(this.projectID)
       .subscribe(
@@ -155,7 +187,8 @@ export class ProjectDashboardTeamsComponent implements OnInit {
               this.projectID,
               teamData.body[i]['name'],
               teamData.body[i]['leader'],
-              teamData.body[i]['members']
+              teamData.body[i]['members'],
+              teamData.body[i]['_id']
             );
 
             this.teams.push(team);

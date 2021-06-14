@@ -160,4 +160,27 @@ export class ProjectHttpService {
       }
     )
   }
+
+  // updates a team
+  updateTeam(team: Team) {
+    return this.http.patch(
+      'http://localhost:3010/team/updateTeam/' + team.id,
+      team,
+      {
+        observe: 'response',
+        responseType: 'json'
+      }
+    )
+  }
+
+  // Deletes a team
+  deleteTeam(team: Team) {
+    return this.http.delete(
+     'http://localhost:3010/team/deleteTeam/' + team.id,
+      {
+        observe: 'response',
+        responseType: 'json'
+      }
+    )
+  }
 }

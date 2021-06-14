@@ -60,6 +60,125 @@
       font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
       text-align: center;
       color: $color-primary;
+      margin-bottom: 8%;
+    }
+
+    &__field {
+      margin-bottom: 8%;
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+      color: $color-primary;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+
+      & input {
+        color: $color-primary;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        padding: 0 1%;
+        height: 30px;
+        background-color: $color-grey-dark-1;
+        border: 2px solid $color-primary;
+        border-radius: 20px;
+        -webkit-border-radius: 20px;
+        -moz-border-radius: 20px;
+        -ms-border-radius: 20px;
+        -o-border-radius: 20px;
+      }
+
+      & input:focus {
+        outline: none;
+      }
+
+      &__btn {
+        background-color: $color-grey-dark-1;
+        color: $color-primary;
+        cursor: pointer;
+        width: 10%;
+        height: 30px;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        border: 2px solid $color-primary;
+        border-radius: 20px;
+        -webkit-border-radius: 20px;
+        -moz-border-radius: 20px;
+        -ms-border-radius: 20px;
+        -o-border-radius: 20px;
+        transition: all .5s;
+        -webkit-transition: all .5s;
+        -moz-transition: all .5s;
+        -ms-transition: all .5s;
+        -o-transition: all .5s;
+      }
+
+      &__btn:hover {
+        background-color: $color-primary;
+        color: $color-grey-dark-1;
+        transform: translate(3px, -3px);
+        -webkit-transform: translate(3px, -3px);
+        -moz-transform: translate(3px, -3px);
+        -ms-transform: translate(3px, -3px);
+        -o-transform: translate(3px, -3px);
+      }
+    }
+
+    &__editCheck {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 20%;
+      margin-top: -5%;
+      margin-bottom: 5%;
+      margin-left: 60%;
+    }
+
+    &__editBtn {
+      height: 30px;
+      cursor: pointer;
+      width: 20%;
+      background-color: $color-grey-dark-1;
+      border: 2px solid $color-primary;
+      color: $color-primary;
+      border-radius: 20px;
+      -webkit-border-radius: 20px;
+      -moz-border-radius: 20px;
+      -ms-border-radius: 20px;
+      -o-border-radius: 20px;
+      transition: all .6s;
+      -webkit-transition: all .6s;
+      -moz-transition: all .6s;
+      -ms-transition: all .6s;
+      -o-transition: all .6s;
+    }
+
+    &__editBtn:hover {
+      background-color: $color-primary;
+      color: $color-grey-dark-1
+    }
+
+    &__deleteBtn {
+      width: 15%;
+      height: 35px;
+      cursor: pointer;
+      margin-left: 42%;
+      margin-bottom: 5%;
+      text-align: center;
+      background-color: $color-grey-dark-1;
+      color: red;
+      border: 2px solid red;
+      border-radius: 20px;
+      -webkit-border-radius: 20px;
+      -moz-border-radius: 20px;
+      -ms-border-radius: 20px;
+      -o-border-radius: 20px;
+      transition: all .5s;
+      -webkit-transition: all .5s;
+      -moz-transition: all .5s;
+      -ms-transition: all .5s;
+      -o-transition: all .5s;
+    }
+
+    &__deleteBtn:hover {
+      background-color: red;
+      color: $color-grey-dark-1;
     }
   }
 
