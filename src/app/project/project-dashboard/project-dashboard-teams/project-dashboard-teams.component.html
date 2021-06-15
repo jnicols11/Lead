@@ -20,8 +20,8 @@
     </button>
   </div>
 
-  <div class="container__team" *ngIf="focusedTeam != null">
-    <h2>Team Info</h2>
+  <div class="container__team" *ngIf="focusedTeam != null && !viewMembers">
+    <h2>Team: {{ focusedTeam.name }}</h2>
     <div class="container__team__field">
       <label for="name">Team Name: </label>
       <input
@@ -68,6 +68,82 @@
       class="container__team__deleteBtn"
       (click)="onDeleteTeam()"
       >Delete Team
+    </button>
+  </div>
+
+  <div class="container__team__members" *ngIf="viewMembers && !addMembers">
+     <button
+      class="xBtn"
+      type="button"
+      (click)="cancelViewTeamMembers()"
+      >X
+    </button>
+    <h2>{{ focusedTeam.name }} Members</h2>
+    <div class="container__team__members__list">
+      <div class="container__team__members__list__item" *ngFor="let user of activeMembers" (click)="onFocusMember(user)">
+        <i class='small material-icons' *ngIf="user.id == focusedTeam.leader">star_border</i>
+        <p>{{ user.name }}</p>
+        <i class='large material-icons'>person</i>
+      </div>
+    </div>
+    <button
+      type="button"
+      class="container__team__members__btn"
+      (click)="preAddMembers()"
+      >Add Members
+    </button>
+  </div>
+
+  <div class="container__team__members__popup" *ngIf="focusedUser != null">
+    <button
+      class="xBtn"
+      type="button"
+      (click)="cancelFocusUser()"
+      >X
+    </button>
+    <h2>{{ focusedUser.name }}</h2>
+    <p *ngIf="focusedUser.id == focusedTeam.leader">Leader</p>
+    <div class="container__team__members__popup__field">
+      <label for="Username">Username: </label>
+      <p>{{ focusedUser.username }}</p>
+    </div>
+    <div class="container__team__members__popup__field">
+      <label for="email">Email: </label>
+      <p>{{ focusedUser.email }}</p>
+    </div>
+    <button
+      type="button"
+      class="container__team__members__popup__deleteBtn"
+      *ngIf="focusedUser.id != focusedTeam.leader && userRole != 'member'"
+      (click)="onRemoveUser()"
+      >Remove User
+    </button>
+  </div>
+
+  <div class="container__team__members__addpopup" *ngIf="addMembers">
+    <button
+      class="xBtn"
+      type="button"
+      (click)="cancelAddMembers()"
+      >X
+    </button>
+    <h2>Select Members</h2>
+    <div class="container__select__userList" *ngFor="let user of users">
+      <div
+        class="container__select__userList__item"
+        *ngIf="!activeMembers.includes(user)"
+        (click)="onAddMember(user)"
+      >
+        <i class='small material-icons' *ngIf="teamMembers.includes(user.id)">check_circle</i>
+        <p>{{ user.name }}</p>
+        <i class='large material-icons'>person</i>
+      </div>
+    </div>
+    <button
+      class="container__createTeam__subBtn"
+      (click)="onUpdateTeam()"
+      [disabled]="teamMembers.length == 0"
+      >Select
     </button>
   </div>
 

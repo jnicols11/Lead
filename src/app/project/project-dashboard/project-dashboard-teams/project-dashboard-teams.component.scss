@@ -120,6 +120,148 @@
       }
     }
 
+    &__members {
+      text-align: center;
+      width: 80%;
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+      color: $color-primary;
+      margin: 0 auto;
+      margin-top: 5%;
+      background-color: $color-grey-dark-1;
+      border: 2px solid $color-primary;
+      border-radius: 20px;
+      -webkit-border-radius: 20px;
+      -moz-border-radius: 20px;
+      -ms-border-radius: 20px;
+      -o-border-radius: 20px;
+
+      & h2 {
+        margin-bottom: 5%;
+      }
+
+      &__list {
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+        grid-template-rows: auto auto;
+
+        &__item {
+          margin: 0 auto;
+          margin-bottom: 15%;
+          width: 15vh;
+          padding: 2% 5%;
+          cursor: pointer;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          border: 2px solid $color-primary;
+          border-radius: 20px;
+          -webkit-border-radius: 20px;
+          -moz-border-radius: 20px;
+          -ms-border-radius: 20px;
+          -o-border-radius: 20px;
+
+          & p {
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            color: $color-primary;
+          }
+
+          & i {
+            color: $color-primary;
+          }
+        }
+      }
+
+      &__btn {
+        color: $color-primary;
+        cursor: pointer;
+        margin-bottom: 3%;
+        height: 35px;
+        width: 15%;
+        background-color: $color-grey-dark-1;
+        border: 2px solid $color-primary;
+        border-radius: 20px;
+        -webkit-border-radius: 20px;
+        -moz-border-radius: 20px;
+        -ms-border-radius: 20px;
+        -o-border-radius: 20px;
+        transition: all .6s;
+        -webkit-transition: all .6s;
+        -moz-transition: all .6s;
+        -ms-transition: all .6s;
+        -o-transition: all .6s;
+      }
+
+      &__btn:hover {
+        background-color: $color-primary;
+        color: $color-grey-dark-1;
+        transform: translate(5px, -5px);
+        -webkit-transform: translate(5px, -5px);
+        -moz-transform: translate(5px, -5px);
+        -ms-transform: translate(5px, -5px);
+        -o-transform: translate(5px, -5px);
+      }
+
+      &__popup {
+        min-height: 400px;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        text-align: center;
+        color: $color-primary;
+        width: 60%;
+        margin: 0 auto;
+        background-color: $color-grey-dark-1;
+        border: 2px solid $color-primary;
+        border-radius: 20px;
+        -webkit-border-radius: 20px;
+        -moz-border-radius: 20px;
+        -ms-border-radius: 20px;
+        -o-border-radius: 20px;
+        transform: translate(0, -95%);
+        -webkit-transform: translate(0, -95%);
+        -moz-transform: translate(0, -95%);
+        -ms-transform: translate(0, -95%);
+        -o-transform: translate(0, -95%);
+        & p
+        {
+          text-align: right;
+          margin-right: 10%;
+        }
+
+        &__field {
+          margin: 0 auto;
+          width: 50%;
+          margin-bottom: 5%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        &__deleteBtn {
+          background-color: $color-grey-dark-1;
+          cursor: pointer;
+          margin-bottom: 5%;
+          height: 30px;
+          width: 15%;
+          color: red;
+          border: 2px solid red;
+          border-radius: 20px;
+          -webkit-border-radius: 20px;
+          -moz-border-radius: 20px;
+          -ms-border-radius: 20px;
+          -o-border-radius: 20px;
+          transition: all .5s;
+          -webkit-transition: all .5s;
+          -moz-transition: all .5s;
+          -ms-transition: all .5s;
+          -o-transition: all .5s;
+        }
+
+        &__deleteBtn:hover {
+          background-color: red;
+          color: $color-grey-dark-1;
+        }
+      }
+    }
+
     &__editCheck {
       display: flex;
       justify-content: space-between;

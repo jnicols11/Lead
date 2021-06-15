@@ -14,11 +14,15 @@ import { Team } from '../models/team.model';
 export class ProjectDashboardTeamsComponent implements OnInit {
   teams: Team[] = [];
   users: User[];
+  activeMembers: User[];
   focusedTeam: Team = null;
+  focusedUser: User = null;
   createTeam = false;
   selectLeader = false;
   selectMembers = false;
+  addMembers = false;
   editTeam = false;
+  viewMembers = false;
   userID: number;
   userRole: string;
   projectID: string;
@@ -81,6 +85,10 @@ export class ProjectDashboardTeamsComponent implements OnInit {
     this.selectLeader = false;
   }
 
+  preAddMembers() {
+    this.addMembers = true;
+  }
+
   preEditTeam() {
     this.editTeam = true;
   }
@@ -131,6 +139,10 @@ export class ProjectDashboardTeamsComponent implements OnInit {
     this.createTeam = false;
   }
 
+  onFocusMember(user: User) {
+    this.focusedUser = user;
+  }
+
   onSelectLeader(user: User) {
     this.teamLeader = user.id;
   }
@@ -155,8 +167,37 @@ export class ProjectDashboardTeamsComponent implements OnInit {
     }
   }
 
+  onRemoveUser() {
+    // remove user from members team property
+    this.focusedTeam.members.forEach((element, index) => {
+      if(element == this.focusedUser.id) {
+        this.focusedTeam.members.splice(index, 1);
+      }
+    });
+
+    // update team in DB
+    this.projectService.updateTeam(this.focusedTeam)
+      .subscribe(
+        () => {
+          this.focusedUser = null;
+          this.populateActiveMembers();
+        }, error => {
+          this.error.next(error.message);
+        }
+      )
+  }
+
+  viewTeamMembers() {
+    this.viewMembers = true
+    this.populateActiveMembers();
+  }
+
   cancelFocusTeam() {
     this.focusedTeam = null;
+  }
+
+  cancelFocusUser() {
+    this.focusedUser = null;
   }
 
   cancelCreateTeam() {
@@ -172,6 +213,14 @@ export class ProjectDashboardTeamsComponent implements OnInit {
   cancelSelectMembers() {
     this.selectMembers = false;
     this.createTeam = true;
+  }
+
+  cancelAddMembers() {
+    this.addMembers = false;
+  }
+
+  cancelViewTeamMembers() {
+    this.viewMembers = false;
   }
 
   cancelEditTeam() {
@@ -236,5 +285,50 @@ export class ProjectDashboardTeamsComponent implements OnInit {
           this.error.next(error.message);
         }
       );
+  }
+
+  private populateActiveMembers() {
+    this.activeMembers = [];
+
+    // add leader to activeMembers
+    this.userService.getUser(this.focusedTeam.leader)
+      .subscribe(
+        userData => {
+          // populate user model
+          let user = new User(
+            userData.body['fullName'],
+            userData.body['username'],
+            userData.body['email'],
+            null,
+            userData.body['ID']
+          );
+
+          this.activeMembers.push(user);
+        }, error => {
+          this.error.next(error.message);
+        }
+      );
+
+    // add members to activeMembers
+    this.focusedTeam.members.forEach((userID) => {
+      this.userService.getUser(userID)
+        .subscribe(
+          userData => {
+              // populate user model
+              let user = new User(
+                userData.body['fullName'],
+                userData.body['username'],
+                userData.body['email'],
+                null,
+                userData.body['ID']
+              );
+
+              this.activeMembers.push(user);
+
+          }, error => {
+            this.error.next(error.message);
+          }
+        );
+    })
   }
 }
