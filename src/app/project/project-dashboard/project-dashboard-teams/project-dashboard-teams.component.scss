@@ -260,6 +260,85 @@
           color: $color-grey-dark-1;
         }
       }
+
+      &__addpopup {
+        margin: 0 auto;
+        margin-top: 3%;
+        width: 80%;
+        border: 2px solid $color-primary;
+        border-radius: 20px;
+        -webkit-border-radius: 20px;
+        -moz-border-radius: 20px;
+        -ms-border-radius: 20px;
+        -o-border-radius: 20px;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        color: $color-primary;
+        text-align: center;
+
+        &__subBtn {
+          margin-top: 3%;
+          margin-bottom: 5%;
+          font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+          background-color: $color-grey-dark-1;
+          border: 2px solid $color-primary;
+          color: $color-primary;
+          cursor: pointer;
+          width: 15%;
+          height: 35px;
+          border-radius: 20px;
+          -webkit-border-radius: 20px;
+          -moz-border-radius: 20px;
+          -ms-border-radius: 20px;
+          -o-border-radius: 20px;
+          transition: all .5s;
+          -webkit-transition: all .5s;
+          -moz-transition: all .5s;
+          -ms-transition: all .5s;
+          -o-transition: all .5s;
+        }
+
+        &__subBtn:hover {
+          background-color: $color-primary;
+          color: $color-grey-dark-1;
+        }
+
+        &__list {
+          display: grid;
+          grid-template-columns: auto auto auto auto;
+          grid-template-rows: auto auto;
+
+
+          &__list {
+            display: grid;
+            grid-template-columns: auto auto auto auto;
+            grid-template-rows: auto auto;
+
+            &__item {
+              margin: 0 auto;
+              margin-bottom: 15%;
+              width: 15vh;
+              padding: 2% 5%;
+              cursor: pointer;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+
+              & p {
+                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                color: $color-primary;
+              }
+
+              & i {
+                color: $color-primary;
+              }
+            }
+
+            &__item:hidden {
+              display: none;
+            }
+          }
+        }
+      }
     }
 
     &__editCheck {

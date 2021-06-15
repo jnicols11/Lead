@@ -20,7 +20,7 @@
     </button>
   </div>
 
-  <div class="container__team" *ngIf="focusedTeam != null && !viewMembers">
+  <div class="container__team" *ngIf="focusedTeam != null && !viewMembers && !createTeam">
     <h2>Team: {{ focusedTeam.name }}</h2>
     <div class="container__team__field">
       <label for="name">Team Name: </label>
@@ -31,7 +31,7 @@
         (clickOutside)="cancelEditTeam()"
       >
     </div>
-    <div class="container__team__editCheck" *ngIf="editTeam">
+    <div class="container__team__editCheck" *ngIf="editTeam && !createTeam">
       <button
         type="button"
         class="container__team__editBtn"
@@ -71,7 +71,7 @@
     </button>
   </div>
 
-  <div class="container__team__members" *ngIf="viewMembers && !addMembers">
+  <div class="container__team__members" *ngIf="viewMembers && !addMembers && !createTeam">
      <button
       class="xBtn"
       type="button"
@@ -94,7 +94,7 @@
     </button>
   </div>
 
-  <div class="container__team__members__popup" *ngIf="focusedUser != null">
+  <div class="container__team__members__popup" *ngIf="focusedUser != null && !createTeam">
     <button
       class="xBtn"
       type="button"
@@ -120,7 +120,7 @@
     </button>
   </div>
 
-  <div class="container__team__members__addpopup" *ngIf="addMembers">
+  <div class="container__team__members__addpopup" *ngIf="addMembers && !createTeam">
     <button
       class="xBtn"
       type="button"
@@ -128,22 +128,23 @@
       >X
     </button>
     <h2>Select Members</h2>
-    <div class="container__select__userList" *ngFor="let user of users">
+    <div class="container__team__members__addpopup__list">
       <div
-        class="container__select__userList__item"
-        *ngIf="!activeMembers.includes(user)"
+        class="container__team__members__addpopup__list__item"
+        *ngFor="let user of users"
         (click)="onAddMember(user)"
+        [hidden]="focusedTeam.members.includes(user.id) || user.id == focusedTeam.leader"
       >
-        <i class='small material-icons' *ngIf="teamMembers.includes(user.id)">check_circle</i>
+        <i class='small material-icons' *ngIf="focusedTeam.members.includes(user.id)">check_circle</i>
         <p>{{ user.name }}</p>
         <i class='large material-icons'>person</i>
       </div>
     </div>
     <button
-      class="container__createTeam__subBtn"
+      class="container__team__members__addpopup__subBtn"
       (click)="onUpdateTeam()"
-      [disabled]="teamMembers.length == 0"
-      >Select
+      [disabled]="focusedTeam.members.length == 0"
+      >Confirm
     </button>
   </div>
 

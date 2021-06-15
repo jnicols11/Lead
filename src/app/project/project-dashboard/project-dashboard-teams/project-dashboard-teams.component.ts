@@ -116,7 +116,8 @@ export class ProjectDashboardTeamsComponent implements OnInit {
     this.projectService.updateTeam(this.focusedTeam)
       .subscribe(
         () => {
-          this.editTeam = false;
+          this.cancelEditTeam();
+          this.cancelAddMembers();
         }, error => {
           this.error.next(error.message);
         }
@@ -136,6 +137,7 @@ export class ProjectDashboardTeamsComponent implements OnInit {
 
   onFocusTeam(team: Team) {
     this.focusedTeam = team;
+    this.populateActiveMembers();
     this.createTeam = false;
   }
 
@@ -165,6 +167,10 @@ export class ProjectDashboardTeamsComponent implements OnInit {
         this.teamMembers.push(user.id);
       }
     }
+  }
+
+  onAddMember(user: User) {
+    this.focusedTeam.members.push(user.id);
   }
 
   onRemoveUser() {
@@ -270,8 +276,7 @@ export class ProjectDashboardTeamsComponent implements OnInit {
                     userData.body['username'],
                     userData.body['email'],
                     null,
-                    userData.body['ID'],
-                    id.role
+                    +userData.body['ID']
                   );
 
                   // push user to component user array
@@ -300,7 +305,7 @@ export class ProjectDashboardTeamsComponent implements OnInit {
             userData.body['username'],
             userData.body['email'],
             null,
-            userData.body['ID']
+            +userData.body['ID']
           );
 
           this.activeMembers.push(user);
@@ -320,7 +325,7 @@ export class ProjectDashboardTeamsComponent implements OnInit {
                 userData.body['username'],
                 userData.body['email'],
                 null,
-                userData.body['ID']
+                +userData.body['ID']
               );
 
               this.activeMembers.push(user);
