@@ -253,11 +253,31 @@ export class ProjectDashboardTeamsComponent implements OnInit {
         }, error => {
           this.error.next(error.message);
         }
-      )
+    );
   }
 
   private populateUserTeams() {
-    this.projectService.getUserTeams(this.projectID, this.userID);
+    this.projectService.getUserTeams(this.projectID, this.userID)
+      .subscribe(
+        teamData => {
+          for(let i = 0; i < teamData.body['length']; i++) {
+            const team = new Team(
+              this.projectID,
+              teamData.body[i]['name'],
+              teamData.body[i]['leader'],
+              teamData.body[i]['members'],
+              teamData.body[i]['_id']
+          );
+
+          this.teams.push(team);
+        }
+
+        this.focusedTeam = this.teams[0];
+      }, error => {
+        this.error.next(error.message);
+      }
+
+    );
   }
 
   private populateUsers() {

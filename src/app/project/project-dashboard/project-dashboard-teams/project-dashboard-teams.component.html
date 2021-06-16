@@ -29,6 +29,7 @@
         [(ngModel)]="focusedTeam.name"
         (click)="preEditTeam()"
         (clickOutside)="cancelEditTeam()"
+        [disabled]="userRole == 'member'"
       >
     </div>
     <div class="container__team__editCheck" *ngIf="editTeam && !createTeam">
@@ -67,6 +68,7 @@
       type="button"
       class="container__team__deleteBtn"
       (click)="onDeleteTeam()"
+      *ngIf="userRole != 'member'"
       >Delete Team
     </button>
   </div>
@@ -90,6 +92,7 @@
       type="button"
       class="container__team__members__btn"
       (click)="preAddMembers()"
+      *ngIf="userRole != 'member'"
       >Add Members
     </button>
   </div>
