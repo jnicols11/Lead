@@ -20,6 +20,7 @@ export class ProjectDashboardManageComponent implements OnInit {
   editName = false;
   editDesc = false;
   editDeadline = false;
+  userExists = false;
   inputProjectName: string;
   inputProjectDesc: string;
   inputProjectDeadline: string;
@@ -153,6 +154,10 @@ export class ProjectDashboardManageComponent implements OnInit {
     this.editDeadline = false;
   }
 
+  closeUserExists() {
+    this.userExists = false;
+  }
+
   addUserToProject() {
     // set loading status
     this.addUserLoading = true;
@@ -160,24 +165,38 @@ export class ProjectDashboardManageComponent implements OnInit {
     this.userService.getUserByText(this.inputAddUser)
       .subscribe(
         responseData => {
-          // add user project users list
-          this.project.users.push({ id: responseData.body['ID'], role: 'member' });
-          this.addedName = responseData.body['username'];
+          let match = false;
+          this.project.users.forEach((element, index) => {
+            if (this.project.users[index].id === +responseData.body['ID']) {
+              // alert user already exists in project
+              console.log('failed');
+              this.addUserLoading = false;
+              match = true;
+              this.userExists = true;
+            }
+          });
 
-          // update project
-          this.projectService.updateProject(this.project)
-            .subscribe(
-              newResponse => {
-                this.addUserLoading = false;
-                this.addUserSuccess = true;
-              }, error => {
-                // present internal error to user
-                this.addUserError = true;
-                this.addUserLoading = false;
+          if (!match) {
+             // add user project users list
+            this.project.users.push({ id: responseData.body['ID'], role: 'member' });
+            this.addedName = responseData.body['username'];
 
-                this.error.next(error.message);
-              }
-            )
+            // update project
+            this.projectService.updateProject(this.project)
+              .subscribe(
+                newResponse => {
+                  this.addUserLoading = false;
+                  this.addUserSuccess = true;
+                }, error => {
+                  // present internal error to user
+                  this.addUserError = true;
+                  this.addUserLoading = false;
+
+                  this.error.next(error.message);
+                }
+              );
+          }
+
         }, error => {
           // present error to user no account was found
           this.addUserFail = true;

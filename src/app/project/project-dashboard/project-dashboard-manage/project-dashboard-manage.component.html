@@ -113,6 +113,12 @@
         (clickOutside)="closePopups()"
         >{{ addedName }} has been added to the project!
       </p>
+      <p
+        style="color: red"
+        *ngIf="userExists"
+        (clickOutside)="closeUserExists()"
+        >That user is already connected to this project!
+      </p>
     </div>
     <button
       type="button"
