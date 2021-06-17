@@ -6,6 +6,7 @@ import { Subject } from 'rxjs';
 import { ProjectHttpService } from '../../project-http.service';
 import { Issue } from '../models/issue.model';
 import { Sprint } from '../models/sprint.model';
+import { Team } from '../models/team.model';
 
 @Component({
   selector: 'app-project-dashboard-backlog',
@@ -28,6 +29,8 @@ export class ProjectDashboardBacklogComponent implements OnInit {
   issues: Issue[] = [];
   issuesSprint: Issue[] = [];
   issuePopup: Issue = null;
+  teams: Team[];
+  team: Team;
   issueForm: FormGroup;
   sprintForm: FormGroup;
   error = new Subject<string>();
@@ -37,16 +40,21 @@ export class ProjectDashboardBacklogComponent implements OnInit {
   constructor(private projectService: ProjectHttpService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    // Set ProjectID
+      this.route.queryParams
+        .subscribe(
+          params => {
+            this.projectID = params['id'];
+          }
+        );
+
     // set user role for permissions
     this.userRole = localStorage.getItem('userProjectRole');
 
-    // Set ProjectID
-    this.route.queryParams
-      .subscribe(
-        params => {
-          this.projectID = params['id'];
-        }
-      );
+    if (this.userRole != 'member') {
+      // populate teams
+      this.populateTeams();
+    }
 
     // populate issues
     this.populateIssues();
@@ -76,7 +84,6 @@ export class ProjectDashboardBacklogComponent implements OnInit {
                         this.issues,
                         event.previousIndex,
                         event.currentIndex + (5 * (this.pageNumber -1)));
-        console.log(this.issuesSprint);
 
       if (this.issuesSprint.length <= (this.sprintPageNumber - 1) * 4 && this.sprintPageNumber > 0) {
         this.sprintPageNumber = this.sprintPageNumber - 1;
@@ -92,7 +99,6 @@ export class ProjectDashboardBacklogComponent implements OnInit {
                         this.issuesSprint,
                         event.previousIndex + (5 * (this.pageNumber -1)),
                         event.currentIndex);
-      console.log(this.issues);
 
       if (this.issues.length <= (this.pageNumber - 1) * 5 && this.pageNumber > 0) {
         this.pageNumber = this.pageNumber - 1;
@@ -177,7 +183,7 @@ export class ProjectDashboardBacklogComponent implements OnInit {
     // populate sprint model
     const sprint = new Sprint(
       this.projectID,
-      localStorage.getItem('currentUser'),
+      this.team.id,
       this.sprintForm.value['name'],
       this.issuesSprint
     );
@@ -186,8 +192,6 @@ export class ProjectDashboardBacklogComponent implements OnInit {
     this.projectService.createSprint(sprint)
       .subscribe(
         responseData => {
-          console.log(responseData);
-
           // update status of each issue in sprint
           this.issuesSprint.forEach(issue => {
             issue.backlogID = '';
@@ -327,18 +331,44 @@ export class ProjectDashboardBacklogComponent implements OnInit {
 
   private initSprintForm() {
     this.sprintForm = new FormGroup({
-      'name': new FormControl(null, Validators.required)
+      'name': new FormControl(null, Validators.required),
+      'team': new FormControl(null, Validators.required)
     });
   }
 
   private updateIssue() {
     this.projectService.updateIssue(this.issuePopup)
         .subscribe(
-          responseData => {
-            console.log(responseData);
-          }, error => {
+          () => {
+            // intentional for subscription
+          },
+          error => {
             this.error.next(error.message);
           }
         );
+  }
+
+  private populateTeams() {
+    this.teams = [];
+
+    this.projectService.getAllTeams(this.projectID)
+      .subscribe(
+        teamData => {
+          for(let i = 0; i < teamData.body['length']; i++) {
+            const team = new Team(
+              this.projectID,
+              teamData.body[i]['name'],
+              teamData.body[i]['leader'],
+              teamData.body[i]['members'],
+              teamData.body[i]['_id']
+            );
+
+            this.teams.push(team);
+          }
+          this.team = this.teams[0];
+        }, error => {
+          this.error.next(error.message);
+        }
+      )
   }
 }

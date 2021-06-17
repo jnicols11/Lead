@@ -146,6 +146,23 @@
   </button>
 
   <h4>Create a Sprint</h4>
+  <div class="container__createSprint__field">
+    <label
+      for="sprintTeam"
+      class="container__createSprint__field__label"
+      >Team:
+    </label>
+    <select
+      class="container__createSprint__field__select"
+      [(ngModel)]="team"
+    >
+      <option
+        *ngFor="let team of teams"
+        [ngValue]="team"
+        >{{ team.name }}
+      </option>
+    </select>
+  </div>
   <form [formGroup]="sprintForm" (ngSubmit)="onSubmitSprint()">
     <div class="container__createSprint__field">
       <label
