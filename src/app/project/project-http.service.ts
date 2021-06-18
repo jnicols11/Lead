@@ -127,6 +127,17 @@ export class ProjectHttpService {
     )
   }
 
+  // get all sprints connected to a team
+  getTeamSprints(teamID: string) {
+    return this.http.get(
+      'http://localhost:3010/sprint/getTeamSprints/' + teamID,
+      {
+        observe: 'response',
+        responseType: 'json'
+      }
+    )
+  }
+
   // get all teams in a project
   getAllTeams(projectID: string) {
     return this.http.get(

@@ -37,7 +37,10 @@ export class ProjectDashboardBacklogComponent implements OnInit {
   pageNumber = 1;
   sprintPageNumber = 1;
 
-  constructor(private projectService: ProjectHttpService, private route: ActivatedRoute) { }
+  constructor(
+    private projectService: ProjectHttpService,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
     // Set ProjectID
@@ -331,8 +334,7 @@ export class ProjectDashboardBacklogComponent implements OnInit {
 
   private initSprintForm() {
     this.sprintForm = new FormGroup({
-      'name': new FormControl(null, Validators.required),
-      'team': new FormControl(null, Validators.required)
+      'name': new FormControl(null, Validators.required)
     });
   }
 

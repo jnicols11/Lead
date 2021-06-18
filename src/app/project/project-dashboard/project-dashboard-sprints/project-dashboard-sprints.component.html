@@ -1,1 +1,12 @@
-<p>project-dashboard-sprints works!</p>
+<div class="container">
+  <h2>Sprints</h2>
+   <div class="loadContainer" *ngIf="sprintsLoading">
+      <div class="loader"></div>
+    </div>
+
+    <div class="container__sprintList">
+      <div class="container__sprintList__item" *ngFor="let sprint of sprints">
+        <p>{{ sprint.name }}</p>
+      </div>
+    </div>
+</div>
