@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Subject } from 'rxjs';
 import { UserHttpService } from 'src/app/user/user-http.service';
 import { ProjectHttpService } from '../../project-http.service';
+import { Issue } from '../models/issue.model';
 import { Sprint } from '../models/sprint.model';
 
 @Component({
@@ -17,6 +18,9 @@ export class ProjectDashboardSprintsComponent implements OnInit {
   projectID: string;
   focusedSprint: Sprint = null;
   sprints: Sprint[];
+  todo: Issue[] = [];
+  inProgress: Issue[] = [];
+  done: Issue[] = [];
   error = new Subject<string>();
 
   constructor(
@@ -46,10 +50,15 @@ export class ProjectDashboardSprintsComponent implements OnInit {
 
   focusSprint(sprint: Sprint) {
     this.focusedSprint = sprint;
+
+    // populate issue structures
+    this.populateIssueStructs();
   }
 
   unfocusSprint() {
     this.focusedSprint = null;
+
+    this.depopulateIssueStructs();
   }
 
   private populateSprints() {
@@ -86,5 +95,34 @@ export class ProjectDashboardSprintsComponent implements OnInit {
           this.error.next(error.message);
         }
       )
+  }
+
+  private populateIssueStructs() {
+    this.focusedSprint.issues.forEach((issue) => {
+      switch (issue.state) {
+        case 1: {
+          this.todo.push(issue);
+          break;
+        }
+        case 2: {
+          this.inProgress.push(issue);
+          break;
+        }
+        case 3: {
+          this.done.push(issue);
+          break;
+        }
+        default: {
+          this.todo.push(issue);
+          break;
+        }
+      }
+    });
+  }
+
+  private depopulateIssueStructs() {
+    this.todo = [];
+    this.inProgress = [];
+    this.done = [];
   }
 }

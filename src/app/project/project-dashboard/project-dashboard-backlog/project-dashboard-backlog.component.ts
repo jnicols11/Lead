@@ -165,6 +165,8 @@ export class ProjectDashboardBacklogComponent implements OnInit {
       backlogID
     );
 
+    issue.state = 1;
+
     // send issue to service to be transfered & subscribe to response
     this.projectService.createIssue(issue)
       .subscribe(
@@ -296,6 +298,7 @@ export class ProjectDashboardBacklogComponent implements OnInit {
     this.projectService.getProjectBacklogIssues(this.projectID)
       .subscribe(
         responseData => {
+          console.log(responseData);
           // update loading status
           this.issuesLoading = false;
 
@@ -313,6 +316,7 @@ export class ProjectDashboardBacklogComponent implements OnInit {
             );
 
             issue.id = responseData.body[index]['_id'];
+            issue.state = responseData.body[index]['state'];
 
             // push to local array
             this.issues.push(issue);

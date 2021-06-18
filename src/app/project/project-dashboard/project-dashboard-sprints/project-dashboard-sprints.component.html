@@ -24,5 +24,41 @@
       </button>
       <h2>Sprint: {{ focusedSprint.name }}</h2>
 
+      <div class="container__sprint__boxGroup">
+        <div class="container__sprint__boxGroup__box">
+          <h4>Todo</h4>
+          <hr>
+          <div
+            class="container__sprint__boxGroup__box__item"
+            *ngFor="let issue of todo"
+          >
+            <p>{{ issue.name }}</p>
+            <p>{{ issue.time }}</p>
+          </div>
+        </div>
+        <div class="container__sprint__boxGroup__box">
+          <h4>In Progress</h4>
+          <hr>
+          <div
+            class="container__sprint__boxGroup__box__item"
+            *ngFor="let issue of inProgress"
+          >
+            <p>{{ issue.name }}</p>
+            <p>{{ issue.time }}</p>
+          </div>
+        </div>
+        <div class="container__sprint__boxGroup__box">
+          <h4>Done</h4>
+          <hr>
+          <div
+            class="container__sprint__boxGroup__box__item"
+            *ngFor="let issue of done"
+          >
+            <p>{{ issue.name }}</p>
+            <p>{{ issue.time }}</p>
+          </div>
+
+        </div>
+      </div>
     </div>
 </div>
