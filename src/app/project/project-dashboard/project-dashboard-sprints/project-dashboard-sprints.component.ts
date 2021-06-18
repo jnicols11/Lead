@@ -15,6 +15,7 @@ export class ProjectDashboardSprintsComponent implements OnInit {
   userID: number;
   userRole: string;
   projectID: string;
+  focusedSprint: Sprint = null;
   sprints: Sprint[];
   error = new Subject<string>();
 
@@ -43,6 +44,14 @@ export class ProjectDashboardSprintsComponent implements OnInit {
     this.populateSprints();
   }
 
+  focusSprint(sprint: Sprint) {
+    this.focusedSprint = sprint;
+  }
+
+  unfocusSprint() {
+    this.focusedSprint = null;
+  }
+
   private populateSprints() {
     // initialize component level sprints variable
     this.sprints = [];
@@ -51,12 +60,10 @@ export class ProjectDashboardSprintsComponent implements OnInit {
     this.projectService.getUserTeams(this.projectID, this.userID)
       .subscribe(
         teamData => {
-          console.log(teamData);
           for(let i = 0; i < teamData.body['length']; i++) {
             this.projectService.getTeamSprints(teamData.body[i]['_id'])
               .subscribe(
                 sprintData => {
-                  console.log(sprintData);
                   for(let j = 0; j < sprintData.body['length']; j++) {
                     const sprint = new Sprint(
                       this.projectID,

@@ -11,6 +11,56 @@
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   color: $color-primary;
   text-align: center;
+
+  & h2 {
+    margin-bottom: 4%;
+  }
+
+  &__sprintList {
+    &__item {
+      width: 75%;
+      cursor: pointer;
+      margin: 0 auto;
+      margin-bottom: 3%;
+      background-color: $color-grey-dark-1;
+      border: 2px solid $color-primary;
+      border-radius: 20px;
+      -webkit-border-radius: 20px;
+      -moz-border-radius: 20px;
+      -ms-border-radius: 20px;
+      -o-border-radius: 20px;
+      display: flex;
+      justify-content: space-around;
+    }
+  }
+}
+
+.xbtn {
+  margin-left: 95%;
+  margin-top: 2%;
+  background-color: red;
+  color: #fff;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  border: 1px solid $color-grey-dark-1;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  transition: all .4s;
+  -webkit-transition: all .4s;
+  -moz-transition: all .4s;
+  -ms-transition: all .4s;
+  -o-transition: all .4s;
+  cursor: pointer;
+}
+
+.xbtn:hover {
+  transform: translate(3px, -3px);
+  -webkit-transform: translate(3px, -3px);
+  -moz-transform: translate(3px, -3px);
+  -ms-transform: translate(3px, -3px);
+  -o-transform: translate(3px, -3px);
 }
 
 .loader {

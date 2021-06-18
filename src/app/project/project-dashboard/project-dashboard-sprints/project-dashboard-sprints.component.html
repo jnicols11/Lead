@@ -1,12 +1,28 @@
 <div class="container">
-  <h2>Sprints</h2>
+  <h2 *ngIf="focusedSprint == null">Sprints</h2>
    <div class="loadContainer" *ngIf="sprintsLoading">
       <div class="loader"></div>
     </div>
 
-    <div class="container__sprintList">
-      <div class="container__sprintList__item" *ngFor="let sprint of sprints">
+    <div class="container__sprintList" *ngIf="!sprintsLoading && focusedSprint == null">
+      <div
+        class="container__sprintList__item"
+        *ngFor="let sprint of sprints"
+        (click)="focusSprint(sprint)"
+      >
         <p>{{ sprint.name }}</p>
+        <p>Deadline</p>
       </div>
+    </div>
+
+    <div class="container__sprint" *ngIf="focusedSprint != null">
+      <button
+        class="xbtn"
+        type="button"
+        (click)="unfocusSprint()"
+        >X
+      </button>
+      <h2>Sprint: {{ focusedSprint.name }}</h2>
+
     </div>
 </div>
