@@ -77,10 +77,26 @@ export class ProjectDashboardSprintsComponent implements OnInit {
       if (this.inProgress.length <= (this.doPage - 1) * 5 && this.doPage > 0) {
         this.doPage -= 1;
       }
+
+      // update state of issue
+      this.focusedSprint.issues.forEach((element, index) => {
+        if (element.id == event.item.data.id) {
+          this.focusedSprint.issues[index].userID = undefined;
+          this.focusedSprint.issues[index].state = 1;
+        }
+      });
+
+      // make http req to update sprint
+      this.projectService.updateSprint(this.focusedSprint)
+        .subscribe(
+          () => { }, error => {
+            this.error.next(error.message);
+          }
+        )
     }
   }
 
-  doDrop(event: CdkDragDrop<string[]>) {
+  doDrop(event: CdkDragDrop<string[]>, issue: Issue) {
     if (event.previousContainer === event.container) {
       moveItemInArray(this.inProgress, event.previousIndex, event.currentIndex);
     } else if(event.previousContainer.id === 'todoList') {
@@ -90,9 +106,26 @@ export class ProjectDashboardSprintsComponent implements OnInit {
                         event.previousIndex + (5 * (this.todoPage - 1)),
                         event.currentIndex);
 
+      // Check if page needs to be updated
       if (this.todo.length <= (this.todoPage - 1) * 5 && this.todoPage > 0) {
         this.todoPage -= 1;
       }
+
+      // update state of issue
+      this.focusedSprint.issues.forEach((element, index) => {
+        if (element.id == event.item.data.id) {
+          this.focusedSprint.issues[index].userID = this.userID;
+          this.focusedSprint.issues[index].state = 2;
+        }
+      });
+
+      // make http req to update sprint
+      this.projectService.updateSprint(this.focusedSprint)
+        .subscribe(
+          () => { }, error => {
+            this.error.next(error.message);
+          }
+        )
     } else if(event.previousContainer.id === 'doneList') {
       // item came from done list
       transferArrayItem(this.done,
@@ -100,9 +133,26 @@ export class ProjectDashboardSprintsComponent implements OnInit {
                         event.previousIndex + (5 * (this.donePage -1)),
                         event.currentIndex);
 
+      // Check if page needs to be updated
       if (this.done.length <= (this.donePage - 1) * 5 && this.donePage > 0) {
         this.donePage -= 1;
       }
+
+      // update state of issue
+      this.focusedSprint.issues.forEach((element, index) => {
+        if (element.id == event.item.data.id) {
+          this.focusedSprint.issues[index].userID = this.userID;
+          this.focusedSprint.issues[index].state = 2;
+        }
+      });
+
+      // make http req to update sprint
+      this.projectService.updateSprint(this.focusedSprint)
+        .subscribe(
+          () => { }, error => {
+            this.error.next(error.message);
+          }
+        )
     }
   }
 
@@ -115,9 +165,26 @@ export class ProjectDashboardSprintsComponent implements OnInit {
                         event.previousIndex + (5 * (this.donePage -1)),
                         event.currentIndex);
 
+        // Check if page needs to be updated
         if(this.inProgress.length <= (this.doPage - 1) * 5 && this.doPage > 0) {
           this.doPage -= 1;
         }
+
+        // update state of issue
+        this.focusedSprint.issues.forEach((element, index) => {
+          if (element.id == event.item.data.id) {
+            this.focusedSprint.issues[index].userID = undefined;
+            this.focusedSprint.issues[index].state = 3;
+          }
+        });
+
+        // make http req to update sprint
+        this.projectService.updateSprint(this.focusedSprint)
+          .subscribe(
+            () => { }, error => {
+              this.error.next(error.message);
+            }
+          )
       }
   }
 

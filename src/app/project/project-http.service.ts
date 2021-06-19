@@ -138,6 +138,18 @@ export class ProjectHttpService {
     )
   }
 
+  // update a sprint
+  updateSprint(sprint: Sprint) {
+    return this.http.patch(
+      'http://localhost:3010/sprint/updateSprint/' + sprint.id,
+      sprint,
+      {
+        observe: 'response',
+        responseType: 'json'
+      }
+    )
+  }
+
   // get all teams in a project
   getAllTeams(projectID: string) {
     return this.http.get(

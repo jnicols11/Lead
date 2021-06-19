@@ -298,7 +298,6 @@ export class ProjectDashboardBacklogComponent implements OnInit {
     this.projectService.getProjectBacklogIssues(this.projectID)
       .subscribe(
         responseData => {
-          console.log(responseData);
           // update loading status
           this.issuesLoading = false;
 

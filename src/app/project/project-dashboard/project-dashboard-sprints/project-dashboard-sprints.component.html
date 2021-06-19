@@ -44,6 +44,7 @@
           <div
             class="container__sprint__boxGroup__box__item"
             *ngFor="let issue of todo"
+            [cdkDragData]="issue"
             cdkDrag
           >
             <p>{{ issue.name }}</p>
@@ -62,6 +63,7 @@
           <div
             class="container__sprint__boxGroup__box__item"
             *ngFor="let issue of inProgress"
+            [cdkDragData]="issue"
             cdkDrag
           >
             <p>{{ issue.name }}</p>
@@ -80,6 +82,7 @@
           <div
             class="container__sprint__boxGroup__box__item"
             *ngFor="let issue of done"
+            [cdkDragData]="issue"
             cdkDrag
           >
             <p>{{ issue.name }}</p>
