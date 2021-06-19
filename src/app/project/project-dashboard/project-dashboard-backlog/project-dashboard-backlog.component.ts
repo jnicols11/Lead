@@ -104,7 +104,7 @@ export class ProjectDashboardBacklogComponent implements OnInit {
                         event.currentIndex);
 
       if (this.issues.length <= (this.pageNumber - 1) * 5 && this.pageNumber > 0) {
-        this.pageNumber = this.pageNumber - 1;
+        this.pageNumber -= 1;
       }
     }
   }

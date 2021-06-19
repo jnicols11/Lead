@@ -23,36 +23,64 @@
         >X
       </button>
       <h2>Sprint: {{ focusedSprint.name }}</h2>
-
+      <div class="container__sprint__complete">
+        <button
+          class="container__sprint__complete__btn"
+          type="button"
+          (click)="completeSprint()"
+          >Complete Sprint
+        </button>
+      </div>
       <div class="container__sprint__boxGroup">
-        <div class="container__sprint__boxGroup__box">
+        <div
+          class="container__sprint__boxGroup__box"
+          cdkDropList
+          id="todoList"
+          [cdkDropListConnectedTo]="['doList']"
+          (cdkDropListDropped)="todoDrop($event)"
+        >
           <h4>Todo</h4>
           <hr>
           <div
             class="container__sprint__boxGroup__box__item"
             *ngFor="let issue of todo"
+            cdkDrag
           >
             <p>{{ issue.name }}</p>
             <p>{{ issue.time }}</p>
           </div>
         </div>
-        <div class="container__sprint__boxGroup__box">
+        <div
+          class="container__sprint__boxGroup__box"
+          cdkDropList
+          id="doList"
+          [cdkDropListConnectedTo]="['todoList', 'doneList']"
+          (cdkDropListDropped)="doDrop($event)"
+        >
           <h4>In Progress</h4>
           <hr>
           <div
             class="container__sprint__boxGroup__box__item"
             *ngFor="let issue of inProgress"
+            cdkDrag
           >
             <p>{{ issue.name }}</p>
             <p>{{ issue.time }}</p>
           </div>
         </div>
-        <div class="container__sprint__boxGroup__box">
+        <div
+          class="container__sprint__boxGroup__box"
+          cdkDropList
+          id="doneList"
+          [cdkDropListConnectedTo]="['doList']"
+          (cdkDropListDropped)="doneDrop($event)"
+        >
           <h4>Done</h4>
           <hr>
           <div
             class="container__sprint__boxGroup__box__item"
             *ngFor="let issue of done"
+            cdkDrag
           >
             <p>{{ issue.name }}</p>
             <p>{{ issue.time }}</p>

@@ -66,8 +66,8 @@
         }
       }
 
-      __item.cdk-drag-placeholder {
-        opacity: 0;
+      &__item.cdk-drag-placeholder {
+        opacity: 0%;
       }
     }
 
@@ -547,6 +547,10 @@
   -ms-transition: all 0.8s cubic-bezier(.25,.8,.25,1);
   -o-transition: all 0.8s cubic-bezier(.25,.8,.25,1);
   background-image: linear-gradient(to right, $color-primary-light 0%, $color-secondary 51%, $color-primary 100%);
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  -ms-border-radius: 25px;
+  -o-border-radius: 25px;
 }
 
 .sprintBtn:hover {

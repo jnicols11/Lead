@@ -1,3 +1,4 @@
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subject } from 'rxjs';
@@ -21,6 +22,9 @@ export class ProjectDashboardSprintsComponent implements OnInit {
   todo: Issue[] = [];
   inProgress: Issue[] = [];
   done: Issue[] = [];
+  todoPage = 1;
+  doPage = 1;
+  donePage = 1;
   error = new Subject<string>();
 
   constructor(
@@ -59,6 +63,62 @@ export class ProjectDashboardSprintsComponent implements OnInit {
     this.focusedSprint = null;
 
     this.depopulateIssueStructs();
+  }
+
+  todoDrop(event: CdkDragDrop<string[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(this.todo, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(this.inProgress,
+                        this.todo,
+                        event.previousIndex + (5 * (this.doPage - 1)),
+                        event.currentIndex);
+
+      if (this.inProgress.length <= (this.doPage - 1) * 5 && this.doPage > 0) {
+        this.doPage -= 1;
+      }
+    }
+  }
+
+  doDrop(event: CdkDragDrop<string[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(this.inProgress, event.previousIndex, event.currentIndex);
+    } else if(event.previousContainer.id === 'todoList') {
+      // item came from todo list
+      transferArrayItem(this.todo,
+                        this.inProgress,
+                        event.previousIndex + (5 * (this.todoPage - 1)),
+                        event.currentIndex);
+
+      if (this.todo.length <= (this.todoPage - 1) * 5 && this.todoPage > 0) {
+        this.todoPage -= 1;
+      }
+    } else if(event.previousContainer.id === 'doneList') {
+      // item came from done list
+      transferArrayItem(this.done,
+                        this.inProgress,
+                        event.previousIndex + (5 * (this.donePage -1)),
+                        event.currentIndex);
+
+      if (this.done.length <= (this.donePage - 1) * 5 && this.donePage > 0) {
+        this.donePage -= 1;
+      }
+    }
+  }
+
+  doneDrop(event: CdkDragDrop<string[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(this.done, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(this.inProgress,
+                        this.done,
+                        event.previousIndex + (5 * (this.donePage -1)),
+                        event.currentIndex);
+
+        if(this.inProgress.length <= (this.doPage - 1) * 5 && this.doPage > 0) {
+          this.doPage -= 1;
+        }
+      }
   }
 
   private populateSprints() {
