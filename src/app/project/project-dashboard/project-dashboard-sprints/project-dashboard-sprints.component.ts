@@ -14,10 +14,12 @@ import { Sprint } from '../models/sprint.model';
 })
 export class ProjectDashboardSprintsComponent implements OnInit {
   sprintsLoading = true;
+  manage = false;
   userID: number;
   userRole: string;
   projectID: string;
   focusedSprint: Sprint = null;
+  focusedIssue: Issue = null;
   sprints: Sprint[];
   todo: Issue[] = [];
   inProgress: Issue[] = [];
@@ -52,6 +54,14 @@ export class ProjectDashboardSprintsComponent implements OnInit {
     this.populateSprints();
   }
 
+  focusIssue(issue: Issue) {
+    this.focusedIssue = issue;
+  }
+
+  unfocusIssue() {
+    this.focusedIssue = null;
+  }
+
   focusSprint(sprint: Sprint) {
     this.focusedSprint = sprint;
 
@@ -63,6 +73,14 @@ export class ProjectDashboardSprintsComponent implements OnInit {
     this.focusedSprint = null;
 
     this.depopulateIssueStructs();
+  }
+
+  manageSprint() {
+    this.manage = true;
+  }
+
+  completeSprint() {
+    // TODO
   }
 
   todoDrop(event: CdkDragDrop<string[]>) {
@@ -186,6 +204,45 @@ export class ProjectDashboardSprintsComponent implements OnInit {
             }
           )
       }
+  }
+
+  // functions to move issues based on state
+  todoToinProgress() {
+
+  }
+
+  inProgressToTodo() {
+
+  }
+
+  inProgressToDone() {
+
+  }
+
+  doneToTodo() {
+
+  }
+
+  doneToinProgress() {
+
+  }
+
+  removeIssue() {
+
+  }
+
+  // click listener for deleting a sprint
+  onDeleteSprint() {
+    this.projectService.deleteSprint(this.focusedSprint.id)
+      .subscribe(
+        () => {
+          this.unfocusSprint();
+
+          location.reload();
+        }, error => {
+          this.error.next(error.message);
+        }
+      )
   }
 
   private populateSprints() {

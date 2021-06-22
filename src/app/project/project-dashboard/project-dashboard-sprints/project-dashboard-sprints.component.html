@@ -23,11 +23,18 @@
         >X
       </button>
       <h2>Sprint: {{ focusedSprint.name }}</h2>
-      <div class="container__sprint__complete">
+      <div class="container__sprint__complete" *ngIf="userRole != 'member'">
+        <button
+          class="container__sprint__complete__btn"
+          type="button"
+          (click)="manageSprint()"
+          >Manage Sprint
+        </button>
         <button
           class="container__sprint__complete__btn"
           type="button"
           (click)="completeSprint()"
+          [disabled]="todo.length > 0 || inProgress.length > 0"
           >Complete Sprint
         </button>
       </div>
@@ -46,9 +53,10 @@
             *ngFor="let issue of todo"
             [cdkDragData]="issue"
             cdkDrag
+            (click)="focusIssue(issue)"
           >
-            <p>{{ issue.name }}</p>
-            <p>{{ issue.time }}</p>
+            <p>{{ (issue.name.length > 25) ? (issue.name | slice:0:30) + '...' : (issue.name) }}</p>
+            <p>{{ issue.time }} hrs</p>
           </div>
         </div>
         <div
@@ -65,9 +73,10 @@
             *ngFor="let issue of inProgress"
             [cdkDragData]="issue"
             cdkDrag
+            (click)="focusIssue(issue)"
           >
-            <p>{{ issue.name }}</p>
-            <p>{{ issue.time }}</p>
+            <p>{{ (issue.name.length > 25) ? (issue.name | slice:0:30) + '...' : (issue.name) }}</p>
+            <p>{{ issue.time }} hrs</p>
           </div>
         </div>
         <div
@@ -84,12 +93,77 @@
             *ngFor="let issue of done"
             [cdkDragData]="issue"
             cdkDrag
+            (click)="focusIssue(issue)"
           >
-            <p>{{ issue.name }}</p>
-            <p>{{ issue.time }}</p>
+            <p>{{ (issue.name.length > 25) ? (issue.name | slice:0:30) + '...' : (issue.name) }}</p>
+            <p>{{ issue.time }} hrs</p>
           </div>
 
         </div>
       </div>
+      <button
+        type="button"
+        class="container__sprint__delete"
+        (click)="onDeleteSprint()"
+        *ngIf="userRole != 'member'"
+        >Delete
+      </button>
     </div>
+</div>
+
+
+<div class="container__issue" *ngIf="focusedIssue != null">
+  <button
+    type="button"
+    class="xbtn"
+    (click)="unfocusIssue()"
+    >X
+  </button>
+  <h2>{{ focusedIssue.name }}</h2>
+  <p>{{ focusedIssue.desc }}</p>
+  <button
+    type="button"
+    class="container__issue__btn"
+    (click)="todoToinProgress()"
+    *ngIf="todo.includes(focusedIssue)"
+    >Grab Issue
+  </button>
+  <div class="container__issue__btnGroup" *ngIf="inProgress.includes(focusedIssue) || done.includes(focusedIssue)">
+    <button
+      type="button"
+      class="container__issue__btn"
+      (click)="inProgressToTodo()"
+      *ngIf="inProgress.includes(focusedIssue)"
+      >Drop Issue
+    </button>
+    <button
+      type="button"
+      class="container__issue__btn"
+      (click)="inProgressToDone()"
+      *ngIf="inProgress.includes(focusedIssue)"
+      >Complete Issue
+    </button>
+    <button
+      type="button"
+      class="container__issue__btn"
+      (click)="doneToTodo()"
+      *ngIf="done.includes(focusedIssue)"
+      >Put in Todo
+    </button>
+    <button
+      type="button"
+      class="container__issue__btn"
+      (click)="doneToinProgress()"
+      *ngIf="done.includes(focusedIssue)"
+      >Regrab Issue
+    </button>
+  </div>
+  <br>
+  <button
+    type="button"
+    class="container__issue__dropBtn"
+    (click)="removeIssue()"
+    *ngIf="userRole != 'member'"
+    >Move Issue to Backlog
+  </button>
 </div>

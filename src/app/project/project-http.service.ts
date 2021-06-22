@@ -150,6 +150,17 @@ export class ProjectHttpService {
     )
   }
 
+  // delete a sprint
+  deleteSprint(sprintID: string) {
+    return this.http.delete(
+      'http://localhost:3010/sprint/deleteSprint/' + sprintID,
+      {
+        observe: 'response',
+        responseType: 'json'
+      }
+    )
+  }
+
   // get all teams in a project
   getAllTeams(projectID: string) {
     return this.http.get(

@@ -36,9 +36,11 @@
 
   &__sprint {
     &__complete {
-      text-align: right;
+      display: flex;
+      justify-content: space-between;
 
       &__btn {
+        margin-left: 5%;
         margin-right: 5%;
         margin-bottom: 3%;
         cursor: pointer;
@@ -66,6 +68,7 @@
 
       &__btn:disabled {
         opacity: 20%;
+        cursor: default;
       }
 
       &__btn:disabled:hover {
@@ -118,6 +121,113 @@
           width: 80%;
         }
       }
+    }
+
+    &__delete {
+      margin-bottom: 2%;
+      cursor: pointer;
+      width: 10%;
+      height: 30px;
+      background-color: $color-grey-dark-1;
+      color: red;
+      border: 2px solid red;
+      border-radius: 20px;
+      -webkit-border-radius: 20px;
+      -moz-border-radius: 20px;
+      -ms-border-radius: 20px;
+      -o-border-radius: 20px;
+      transition: all .5s;
+      -webkit-transition: all .5s;
+      -moz-transition: all .5s;
+      -ms-transition: all .5s;
+      -o-transition: all .5s;
+    }
+
+    &__delete:hover {
+      background-color: red;
+      color: $color-grey-dark-1;
+    }
+  }
+
+  &__issue {
+    text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    width: 60%;
+    margin: 0 auto;
+    color: $color-primary;
+    background-color: $color-grey-dark-1;
+    border: 2px solid $color-primary;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    transform: translate(0, -600px);
+    -webkit-transform: translate(0, -600px);
+    -moz-transform: translate(0, -600px);
+    -ms-transform: translate(0, -600px);
+    -o-transform: translate(0, -600px);
+
+    & p {
+      width: 35%;
+      margin: 0 auto;
+      margin-top: 5%;
+      margin-bottom: 5%;
+    }
+
+    &__btnGroup {
+      display: flex;
+      justify-content: space-evenly;
+    }
+
+    &__btn {
+      cursor: pointer;
+      margin-bottom: 4%;
+      height: 30px;
+      width: 15%;
+      color: $color-primary;
+      background-color: $color-grey-dark-1;
+      border: 2px solid $color-primary;
+      border-radius: 20px;
+      -webkit-border-radius: 20px;
+      -moz-border-radius: 20px;
+      -ms-border-radius: 20px;
+      -o-border-radius: 20px;
+      transition: all .5s;
+      -webkit-transition: all .5s;
+      -moz-transition: all .5s;
+      -ms-transition: all .5s;
+      -o-transition: all .5s;
+    }
+
+    &__btn:hover {
+      background-color: $color-primary;
+      color: $color-grey-dark-1;
+    }
+
+    &__dropBtn {
+      height: 30px;
+      cursor: pointer;
+      margin-bottom: 4%;
+      padding: 0 2%;
+      background-color: $color-grey-dark-1;
+      border: 2px solid red;
+      color: red;
+      border-radius: 20px;
+      -webkit-border-radius: 20px;
+      -moz-border-radius: 20px;
+      -ms-border-radius: 20px;
+      -o-border-radius: 20px;
+      transition: all .5s;
+      -webkit-transition: all .5s;
+      -moz-transition: all .5s;
+      -ms-transition: all .5s;
+      -o-transition: all .5s;
+    }
+
+    &__dropBtn:hover {
+      background-color: red;
+      color: $color-grey-dark-1;
     }
   }
 }
