@@ -208,31 +208,82 @@ export class ProjectDashboardSprintsComponent implements OnInit {
 
   // functions to move issues based on state
   todoToinProgress() {
-
+    this.arraySwap(this.todo, this.inProgress);
   }
 
   inProgressToTodo() {
-
+    this.arraySwap(this.inProgress, this.todo);
   }
 
   inProgressToDone() {
-
+    this.arraySwap(this.inProgress, this.done);
   }
 
   doneToTodo() {
-
+    this.arraySwap(this.done, this.todo);
   }
 
   doneToinProgress() {
-
+    this.arraySwap(this.done, this.inProgress);
   }
 
   removeIssue() {
+    // remove issue from sprint
+    this.focusedSprint.issues.forEach((element, index) => {
+      if (this.focusedIssue == element) {
+        this.focusedSprint.issues.splice(index, 1);
 
+        if (this.focusedSprint.issues.length == 0) {
+          this.projectService.deleteSprint(this.focusedSprint.id)
+            .subscribe(
+              () => {
+                location.reload();
+              }, error => {
+                this.error.next(error.message);
+              }
+            )
+        } else {
+          this.projectService.updateSprint(this.focusedSprint)
+          .subscribe(
+            () => {
+              this.depopulateIssueStructs();
+              this.populateIssueStructs();
+              this.focusedIssue = null;
+            }, error => {
+              this.error.next(error.message);
+            }
+          )
+        }
+      }
+    });
+
+    this.focusedIssue.backlogID = this.projectID;
+    this.focusedIssue.state = 1;
+    this.projectService.updateIssue(this.focusedIssue)
+      .subscribe(
+        () => {}, error => {
+          this.error.next(error.message);
+        }
+      )
   }
 
   // click listener for deleting a sprint
   onDeleteSprint() {
+    // move all issues in sprint back to backlog
+    this.focusedSprint.issues.forEach((element) => {
+      if (element.state == 2) {
+        element.state = 1;
+      }
+      element.backlogID = this.projectID;
+
+      // update element
+      this.projectService.updateIssue(element)
+        .subscribe(
+          () => {}, error => {
+            this.error.next(error.message);
+          }
+        )
+    })
     this.projectService.deleteSprint(this.focusedSprint.id)
       .subscribe(
         () => {
@@ -308,5 +359,51 @@ export class ProjectDashboardSprintsComponent implements OnInit {
     this.todo = [];
     this.inProgress = [];
     this.done = [];
+  }
+
+  private arraySwap(array1, array2) {
+    array1.forEach((element, index) => {
+      if (element == this.focusedIssue) {
+        array1.splice(index, 1);
+      }
+    });
+
+    array2.push(this.focusedIssue);
+
+    switch (array2) {
+      case this.todo: {
+        this.focusedSprint.issues.forEach((element) => {
+          if (element == this.focusedIssue) {
+            element.state = 1;
+          }
+        });
+        break;
+      }
+      case this.inProgress: {
+        this.focusedSprint.issues.forEach((element) => {
+          if (element == this.focusedIssue) {
+            element.state = 2;
+          }
+        });
+        break;
+      }
+      case this.done: {
+        this.focusedSprint.issues.forEach((element) => {
+          if (element == this.focusedIssue) {
+            element.state = 3;
+          }
+        });
+        break;
+      }
+    }
+
+    this.projectService.updateSprint(this.focusedSprint)
+      .subscribe(
+        () => {}, error => {
+          this.error.next(error.message);
+        }
+      );
+
+    this.unfocusIssue();
   }
 }

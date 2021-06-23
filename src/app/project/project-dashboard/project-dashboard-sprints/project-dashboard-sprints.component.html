@@ -1,5 +1,6 @@
 <div class="container">
   <h2 *ngIf="focusedSprint == null">Sprints</h2>
+  <p style="text-align: left; margin-left: 5%;" *ngIf="sprints.length == 0 && !sprintsLoading">No Sprints found!</p>
    <div class="loadContainer" *ngIf="sprintsLoading">
       <div class="loader"></div>
     </div>
