@@ -14,7 +14,6 @@ import { Sprint } from '../models/sprint.model';
 })
 export class ProjectDashboardSprintsComponent implements OnInit {
   sprintsLoading = true;
-  manage = false;
   userID: number;
   userRole: string;
   projectID: string;
@@ -73,10 +72,6 @@ export class ProjectDashboardSprintsComponent implements OnInit {
     this.focusedSprint = null;
 
     this.depopulateIssueStructs();
-  }
-
-  manageSprint() {
-    this.manage = true;
   }
 
   completeSprint() {
@@ -308,10 +303,11 @@ export class ProjectDashboardSprintsComponent implements OnInit {
             this.projectService.getTeamSprints(teamData.body[i]['_id'])
               .subscribe(
                 sprintData => {
+                  console.log(sprintData);
                   for(let j = 0; j < sprintData.body['length']; j++) {
                     const sprint = new Sprint(
                       this.projectID,
-                      sprintData.body[j]['teamID'],
+                      sprintData.body[j]['team'],
                       sprintData.body[j]['name'],
                       sprintData.body[j]['issues'],
                       sprintData.body[j]['_id']
@@ -375,6 +371,7 @@ export class ProjectDashboardSprintsComponent implements OnInit {
         this.focusedSprint.issues.forEach((element) => {
           if (element == this.focusedIssue) {
             element.state = 1;
+            element.userID = undefined;
           }
         });
         break;
@@ -383,6 +380,7 @@ export class ProjectDashboardSprintsComponent implements OnInit {
         this.focusedSprint.issues.forEach((element) => {
           if (element == this.focusedIssue) {
             element.state = 2;
+            element.userID = this.userID;
           }
         });
         break;
@@ -391,6 +389,7 @@ export class ProjectDashboardSprintsComponent implements OnInit {
         this.focusedSprint.issues.forEach((element) => {
           if (element == this.focusedIssue) {
             element.state = 3;
+            element.userID = undefined;
           }
         });
         break;

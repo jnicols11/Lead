@@ -12,6 +12,7 @@
         (click)="focusSprint(sprint)"
       >
         <p>{{ sprint.name }}</p>
+        <p>{{ sprint.team.name }}</p>
         <p>Deadline</p>
       </div>
     </div>
@@ -24,13 +25,7 @@
         >X
       </button>
       <h2>Sprint: {{ focusedSprint.name }}</h2>
-      <div class="container__sprint__complete" *ngIf="userRole != 'member'">
-        <button
-          class="container__sprint__complete__btn"
-          type="button"
-          (click)="manageSprint()"
-          >Manage Sprint
-        </button>
+      <div class="container__sprint__complete" *ngIf="userRole != 'member' || userID == focusSprint.team.leader">
         <button
           class="container__sprint__complete__btn"
           type="button"
@@ -106,12 +101,11 @@
         type="button"
         class="container__sprint__delete"
         (click)="onDeleteSprint()"
-        *ngIf="userRole != 'member'"
+        *ngIf="userRole != 'member' || userID == focusedSprint.team.leader"
         >Delete
       </button>
     </div>
 </div>
-
 
 <div class="container__issue" *ngIf="focusedIssue != null">
   <button
@@ -164,7 +158,7 @@
     type="button"
     class="container__issue__dropBtn"
     (click)="removeIssue()"
-    *ngIf="userRole != 'member'"
+    *ngIf="userRole != 'member' || userID == focusedSprint.team.leader"
     >Move Issue to Backlog
   </button>
 </div>

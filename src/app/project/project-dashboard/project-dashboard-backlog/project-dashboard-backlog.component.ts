@@ -188,7 +188,7 @@ export class ProjectDashboardBacklogComponent implements OnInit {
     // populate sprint model
     const sprint = new Sprint(
       this.projectID,
-      this.team.id,
+      this.team,
       this.sprintForm.value['name'],
       this.issuesSprint
     );

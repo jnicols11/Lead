@@ -36,9 +36,7 @@
 
   &__sprint {
     &__complete {
-      display: flex;
-      justify-content: space-between;
-
+      text-align: right;
       &__btn {
         margin-left: 5%;
         margin-right: 5%;
@@ -152,7 +150,7 @@
   &__issue {
     text-align: center;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    width: 60%;
+    width: 40%;
     margin: 0 auto;
     color: $color-primary;
     background-color: $color-grey-dark-1;
@@ -167,6 +165,8 @@
     -moz-transform: translate(0, -600px);
     -ms-transform: translate(0, -600px);
     -o-transform: translate(0, -600px);
+    position: absolute;
+    margin-left: 15%;
 
     & p {
       width: 35%;
