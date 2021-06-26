@@ -75,7 +75,10 @@ export class ProjectDashboardSprintsComponent implements OnInit {
   }
 
   completeSprint() {
-    // TODO
+    // Delete the sprint and move issues back to backlog (completed)
+    this.onDeleteSprint();
+
+    // TODO Report Data to Data API
   }
 
   todoDrop(event: CdkDragDrop<string[]>) {

@@ -76,5 +76,8 @@ export class HeaderComponent implements OnInit {
     this.regFocus = false;
     this.logFocus = false;
     this.accFocus = false;
+
+    // reload page
+    location.reload();
   }
 }

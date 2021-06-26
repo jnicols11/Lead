@@ -1,1 +1,13 @@
-<h2>Home Works</h2>
+<div class="landing" *ngIf="userID == 0">
+  <!-- Landing Page for unlogged users -->
+  <div class="landing__slide">
+
+  </div>
+  <div class="landing__about">
+
+  </div>
+</div>
+
+<div class="home" *ngIf="userID > 0">
+  <!-- Home Page of a logged in user -->
+</div>
