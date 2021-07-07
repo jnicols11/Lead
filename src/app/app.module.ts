@@ -12,7 +12,6 @@ import { ProjectComponent } from './project/project.component';
 import { UserComponent } from './user/user.component';
 import { UserLoginComponent } from './user/user-login/user-login.component';
 import { UserRegComponent } from './user/user-reg/user-reg.component';
-import { UserHttpService } from './user/user-http.service';
 import { ClickOutsideModule } from 'ng-click-outside';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ProjectDashboardComponent } from './project/project-dashboard/project-dashboard.component';
@@ -23,6 +22,9 @@ import { ProjectDashboardManageComponent } from './project/project-dashboard/pro
 import { DatePipe } from '@angular/common';
 import { ProjectDashboardManageUsersComponent } from './project/project-dashboard/project-dashboard-manage-users/project-dashboard-manage-users.component';
 import { ProjectDashboardTeamsComponent } from './project/project-dashboard/project-dashboard-teams/project-dashboard-teams.component';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { IvyCarouselModule } from 'angular-responsive-carousel';
 
 @NgModule({
   declarations: [
@@ -49,7 +51,9 @@ import { ProjectDashboardTeamsComponent } from './project/project-dashboard/proj
     AppRoutingModule,
     NgxPaginationModule,
     ClickOutsideModule,
-    DragDropModule
+    DragDropModule,
+    NgbModule,
+    IvyCarouselModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

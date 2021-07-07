@@ -1,7 +1,16 @@
 <div class="landing" *ngIf="userID == 0">
   <!-- Landing Page for unlogged users -->
   <div class="landing__slide">
-
+    <carousel
+      [images]="images"
+      [objectFit]="'cover'"
+      [cellWidth]="'100%'"
+      [height]="600"
+      [autoplay]="true"
+      [dots]="true"
+      [loop]="true"
+    >
+    </carousel>
   </div>
   <div class="landing__about">
 
