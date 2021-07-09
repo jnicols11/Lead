@@ -74,7 +74,7 @@
       | paginate:
         {
           id: 'project',
-          itemsPerPage: 5,
+          itemsPerPage: 4,
           currentPage: p
         }
       "
@@ -109,7 +109,7 @@
       class="projectPagination"
       (pageChange)="p = $event"
       id="project"
-      *ngIf="projects.length > 5">
+      *ngIf="projects.length > 4">
     </pagination-controls>
   </div>
 </div>
