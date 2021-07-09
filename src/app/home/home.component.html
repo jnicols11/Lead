@@ -1,19 +1,55 @@
+<head>
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
 <div class="landing" *ngIf="userID == 0">
   <!-- Landing Page for unlogged users -->
   <div class="landing__slide">
     <carousel
-      [images]="images"
       [objectFit]="'cover'"
       [cellWidth]="'100%'"
       [height]="600"
-      [autoplay]="true"
       [dots]="true"
       [loop]="true"
+      [ngStyle]="{'opacity':'0.9', 'filter':'brightness(75%)', 'margin-top':'25px'}"
     >
+      <div class="carousel-cell">
+        <div class="container__cell" style="background-image: url('../../assets/img/home1.jpg');">
+          <div class="typewriter">
+            <h1 class="landing__slide__welcome">Welcome to Lead</h1>
+          </div>
+          <div class="landing__slide__paragroup">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti ratione dolorum laboriosam earum iure perspiciatis amet animi incidunt temporibus, voluptate illo vitae nihil doloribus quae ipsa maiores debitis laudantium beatae?</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae ipsa, nihil soluta quisquam veniam quo. Dolores impedit explicabo minus, expedita similique nisi laborum fugit excepturi odit dolorum repudiandae, quos fuga.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas possimus commodi dolor et minus, quis eos, harum iusto, vitae magni blanditiis? Temporibus velit, maiores soluta facilis harum rem cum voluptates!</p>
+          </div>
+
+        </div>
+      </div>
+      <div class="carousel-cell">
+        <div class="container__cell" style="background-image: url('../../assets/img/home3.jpg');">
+
+        </div>
+      </div>
+      <div class="carousel-cell">
+        <div class="container__cell" style="background-image: url('../../assets/img/home2.jpg');">
+
+        </div>
+      </div>
     </carousel>
   </div>
   <div class="landing__about">
-
+    <div class="landing__about__container">
+      <i class="material-icons large">folder</i>
+      <p>The most organized and secure project management platform on the web</p>
+    </div>
+    <div class="landing__about__container">
+      <i class="material-icons large">people</i>
+      <p>The quickest way to connect with your team and collaborate</p>
+    </div>
+    <div class="landing__about__container">
+      <i class="material-icons large">show_chart</i>
+      <p>Visualize your data in real time with live reporting and data analysis</p>
+    </div>
   </div>
 </div>
 

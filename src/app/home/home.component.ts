@@ -8,11 +8,6 @@ import { UserHttpService } from '../user/user-http.service';
 })
 export class HomeComponent implements OnInit {
   userID: number;
-  images = [
-    {path: '../../assets/img/home1.jpg'},
-    {path: '../../assets/img/home3.jpg'},
-    {path: '../../assets/img/home2.jpg'}
-  ];
 
   constructor() { }
 

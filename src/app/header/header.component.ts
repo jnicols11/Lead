@@ -77,7 +77,6 @@ export class HeaderComponent implements OnInit {
     this.logFocus = false;
     this.accFocus = false;
 
-    // reload page
-    location.reload();
+    this.router.navigate(['/home']);
   }
 }

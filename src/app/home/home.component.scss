@@ -2,12 +2,104 @@
 
 .landing {
   &__slide {
+    &__welcome {
+      color: $color-primary-light;
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+      margin-left: 5%;
+      margin-top: 2%;
+      filter: brightness(200%);
+      -webkit-filter: brightness(200%);
+      font-size: 32px;
+      background: rgb(0, 0 , 0);
+      background: rgba(0, 0, 0, 0.4);
+      width: fit-content;
+      padding: 10px;
+    }
 
+    &__paragroup {
+      display: flex;
+      justify-content: space-evenly;
+      margin-top: 15%;
+
+      & p {
+        font-size: 18px;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        color: $color-primary;
+        width: 25%;
+        line-height: 150%;
+        background: rgb(0, 0, 0);
+        background: rgba(0, 0, 0, 0.7);
+        padding: 10px;
+      }
+    }
+  }
+
+  &__about {
+    background-color: $color-grey-dark-1;
+    width: 100%;
+    min-height: 240px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    &__container {
+      width: 15%;
+      text-align: center;
+    }
+
+    & i {
+      color: $color-primary;
+      font-size: 128px;
+    }
+
+    & p {
+      color: $color-primary;
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+      font-size: 16px;
+    }
   }
 }
 
 .homeImg {
-  height: 100%;
-  width: 100%;
+  opacity: 25%;
   object-fit: cover;
 }
+
+.container__cell {
+  width: 100%;
+  min-height: 600px;
+  background-size: cover;
+  background-position: .1px;
+  display: inline-block;
+}
+
+.typewriter {
+  width: 15%;
+  margin-left: 5%;
+  margin-top: 10px;
+}
+
+.typewriter h1 {
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid orange; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .15em; /* Adjust as needed */
+  animation:
+    typing 2.5s steps(40, end),
+    blink-caret .7s step-end infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: rgb(251, 251, 251); }
+}
+
