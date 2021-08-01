@@ -13,6 +13,9 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.userID = +localStorage.getItem('currentUser');
+    if (this.userID > 1 || this.userID == undefined) {
+      this.userID = 0;
+    }
     console.log(this.userID);
   }
 
