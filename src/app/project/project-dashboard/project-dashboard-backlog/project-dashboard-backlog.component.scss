@@ -184,7 +184,7 @@
     position: absolute;
     right: 0;
     top: 0;
-    margin-top: 10%;
+    margin-top: 15%;
     margin-right: 3%;
     border: 2px solid $color-primary;
     border-radius: 20px;
@@ -346,6 +346,28 @@
       width: 75%;
       margin-bottom: 5%;
     }
+  }
+}
+
+.completedIssues {
+  width: fit-content;
+  margin-bottom: 1%;
+  margin-left: 80%;
+
+  &__btn {
+    height: 40px;
+    padding: 0 15px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 15px;
+    background-color: $color-grey-dark-1;
+    cursor: pointer;
+    color: $color-primary;
+    border: 2px solid $color-primary;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
   }
 }
 

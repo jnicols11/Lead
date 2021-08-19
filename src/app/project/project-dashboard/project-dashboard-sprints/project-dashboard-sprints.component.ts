@@ -313,6 +313,7 @@ export class ProjectDashboardSprintsComponent implements OnInit {
                       sprintData.body[j]['team'],
                       sprintData.body[j]['name'],
                       sprintData.body[j]['issues'],
+                      sprintData.body[j]['deadline'],
                       sprintData.body[j]['_id']
                     );
 

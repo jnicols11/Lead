@@ -19,6 +19,7 @@ export class ProjectDashboardBacklogComponent implements OnInit {
   sprintLoading = false;
   createIssue = false;
   createSprint = false;
+  completedIssues = false;
   editName = false;
   editDesc = false;
   editTime = false;
@@ -64,14 +65,6 @@ export class ProjectDashboardBacklogComponent implements OnInit {
     this.populateIssues();
   }
 
-  incrementPageNumber() {
-    this.pageNumber++;
-  }
-
-  decrementPageNumber() {
-    this.pageNumber--;
-  }
-
   setPageNumber(num: number) {
     this.pageNumber = num;
   }
@@ -108,6 +101,16 @@ export class ProjectDashboardBacklogComponent implements OnInit {
         this.pageNumber -= 1;
       }
     }
+  }
+
+  viewCompletedIssues() {
+    this.completedIssues = true;
+    this.createSprint = false;
+    this.createIssue = false;
+  }
+
+  closeCompletedIssues() {
+    this.completedIssues = false;
   }
 
   preCreateIssue() {
@@ -184,7 +187,7 @@ export class ProjectDashboardBacklogComponent implements OnInit {
           // close popup
           this.cancelCreateIssue();
         }, error => {
-          // present issue error popup
+          // TODO present issue error popup
 
           // update issue loading state
           this.issueLoading = false;
@@ -203,7 +206,8 @@ export class ProjectDashboardBacklogComponent implements OnInit {
       this.projectID,
       this.team,
       this.sprintForm.value['name'],
-      this.issuesSprint
+      this.issuesSprint,
+      this.sprintForm.value['deadline']
     );
 
     // send sprint to project service
@@ -230,9 +234,12 @@ export class ProjectDashboardBacklogComponent implements OnInit {
 
           // update sprint loading state
           this.sprintLoading = false;
+          this.cancelCreateSprint();
         }, error => {
           // update sprint loading state
           this.sprintLoading = false;
+
+          // TODO Display Error Message
           this.error.next(error.message);
         }
       );
@@ -354,7 +361,8 @@ export class ProjectDashboardBacklogComponent implements OnInit {
 
   private initSprintForm() {
     this.sprintForm = new FormGroup({
-      'name': new FormControl(null, Validators.required)
+      'name': new FormControl(null, Validators.required),
+      'deadline': new FormControl(null, Validators.required)
     });
   }
 

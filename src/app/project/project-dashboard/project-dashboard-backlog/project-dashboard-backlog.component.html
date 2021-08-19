@@ -1,4 +1,23 @@
-<div class="container">
+<div class="completedIssues">
+  <button
+    class="completedIssues__btn"
+    (click)="viewCompletedIssues()"
+    *ngIf="!completedIssues"
+    >Completed Issues
+  </button>
+</div>
+
+<div class="container__issue" *ngIf="completedIssues">
+  <button
+    class="xbtn"
+    (click)="closeCompletedIssues()"
+    >x
+  </button>
+
+  <!--TODO List all completed issues in container-->
+</div>
+
+<div class="container" *ngIf="!completedIssues">
   <div class="container__issue">
     <h2>Project Backlog</h2>
     <hr>
@@ -179,6 +198,19 @@
         placeholder="Sprint Name"
         class="container__createSprint__field__input"
         formControlName="name"
+      >
+    </div>
+    <div class="container__createSprint__field">
+      <label
+        for="sprintDeadline"
+        class="container__createSprint__field__label"
+        >Deadline:
+      </label>
+      <input
+        type="date"
+        placeholder="Deadline"
+        class="container__createSprint__field__input"
+        formControlName="deadline"
       >
     </div>
     <p>Drag issues from the backlog to add them to this sprint!</p>
