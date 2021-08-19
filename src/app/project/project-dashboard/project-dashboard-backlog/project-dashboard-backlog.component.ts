@@ -15,6 +15,7 @@ import { Team } from '../models/team.model';
 })
 export class ProjectDashboardBacklogComponent implements OnInit {
   issuesLoading = true;
+  issueLoading = false;
   sprintLoading = false;
   createIssue = false;
   createSprint = false;
@@ -153,6 +154,9 @@ export class ProjectDashboardBacklogComponent implements OnInit {
   }
 
   onSubmitIssue() {
+    // set issueLoading state
+    this.issueLoading = true;
+
     // submit issue data
     const backlogID = this.projectID;
 
@@ -174,15 +178,24 @@ export class ProjectDashboardBacklogComponent implements OnInit {
           // refresh issues array
           this.populateIssues();
 
+          // update issue loading state
+          this.issueLoading = false;
+
           // close popup
           this.cancelCreateIssue();
         }, error => {
+          // present issue error popup
+
+          // update issue loading state
+          this.issueLoading = false;
+
           this.error.next(error.message);
         }
       )
   }
 
   onSubmitSprint() {
+    // set loading state
     this.sprintLoading = true;
 
     // populate sprint model
@@ -214,8 +227,12 @@ export class ProjectDashboardBacklogComponent implements OnInit {
           });
 
           this.issuesSprint = [];
+
+          // update sprint loading state
           this.sprintLoading = false;
         }, error => {
+          // update sprint loading state
+          this.sprintLoading = false;
           this.error.next(error.message);
         }
       );
