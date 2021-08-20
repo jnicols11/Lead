@@ -14,7 +14,64 @@
     >x
   </button>
 
-  <!--TODO List all completed issues in container-->
+  <h2>Completed Issues</h2>
+  <hr>
+
+  <div class="loadContainer" *ngIf="issuesLoading">
+    <div class="loader"></div>
+  </div>
+
+  <div
+    class="container__issue__list"
+    *ngIf="!issuesLoading"
+    cdkDropList
+    id="completedIssueList"
+    (cdkDropListDropped)="completedIssueDrop($event)"
+    >
+    <div
+      class="container__issue__list__item"
+      *ngFor="let issue of doneIssues
+      | paginate:
+      {
+        id: 'issue',
+        itemsPerPage: 4,
+        currentPage: this.donePageNumber
+      }
+      "
+      (click)="focusDoneIssue(issue)"
+      cdkDrag
+    >
+      <p>{{ (issue.name.length > 30) ? (issue.name | slice:0:30) + '...' : (issue.name) }}</p>
+      <p>{{ issue.time }} hours</p>
+    </div>
+    <style>
+
+      .projectPagination /deep/ .ngx-pagination .current {
+        background: rgb(41, 224, 209);
+        border: 2px solid rgb(84, 85, 84);
+        border-radius: 20px;
+      }
+
+      .projectPagination /deep/ .ngx-pagination a {
+        border-radius: 20px;
+        color: #fff;
+        margin-left: 10px;
+        margin-right: 10;
+      }
+
+      .projectPagination /deep/ .ngx-pagination a:hover {
+        background: rgb(41, 224, 209);
+      }
+
+
+    </style>
+    <pagination-controls
+      class="projectPagination"
+      (pageChange)="setPageNumber($event)"
+      id="issue"
+      *ngIf="doneIssues.length > 4">
+    </pagination-controls>
+  </div>
 </div>
 
 <div class="container" *ngIf="!completedIssues">
@@ -229,7 +286,7 @@
           | paginate:
           {
             id: 'sprint',
-            itemsPerPage: 4,
+            itemsPerPage: 3,
             currentPage: this.sprintPageNumber
           }"
           cdkDrag>
@@ -262,7 +319,7 @@
           class="sprintPagination"
           (pageChange)="setSprintPageNumber($event)"
           id="sprint"
-          *ngIf="issuesSprint.length > 4">
+          *ngIf="issuesSprint.length > 3">
         </pagination-controls>
     </div>
     <button

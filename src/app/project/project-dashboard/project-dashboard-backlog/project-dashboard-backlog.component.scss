@@ -184,7 +184,7 @@
     position: absolute;
     right: 0;
     top: 0;
-    margin-top: 15%;
+    margin-top: 6%;
     margin-right: 3%;
     border: 2px solid $color-primary;
     border-radius: 20px;
@@ -368,6 +368,13 @@
     -moz-border-radius: 20px;
     -ms-border-radius: 20px;
     -o-border-radius: 20px;
+    transition: all .5s;
+  }
+
+  &__btn:hover {
+    background-color: $color-primary;
+    color: $color-grey-dark-1;
+    border: 2px solid $color-grey-dark-1;
   }
 }
 

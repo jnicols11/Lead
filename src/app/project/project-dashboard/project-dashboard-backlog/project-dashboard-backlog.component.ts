@@ -1,4 +1,5 @@
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -29,6 +30,7 @@ export class ProjectDashboardBacklogComponent implements OnInit {
   userRole: string;
   issueTime: number;
   issues: Issue[] = [];
+  doneIssues: Issue[] = [];
   issuesSprint: Issue[] = [];
   issuePopup: Issue = null;
   teams: Team[];
@@ -38,6 +40,7 @@ export class ProjectDashboardBacklogComponent implements OnInit {
   error = new Subject<string>();
   pageNumber = 1;
   sprintPageNumber = 1;
+  donePageNumber = 1;
 
   constructor(
     private projectService: ProjectHttpService,
@@ -63,6 +66,9 @@ export class ProjectDashboardBacklogComponent implements OnInit {
 
     // populate issues
     this.populateIssues();
+
+    // populate done issues
+    this.populateCompletedIssues();
   }
 
   setPageNumber(num: number) {
@@ -101,6 +107,10 @@ export class ProjectDashboardBacklogComponent implements OnInit {
         this.pageNumber -= 1;
       }
     }
+  }
+
+  completedIssueDrop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.doneIssues, event.previousIndex + (4 * (this.donePageNumber -1)), event.currentIndex + (4 * (this.donePageNumber -1)));
   }
 
   viewCompletedIssues() {
@@ -349,6 +359,37 @@ export class ProjectDashboardBacklogComponent implements OnInit {
           this.error.next(error.message);
         }
     );
+  }
+
+  private populateCompletedIssues() {
+    this.projectService.getCompletedIssues(this.projectID)
+      .subscribe(
+        responseData => {
+
+          // clear array
+          this.doneIssues = [];
+
+          // populate done issues array
+          for(const index in responseData.body) {
+            let issue = new Issue(
+              responseData.body[index]['projectID'],
+              responseData.body[index]['name'],
+              responseData.body[index]['desc'],
+              responseData.body[index]['time'],
+              responseData.body[index]['backlogID']
+            );
+
+            issue.id = responseData.body[index]['_id'];
+            issue.state = responseData.body[index]['state'];
+            
+            // push to local array
+            this.doneIssues.push(issue);
+          }
+        }, error => {
+          // throw error message
+          this.error.next(error.message);
+        }
+      )
   }
 
   private initIssueForm() {

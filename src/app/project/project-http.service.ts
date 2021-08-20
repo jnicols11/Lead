@@ -92,6 +92,17 @@ export class ProjectHttpService {
     )
   }
 
+  // gets all completed issues conntected to a project
+  getCompletedIssues(projectID: string) {
+    return this.http.get(
+      'http://localhost:3010/issue/getCompletedIssues/' + projectID,
+      {
+        observe: 'response',
+        responseType: 'json'
+      }
+    )
+  }
+
   // updates an issue inside of a project
   updateIssue(issue: Issue) {
     return this.http.patch(
