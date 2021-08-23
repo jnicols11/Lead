@@ -267,31 +267,33 @@ export class ProjectDashboardSprintsComponent implements OnInit {
 
   // click listener for deleting a sprint
   onDeleteSprint() {
-    // move all issues in sprint back to backlog
-    this.focusedSprint.issues.forEach((element) => {
-      if (element.state == 2) {
-        element.state = 1;
-      }
-      element.backlogID = this.projectID;
+    if(confirm("Are you sure you want to delete this sprint? All issues will be moved to backlog")) {
+      // move all issues in sprint back to backlog
+      this.focusedSprint.issues.forEach((element) => {
+        if (element.state == 2) {
+          element.state = 1;
+        }
+        element.backlogID = this.projectID;
 
-      // update element
-      this.projectService.updateIssue(element)
+        // update element
+        this.projectService.updateIssue(element)
+          .subscribe(
+            () => {}, error => {
+              this.error.next(error.message);
+            }
+          )
+      })
+      this.projectService.deleteSprint(this.focusedSprint.id)
         .subscribe(
-          () => {}, error => {
+          () => {
+            this.unfocusSprint();
+
+            location.reload();
+          }, error => {
             this.error.next(error.message);
           }
         )
-    })
-    this.projectService.deleteSprint(this.focusedSprint.id)
-      .subscribe(
-        () => {
-          this.unfocusSprint();
-
-          location.reload();
-        }, error => {
-          this.error.next(error.message);
-        }
-      )
+    }
   }
 
   private populateSprints() {

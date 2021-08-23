@@ -212,14 +212,16 @@ export class ProjectDashboardManageComponent implements OnInit {
   }
 
   deleteProject() {
-    this.projectService.deleteProject(this.project.id)
-      .subscribe(
-        responseData => {
-          this.router.navigate(['/projects']);
-        }, error => {
-          this.error.next(error.message);
-        }
-      )
+    if(confirm("Are you sure you want to delete this project? All data will be gone")) {
+      this.projectService.deleteProject(this.project.id)
+        .subscribe(
+          responseData => {
+            this.router.navigate(['/projects']);
+          }, error => {
+            this.error.next(error.message);
+          }
+        )
+    }
   }
 
   closePopups() {

@@ -125,14 +125,16 @@ export class ProjectDashboardTeamsComponent implements OnInit {
   }
 
   onDeleteTeam() {
-    this.projectService.deleteTeam(this.focusedTeam)
-      .subscribe(
-        () => {
-          location.reload();
-        }, error => {
-          this.error.next(error.message);
-        }
-      )
+    if(confirm("Are you sure you want to delete this team?")) {
+      this.projectService.deleteTeam(this.focusedTeam)
+        .subscribe(
+          () => {
+            location.reload();
+          }, error => {
+            this.error.next(error.message);
+          }
+        )
+    }
   }
 
   onFocusTeam(team: Team) {
@@ -174,23 +176,25 @@ export class ProjectDashboardTeamsComponent implements OnInit {
   }
 
   onRemoveUser() {
-    // remove user from members team property
-    this.focusedTeam.members.forEach((element, index) => {
-      if(element == this.focusedUser.id) {
-        this.focusedTeam.members.splice(index, 1);
-      }
-    });
-
-    // update team in DB
-    this.projectService.updateTeam(this.focusedTeam)
-      .subscribe(
-        () => {
-          this.focusedUser = null;
-          this.populateActiveMembers();
-        }, error => {
-          this.error.next(error.message);
+    if(confirm("Are you sure you want to remove this member from the team?")) {
+       // remove user from members team property
+      this.focusedTeam.members.forEach((element, index) => {
+        if(element == this.focusedUser.id) {
+          this.focusedTeam.members.splice(index, 1);
         }
-      )
+      });
+
+      // update team in DB
+      this.projectService.updateTeam(this.focusedTeam)
+        .subscribe(
+          () => {
+            this.focusedUser = null;
+            this.populateActiveMembers();
+          }, error => {
+            this.error.next(error.message);
+          }
+        )
+    }
   }
 
   viewTeamMembers() {

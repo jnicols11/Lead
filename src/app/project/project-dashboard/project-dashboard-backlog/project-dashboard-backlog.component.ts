@@ -305,22 +305,24 @@ export class ProjectDashboardBacklogComponent implements OnInit {
   }
 
   deleteIssue(issue: Issue) {
-    // send delete request
-    this.projectService.deleteIssue(issue)
-      .subscribe(
-        responseData => {
-          // refresh the backlog
-          this.populateIssues();
+    if(confirm("Are you sure you want to delete this issue?")) {
+      // send delete request
+      this.projectService.deleteIssue(issue)
+        .subscribe(
+          responseData => {
+            // refresh the backlog
+            this.populateIssues();
 
-          // reload content
-          location.reload();
+            // reload content
+            location.reload();
 
-        }, error => {
-          this.error.next(error.message);
-        }
-      )
-    // close issue popup
-    this.closeIssue();
+          }, error => {
+            this.error.next(error.message);
+          }
+        )
+      // close issue popup
+      this.closeIssue();
+    }
   }
 
   closeIssue() {

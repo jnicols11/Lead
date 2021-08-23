@@ -57,27 +57,29 @@ export class ProjectDashboardManageUsersComponent implements OnInit {
   }
 
   removeUserFromProject() {
-    this.loading = true;
-    this.projectService.getProjectById(this.projectID)
-      .subscribe(
-        projectData => {
-          // get list of users
-          const users = projectData.body['users'];
+    if(confirm("Are you sure you want to remove this user from the project?")) {
+      this.loading = true;
+      this.projectService.getProjectById(this.projectID)
+        .subscribe(
+          projectData => {
+            // get list of users
+            const users = projectData.body['users'];
 
-          // remove user from list
-          users.forEach((element, index) => {
-            if(element.id == this.focusedUser.id) users.splice(index,1);
-          });
+            // remove user from list
+            users.forEach((element, index) => {
+              if(element.id == this.focusedUser.id) users.splice(index,1);
+            });
 
-          //update list in database
-          this.updateProjectUsers(users);
+            //update list in database
+            this.updateProjectUsers(users);
 
-          // reset focus
-          this.focusedUser = null;
-        }, error => {
-          this.error.next(error.message);
-        }
-      );
+            // reset focus
+            this.focusedUser = null;
+          }, error => {
+            this.error.next(error.message);
+          }
+        );
+    }
   }
 
   private populateUsers() {
