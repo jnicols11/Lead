@@ -20,6 +20,10 @@
   -ms-border-radius: 20px;
   -o-border-radius: 20px;
 
+  @include respond(big-desktop) {
+    width: 15%;
+  }
+
   &__btn {
     height: 85px;
     background-color: $color-grey-dark-1;

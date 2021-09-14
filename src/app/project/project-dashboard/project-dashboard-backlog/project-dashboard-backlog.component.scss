@@ -2,22 +2,21 @@
 .container {
   display: flex;
   justify-content: space-evenly;
-  min-height: 200px;
   float: left;
   margin-left: 10%;
 
   &__issue {
     background-color: $color-grey-dark-1;
     margin-right: 15%;
-    min-width: 850px;
-    height: 700px;
-    border: 2px solid $color-primary;
+    min-width: 85rem;
+    height: 70rem;
+    border: .2rem solid $color-primary;
     z-index: 2;
-    border-radius: 20px;
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
-    -ms-border-radius: 20px;
-    -o-border-radius: 20px;
+    border-radius: 2rem;
+    -webkit-border-radius: 2rem;
+    -moz-border-radius: 2rem;
+    -ms-border-radius: 2rem;
+    -o-border-radius: 20rem;
 
     & h2 {
       color: $color-primary;
@@ -38,13 +37,13 @@
         margin-left: auto;
         margin-right: auto;
         background-color: $color-grey-dark-1;
-        border: 2px solid $color-primary;
+        border: .2rem solid $color-primary;
         width: 75%;
-        border-radius: 20px;
-        -webkit-border-radius: 20px;
-        -moz-border-radius: 20px;
-        -ms-border-radius: 20px;
-        -o-border-radius: 20px;
+        border-radius: 2rem;
+        -webkit-border-radius: 2rem;
+        -moz-border-radius: 2rem;
+        -ms-border-radius: 2rem;
+        -o-border-radius: 2rem;
         display: flex;
         justify-content: space-evenly;
         cursor: pointer;
@@ -53,6 +52,7 @@
         & p {
           color: $color-primary;
           font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+          font-size: 1.4rem;
         }
 
 
@@ -78,12 +78,12 @@
       margin-left: 5.2%;
       margin-top: 6%;
       width: 35%;
-      border: 2px solid $color-grey-light-1;
-      border-radius: 20px;
-      -webkit-border-radius: 20px;
-      -moz-border-radius: 20px;
-      -ms-border-radius: 20px;
-      -o-border-radius: 20px;
+      border: .2rem solid $color-grey-light-1;
+      border-radius: 2rem;
+      -webkit-border-radius: 2rem;
+      -moz-border-radius: 2rem;
+      -ms-border-radius: 2rem;
+      -o-border-radius: 2rem;
 
       & h2 {
         color: $color-grey-dark-1;
@@ -104,16 +104,16 @@
       }
 
       &__input {
-        height: 25px;
+        height: 2.5rem;
         width: 36%;
         font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-        border-radius: 20px;
+        border-radius: 2rem;
         padding-left: 1%;
-        -webkit-border-radius: 20px;
-        -moz-border-radius: 20px;
-        -ms-border-radius: 20px;
-        -o-border-radius: 20px;
-        border: 2px solid $color-grey-dark-1;
+        -webkit-border-radius: 2rem;
+        -moz-border-radius: 2rem;
+        -ms-border-radius: 2rem;
+        -o-border-radius: 2rem;
+        border: 2rem solid $color-grey-dark-1;
       }
 
       &__input:focus {
@@ -124,12 +124,12 @@
         resize: none;
         padding-left: 1%;
         padding-top: 1%;
-        border: 2px solid $color-grey-dark-1;
-        border-radius: 20px;
-        -webkit-border-radius: 20px;
-        -moz-border-radius: 20px;
-        -ms-border-radius: 20px;
-        -o-border-radius: 20px;
+        border: .2rem solid $color-grey-dark-1;
+        border-radius: 2rem;
+        -webkit-border-radius: 2rem;
+        -moz-border-radius: 2rem;
+        -ms-border-radius: 2rem;
+        -o-border-radius: 2rem;
       }
 
       &__textarea:focus {
@@ -159,22 +159,22 @@
     top: 0;
     margin-top: 20%;
     margin-right: 3%;
-    border: 2px solid $color-primary;
-    border-radius: 20px;
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
-    -ms-border-radius: 20px;
-    -o-border-radius: 20px;
+    border: .2rem solid $color-primary;
+    border-radius: 2rem;
+    -webkit-border-radius: 2rem;
+    -moz-border-radius: 2rem;
+    -ms-border-radius: 2rem;
+    -o-border-radius: 2rem;
 
     & h4 {
       text-align: center;
       font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
       color: $color-primary;
-      transform: translate(0, -20px);
-      -webkit-transform: translate(0, -20px);
-      -moz-transform: translate(0, -20px);
-      -ms-transform: translate(0, -20px);
-      -o-transform: translate(0, -20px);
+      transform: translate(0, -2rem);
+      -webkit-transform: translate(0, -2rem);
+      -moz-transform: translate(0, -2rem);
+      -ms-transform: translate(0, -2rem);
+      -o-transform: translate(0, -2rem);
     }
   }
 
@@ -186,12 +186,12 @@
     top: 0;
     margin-top: 6%;
     margin-right: 3%;
-    border: 2px solid $color-primary;
-    border-radius: 20px;
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
-    -ms-border-radius: 20px;
-    -o-border-radius: 20px;
+    border: .2rem solid $color-primary;
+    border-radius: 2rem;
+    -webkit-border-radius: 2rem;
+    -moz-border-radius: 2rem;
+    -ms-border-radius: 2rem;
+    -o-border-radius: 2rem;
     margin-bottom: 10%;
 
     &__field {
@@ -205,15 +205,15 @@
       }
 
       &__input {
-        height: 25px;
+        height: 2.5rem;
         width: 35%;
         padding-left: 1%;
-        border: 2px solid $color-primary;
-        border-radius: 20px;
-        -webkit-border-radius: 20px;
-        -moz-border-radius: 20px;
-        -ms-border-radius: 20px;
-        -o-border-radius: 20px;
+        border: .2rem solid $color-primary;
+        border-radius: 2rem;
+        -webkit-border-radius: 2rem;
+        -moz-border-radius: 2rem;
+        -ms-border-radius: 2rem;
+        -o-border-radius: 2rem;
       }
 
       &__input:focus {
@@ -221,16 +221,16 @@
       }
 
       &__select {
-        height: 30px;
+        height: 3rem;
         cursor: pointer;
         width: 36%;
         padding: 0 1%;
-        border: 2px solid $color-primary;
-        border-radius: 20px;
-        -webkit-border-radius: 20px;
-        -moz-border-radius: 20px;
-        -ms-border-radius: 20px;
-        -o-border-radius: 20px;
+        border: .2rem solid $color-primary;
+        border-radius: 2rem;
+        -webkit-border-radius: 2rem;
+        -moz-border-radius: 2rem;
+        -ms-border-radius: 2rem;
+        -o-border-radius: 2rem;
       }
 
       &__select:focus {
@@ -241,12 +241,12 @@
     &__list {
       width: 80%;
       background-color: #fff;
-      border: 2px solid $color-primary;
-      border-radius: 20px;
-      -webkit-border-radius: 20px;
-      -moz-border-radius: 20px;
-      -ms-border-radius: 20px;
-      -o-border-radius: 20px;
+      border: .2rem solid $color-primary;
+      border-radius: 2rem;
+      -webkit-border-radius: 2rem;
+      -moz-border-radius: 2rem;
+      -ms-border-radius: 2rem;
+      -o-border-radius: 2rem;
       margin-left: auto;
       margin-right: auto;
       padding-top: 1%;
@@ -257,12 +257,12 @@
         width: 80%;
         margin-left: auto;
         margin-right: auto;
-        border: 2px solid $color-primary;
-        border-radius: 20px;
-        -webkit-border-radius: 20px;
-        -moz-border-radius: 20px;
-        -ms-border-radius: 20px;
-        -o-border-radius: 20px;
+        border: .2rem solid $color-primary;
+        border-radius: 2rem;
+        -webkit-border-radius: 2rem;
+        -moz-border-radius: 2rem;
+        -ms-border-radius: 2rem;
+        -o-border-radius: 2rem;
         display: flex;
         justify-content: space-around;
         background-color: $color-grey-dark-1;
@@ -279,12 +279,12 @@
         color: $color-grey-dark-1;
         text-align: center;
         font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-        font-size: 16px;
-        transform: translate(0, -20px);
-        -webkit-transform: translate(0, -20px);
-        -moz-transform: translate(0, -20px);
-        -ms-transform: translate(0, -20px);
-        -o-transform: translate(0, -20px);
+        font-size: 1.4rem;
+        transform: translate(0, -2rem);
+        -webkit-transform: translate(0, -2rem);
+        -moz-transform: translate(0, -2rem);
+        -ms-transform: translate(0, -2rem);
+        -o-transform: translate(0, -2rem);
       }
     }
 
@@ -292,15 +292,15 @@
       margin-left: 35%;
       margin-bottom: 5%;
       width: 30%;
-      height: 35px;
+      height: 3.5rem;
       background-color: $color-grey-dark-1;
       color: $color-primary;
-      border: 2px solid $color-primary;
-      border-radius: 20px;
-      -webkit-border-radius: 20px;
-      -moz-border-radius: 20px;
-      -ms-border-radius: 20px;
-      -o-border-radius: 20px;
+      border: .2rem solid $color-primary;
+      border-radius: 2rem;
+      -webkit-border-radius: 2rem;
+      -moz-border-radius: 2rem;
+      -ms-border-radius: 2rem;
+      -o-border-radius: 2rem;
       transition: all .5s;
       -webkit-transition: all .5s;
       -moz-transition: all .5s;
@@ -328,15 +328,15 @@
       text-align: center;
       font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
       color: $color-primary;
-      transform: translate(0, -20px);
-      -webkit-transform: translate(0, -20px);
-      -moz-transform: translate(0, -20px);
-      -ms-transform: translate(0, -20px);
-      -o-transform: translate(0, -20px);
+      transform: translate(0, -2rem);
+      -webkit-transform: translate(0, -2rem);
+      -moz-transform: translate(0, -2rem);
+      -ms-transform: translate(0, -2rem);
+      -o-transform: translate(0, -2rem);
     }
 
     & p {
-      font-size: 8;
+      font-size: 1rem;
       color: $color-primary;
       text-align: center;
       font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -355,26 +355,26 @@
   margin-left: 80%;
 
   &__btn {
-    height: 40px;
-    padding: 0 15px;
+    height: 4rem;
+    padding: 0 1.3rem;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 15px;
+    font-size: 1.3rem;
     background-color: $color-grey-dark-1;
     cursor: pointer;
     color: $color-primary;
-    border: 2px solid $color-primary;
-    border-radius: 20px;
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
-    -ms-border-radius: 20px;
-    -o-border-radius: 20px;
+    border: .2rem solid $color-primary;
+    border-radius: 2rem;
+    -webkit-border-radius: 2rem;
+    -moz-border-radius: 2rem;
+    -ms-border-radius: 2rem;
+    -o-border-radius: 2rem;
     transition: all .5s;
   }
 
   &__btn:hover {
     background-color: $color-primary;
     color: $color-grey-dark-1;
-    border: 2px solid $color-grey-dark-1;
+    border: .2rem solid $color-grey-dark-1;
   }
 }
 
@@ -382,11 +382,11 @@
   margin-right: 15%;
   background-color: $color-grey-dark-1;
   color: $color-primary;
-  border-radius: 20px;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  -ms-border-radius: 20px;
-  -o-border-radius: 20px;
+  border-radius: 2rem;
+  -webkit-border-radius: 2rem;
+  -moz-border-radius: 2rem;
+  -ms-border-radius: 2rem;
+  -o-border-radius: 2rem;
   width: 20%;
   transition: all .5s;
   -webkit-transition: all .5s;
@@ -403,17 +403,17 @@
 .deleteBtn {
   margin-top: 2%;
   width: 20%;
-  height: 30px;
+  height: 3rem;
   margin-left: 35%;
   margin-bottom: 5%;
-  border: 2px solid red;
+  border: .2rem solid red;
   background-color: $color-primary;
   color: red;
-  border-radius: 20px;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  -ms-border-radius: 20px;
-  -o-border-radius: 20px;
+  border-radius: 2rem;
+  -webkit-border-radius: 2rem;
+  -moz-border-radius: 2rem;
+  -ms-border-radius: 2rem;
+  -o-border-radius: 2rem;
   cursor: pointer;
   transition: all .5s;
   -webkit-transition: all .5s;
@@ -425,7 +425,7 @@
 .deleteBtn:hover {
   background-color: red;
   color: $color-primary;
-  border: 2px solid $color-primary;
+  border: .2rem solid $color-primary;
 }
 
 .deleteBtn:disabled {
@@ -435,7 +435,7 @@
 .deleteBtn:disabled:hover {
   cursor: default;
   background-color: transparent;
-  border: 2px solid red;
+  border: .2rem solid red;
   color: red;
 }
 
@@ -444,7 +444,7 @@
   &__container {
     display: flex;
     justify-content: space-evenly;
-    margin-bottom: 25px;
+    margin-bottom: 2.5rem;
   }
 
   &__label {
@@ -457,15 +457,15 @@
   }
 
   &__input {
-    height: 25px;
+    height: 2.5rem;
     width: 40%;
-    padding-left: 10px;
-    border: 2px solid $color-primary;
-    border-radius: 20px;
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
-    -ms-border-radius: 20px;
-    -o-border-radius: 20px;
+    padding-left: 1rem;
+    border: .2rem solid $color-primary;
+    border-radius: 2rem;
+    -webkit-border-radius: 2rem;
+    -moz-border-radius: 2rem;
+    -ms-border-radius: 2rem;
+    -o-border-radius: 2rem;
   }
 
   &__input:focus {
@@ -474,13 +474,13 @@
 
   &__textarea {
     resize: none;
-    padding-left: 10px;
-    border: 2px solid $color-primary;
-    border-radius: 20px;
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
-    -ms-border-radius: 20px;
-    -o-border-radius: 20px;
+    padding-left: 1rem;
+    border: .2rem solid $color-primary;
+    border-radius: 2rem;
+    -webkit-border-radius: 2rem;
+    -moz-border-radius: 2rem;
+    -ms-border-radius: 2rem;
+    -o-border-radius: 2rem;
   }
 
   &__textarea:focus {
@@ -492,15 +492,15 @@
     margin-top: 2%;
     margin-bottom: 5%;
     width: 25%;
-    height: 30px;
+    height: 3rem;
     color: $color-primary;
     background-color: $color-grey-dark-1;
-    border: 2px solid $color-primary;
-    border-radius: 20px;
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
-    -ms-border-radius: 20px;
-    -o-border-radius: 20px;
+    border: .2rem solid $color-primary;
+    border-radius: 2rem;
+    -webkit-border-radius: 2rem;
+    -moz-border-radius: 2rem;
+    -ms-border-radius: 2rem;
+    -o-border-radius: 2rem;
     cursor: pointer;
     transition: all .6s;
     -webkit-transition: all .6s;
@@ -522,37 +522,37 @@
 
   &__btn:disabled:hover {
     background-color: $color-grey-dark-1;
-    border: solid 2px $color-primary;
+    border: solid .2rem $color-primary;
     background-image: none;
     color: $color-primary;
   }
 }
 
 .issueBtn {
-  margin: 10px;
+  margin: 1rem;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  font-size: 16px;
-  padding: 10px;
+  font-size: 1.4rem;
+  padding: 1rem;
   text-align: center;
   background-size: 200% auto;
   color: $color-grey-dark-1;
-  box-shadow: 0 0 20px #eee;
-  border-radius: 20px;
+  box-shadow: 0 0 2rem #eee;
+  border-radius: 2rem;
   width: 145%;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  box-shadow: 0 .1rem .3rem rgba(0,0,0,0.12), 0 .1rem .2rem rgba(0,0,0,0.24);
   transition: all 0.8s cubic-bezier(.25,.8,.25,1);
   cursor: pointer;
   display: inline-block;
-  border-radius: 25px;
+  border-radius: 2.5rem;
   -webkit-transition: all 0.8s cubic-bezier(.25,.8,.25,1);
   -moz-transition: all 0.8s cubic-bezier(.25,.8,.25,1);
   -ms-transition: all 0.8s cubic-bezier(.25,.8,.25,1);
   -o-transition: all 0.8s cubic-bezier(.25,.8,.25,1);
   background-image: linear-gradient(to right, $color-primary-light 0%, $color-secondary 51%, $color-primary 100%);
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  -ms-border-radius: 20px;
-  -o-border-radius: 20px;
+  -webkit-border-radius: 2rem;
+  -moz-border-radius: 2rem;
+  -ms-border-radius: 2rem;
+  -o-border-radius: 2rem;
 }
 
 .issueBtn:hover {
@@ -560,30 +560,30 @@
 }
 
 .sprintBtn {
-  margin: 10px;
+  margin: 1rem;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  font-size: 16px;
-  padding: 10px;
+  font-size: 1.4rem;
+  padding: 1rem;
   text-align: center;
   background-size: 200% auto;
   color: $color-grey-dark-1;
-  box-shadow: 0 0 20px #eee;
-  border-radius: 20px;
+  box-shadow: 0 0 2rem #eee;
+  border-radius: 2rem;
   width: 145%;
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   transition: all 0.8s cubic-bezier(.25,.8,.25,1);
   cursor: pointer;
   display: inline-block;
-  border-radius: 25px;
+  border-radius: 2.5rem;
   -webkit-transition: all 0.8s cubic-bezier(.25,.8,.25,1);
   -moz-transition: all 0.8s cubic-bezier(.25,.8,.25,1);
   -ms-transition: all 0.8s cubic-bezier(.25,.8,.25,1);
   -o-transition: all 0.8s cubic-bezier(.25,.8,.25,1);
   background-image: linear-gradient(to right, $color-primary-light 0%, $color-secondary 51%, $color-primary 100%);
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  -ms-border-radius: 20px;
-  -o-border-radius: 20px;
+  -webkit-border-radius: 2rem;
+  -moz-border-radius: 2rem;
+  -ms-border-radius: 2rem;
+  -o-border-radius: 2rem;
 }
 
 .sprintBtn:hover {
@@ -597,11 +597,11 @@
   background-color: red;
   color: #fff;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -o-border-radius: 10px;
+  border-radius: 1rem;
+  -webkit-border-radius: 1rem;
+  -moz-border-radius: 1rem;
+  -ms-border-radius: 1rem;
+  -o-border-radius: 1rem;
   transition: all .4s;
   -webkit-transition: all .4s;
   -moz-transition: all .4s;
@@ -620,8 +620,8 @@
 // Project Loader (Should probably make this more DRY)
 .loader {
   color: $color-primary;
-  font-size: 10px;
-  margin: 100px auto;
+  font-size: 1rem;
+  margin: 10rem auto;
   width: 1em;
   height: 1em;
   border-radius: 50%;
@@ -691,8 +691,8 @@
 // Project Loader (Should probably make this more DRY)
 .loader2 {
   color: $color-primary;
-  font-size: 10px;
-  margin: 40px auto;
+  font-size: 1rem;
+  margin: 4rem auto;
   width: 1em;
   height: 1em;
   border-radius: 50%;

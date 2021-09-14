@@ -1,8 +1,9 @@
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { UserHttpService } from 'src/app/user/user-http.service';
+import { User } from 'src/app/user/user.model';
 import { ProjectHttpService } from '../../project-http.service';
 import { Issue } from '../models/issue.model';
 import { Sprint } from '../models/sprint.model';
@@ -19,6 +20,7 @@ export class ProjectDashboardSprintsComponent implements OnInit {
   projectID: string;
   focusedSprint: Sprint = null;
   focusedIssue: Issue = null;
+  issueUser: Observable<User>;
   sprints: Sprint[];
   todo: Issue[] = [];
   inProgress: Issue[] = [];
@@ -46,7 +48,7 @@ export class ProjectDashboardSprintsComponent implements OnInit {
     // set userID
     this.userID = +localStorage.getItem('currentUser');
 
-    // set user role for permissions
+    // set user role for permissionsf
     this.userRole = localStorage.getItem('userProjectRole');
 
     // populate sprints
@@ -55,6 +57,10 @@ export class ProjectDashboardSprintsComponent implements OnInit {
 
   focusIssue(issue: Issue) {
     this.focusedIssue = issue;
+
+    if (issue.userID) {
+      // this.issueUser = this.getUser(issue.userID);
+    }
   }
 
   unfocusIssue() {
@@ -296,6 +302,32 @@ export class ProjectDashboardSprintsComponent implements OnInit {
     }
   }
 
+  getUser(id: number): User {
+    let user: User;
+    this.userService.getUser(id)
+      .subscribe(
+        responseData => {
+          console.log(responseData);
+
+          user = new User(
+            responseData.body['fullName'],
+            responseData.body['username'],
+            responseData.body['email'],
+            responseData.body['password'],
+            responseData.body['ID'],
+            responseData.body['role']
+          );
+
+          
+          return 
+        }, error => {
+          this.error.next(error.message);
+          return null;
+        }
+      )
+    return null;
+  }
+
   private populateSprints() {
     // initialize component level sprints variable
     this.sprints = [];
@@ -308,7 +340,6 @@ export class ProjectDashboardSprintsComponent implements OnInit {
             this.projectService.getTeamSprints(teamData.body[i]['_id'])
               .subscribe(
                 sprintData => {
-                  console.log(sprintData);
                   for(let j = 0; j < sprintData.body['length']; j++) {
                     const sprint = new Sprint(
                       this.projectID,

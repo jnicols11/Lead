@@ -161,4 +161,6 @@
     *ngIf="userRole != 'member' || userID == focusedSprint.team.leader"
     >Move Issue to Backlog
   </button>
+  <br>
+  <p *ngIf="focusedIssue.userID">{{ issueUser.name | async }}</p>
 </div>

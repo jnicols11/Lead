@@ -1,3 +1,5 @@
+@import '../styles.scss';
+
 // Establish variables
 $color-primary-light: rgb(46, 255, 238);
 $color-primary: rgb(41, 224, 209);
@@ -6,11 +8,25 @@ $color-grey-dark-1: rgb(37, 39, 37);
 $color-grey-light-1: rgb(84, 85, 84);
 
 html {
-  font-size: 16px;
+  font-size: 62.5%; // 1 rem = 10px
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 
+  @include respond(tab-land) {
+    font-size: 56.25%;  // 1 rem = 9px
+  }
+
+  @include respond(tab-port) {
+    font-size: 50%;   // 1 rem = 8px
+  }
+
+  @include respond(big-desktop) {
+    font-size: 75%;   // 1 rem = 12px
+  }
 }
 
 body {
 
+  @include respond(tab-port) {
+    padding: 0;
+  }
 }

@@ -3,12 +3,12 @@
 .container {
   background-color: $color-grey-dark-1;
   border: 2px solid $color-primary;
-  min-height: 700px;
-  border-radius: 20px;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  -ms-border-radius: 20px;
-  -o-border-radius: 20px;
+  min-height: 60rem;
+  border-radius: 2rem;
+  -webkit-border-radius: 2rem;
+  -moz-border-radius: 2rem;
+  -ms-border-radius: 2rem;
+  -o-border-radius: 2rem;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   color: $color-primary;
   text-align: center;
@@ -19,23 +19,25 @@
 
   &__sprintList {
     &__item {
+      font-size: 1.4rem;
       width: 75%;
       cursor: pointer;
       margin: 0 auto;
       margin-bottom: 3%;
       background-color: $color-grey-dark-1;
       border: 2px solid $color-primary;
-      border-radius: 20px;
-      -webkit-border-radius: 20px;
-      -moz-border-radius: 20px;
-      -ms-border-radius: 20px;
-      -o-border-radius: 20px;
+      border-radius: 2rem;
+      -webkit-border-radius: 2rem;
+      -moz-border-radius: 2rem;
+      -ms-border-radius: 2rem;
+      -o-border-radius: 2rem;
       display: flex;
       justify-content: space-around;
     }
   }
 
   &__sprint {
+
     &__complete {
       text-align: right;
 
@@ -44,16 +46,16 @@
         margin-right: 5%;
         margin-bottom: 3%;
         cursor: pointer;
-        height: 30px;
+        height: 3rem;
         width: 10%;
         color: $color-primary;
         background-color: $color-grey-dark-1;
         border: 2px solid $color-primary;
-        border-radius: 20px;
-        -webkit-border-radius: 20px;
-        -moz-border-radius: 20px;
-        -ms-border-radius: 20px;
-        -o-border-radius: 20px;
+        border-radius: 2rem;
+        -webkit-border-radius: 2rem;
+        -moz-border-radius: 2rem;
+        -ms-border-radius: 2rem;
+        -o-border-radius: 2rem;
         transition: all .5s;
         -webkit-transition: all .5s;
         -moz-transition: all .5s;
@@ -85,17 +87,18 @@
 
       &__box {
         width: 30%;
-        height: 450px;
+        height: 40rem;
         color: $color-grey-dark-1;
         background-color: #fff;
         border: 2px solid $color-primary;
-        border-radius: 20px;
-        -webkit-border-radius: 20px;
-        -moz-border-radius: 20px;
-        -ms-border-radius: 20px;
-        -o-border-radius: 20px;
+        border-radius: 2rem;
+        -webkit-border-radius: 2rem;
+        -moz-border-radius: 2rem;
+        -ms-border-radius: 2rem;
+        -o-border-radius: 2rem;
 
         &__item {
+          font-size: 1.4rem;
           width: 90%;
           color: $color-primary;
           margin: 0 auto;
@@ -105,11 +108,11 @@
           justify-content: space-around;
           background-color: $color-grey-dark-1;
           border: 2px solid $color-primary;
-          border-radius: 20px;
-          -webkit-border-radius: 20px;
-          -moz-border-radius: 20px;
-          -ms-border-radius: 20px;
-          -o-border-radius: 20px;
+          border-radius: 2rem;
+          -webkit-border-radius: 2rem;
+          -moz-border-radius: 2rem;
+          -ms-border-radius: 2rem;
+          -o-border-radius: 2rem;
         }
 
         &__item.cdk-drag-placeholder {
@@ -127,15 +130,15 @@
       margin-bottom: 2%;
       cursor: pointer;
       width: 10%;
-      height: 30px;
+      height: 3rem;
       background-color: $color-grey-dark-1;
       color: red;
       border: 2px solid red;
-      border-radius: 20px;
-      -webkit-border-radius: 20px;
-      -moz-border-radius: 20px;
-      -ms-border-radius: 20px;
-      -o-border-radius: 20px;
+      border-radius: 2rem;
+      -webkit-border-radius: 2rem;
+      -moz-border-radius: 2rem;
+      -ms-border-radius: 2rem;
+      -o-border-radius: 2rem;
       transition: all .5s;
       -webkit-transition: all .5s;
       -moz-transition: all .5s;
@@ -157,16 +160,16 @@
     color: $color-primary;
     background-color: $color-grey-dark-1;
     border: 2px solid $color-primary;
-    border-radius: 20px;
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
-    -ms-border-radius: 20px;
-    -o-border-radius: 20px;
-    transform: translate(0, -600px);
-    -webkit-transform: translate(0, -600px);
-    -moz-transform: translate(0, -600px);
-    -ms-transform: translate(0, -600px);
-    -o-transform: translate(0, -600px);
+    border-radius: 2rem;
+    -webkit-border-radius: 2rem;
+    -moz-border-radius: 2rem;
+    -ms-border-radius: 2rem;
+    -o-border-radius: 2rem;
+    transform: translate(0, -60rem);
+    -webkit-transform: translate(0, -60rem);
+    -moz-transform: translate(0, -60rem);
+    -ms-transform: translate(0, -60rem);
+    -o-transform: translate(0, -60rem);
     position: absolute;
     margin-left: 15%;
 
@@ -185,16 +188,16 @@
     &__btn {
       cursor: pointer;
       margin-bottom: 4%;
-      height: 30px;
+      height: 3rem;
       width: 15%;
       color: $color-primary;
       background-color: $color-grey-dark-1;
       border: 2px solid $color-primary;
-      border-radius: 20px;
-      -webkit-border-radius: 20px;
-      -moz-border-radius: 20px;
-      -ms-border-radius: 20px;
-      -o-border-radius: 20px;
+      border-radius: 2rem;
+      -webkit-border-radius: 2rem;
+      -moz-border-radius: 2rem;
+      -ms-border-radius: 2rem;
+      -o-border-radius: 2rem;
       transition: all .5s;
       -webkit-transition: all .5s;
       -moz-transition: all .5s;
@@ -208,18 +211,18 @@
     }
 
     &__dropBtn {
-      height: 30px;
+      height: 3rem;
       cursor: pointer;
       margin-bottom: 4%;
       padding: 0 2%;
       background-color: $color-grey-dark-1;
       border: 2px solid red;
       color: red;
-      border-radius: 20px;
-      -webkit-border-radius: 20px;
-      -moz-border-radius: 20px;
-      -ms-border-radius: 20px;
-      -o-border-radius: 20px;
+      border-radius: 2rem;
+      -webkit-border-radius: 2rem;
+      -moz-border-radius: 2rem;
+      -ms-border-radius: 2rem;
+      -o-border-radius: 2rem;
       transition: all .5s;
       -webkit-transition: all .5s;
       -moz-transition: all .5s;
@@ -241,11 +244,11 @@
   color: #fff;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   border: 1px solid $color-grey-dark-1;
-  border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -o-border-radius: 10px;
+  border-radius: 1rem;
+  -webkit-border-radius: 1rem;
+  -moz-border-radius: 1rem;
+  -ms-border-radius: 1rem;
+  -o-border-radius: 1rem;
   transition: all .4s;
   -webkit-transition: all .4s;
   -moz-transition: all .4s;
@@ -264,8 +267,8 @@
 
 .loader {
   color: $color-primary;
-  font-size: 10px;
-  margin: 100px auto;
+  font-size: 1.4rem;
+  margin: 10rem auto;
   width: 1em;
   height: 1em;
   border-radius: 50%;

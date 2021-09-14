@@ -3,20 +3,20 @@
 .container {
   display: flex;
   justify-content: space-evenly;
-  transform: translate(0, -40px);
-  -webkit-transform: translate(0, -40px);
-  -moz-transform: translate(0, -40px);
-  -ms-transform: translate(0, -40px);
-  -o-transform: translate(0, -40px);
+  transform: translate(0, -4rem);
+  -webkit-transform: translate(0, -4rem);
+  -moz-transform: translate(0, -4rem);
+  -ms-transform: translate(0, -4rem);
+  -o-transform: translate(0, -4rem);
   &__info {
     width: 40%;
     background-color: $color-grey-dark-1;
-    border: 2px solid $color-primary;
-    border-radius: 20px;
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
-    -ms-border-radius: 20px;
-    -o-border-radius: 20px;
+    border: .2rem solid $color-primary;
+    border-radius: 2rem;
+    -webkit-border-radius: 2rem;
+    -moz-border-radius: 2rem;
+    -ms-border-radius: 2rem;
+    -o-border-radius: 2rem;
 
     &__field {
       display: flex;
@@ -34,13 +34,13 @@
         padding: 0 2%;
         color: $color-primary;
         background-color: $color-grey-dark-1;
-        height: 30px;
-        border: 2px solid $color-primary;
-        border-radius: 20px;
-        -webkit-border-radius: 20px;
-        -moz-border-radius: 20px;
-        -ms-border-radius: 20px;
-        -o-border-radius: 20px;
+        height: 3rem;
+        border: .2rem solid $color-primary;
+        border-radius: 2rem;
+        -webkit-border-radius: 2rem;
+        -moz-border-radius: 2rem;
+        -ms-border-radius: 2rem;
+        -o-border-radius: 2rem;
       }
 
       & input:focus {
@@ -58,12 +58,12 @@
         background-color: $color-grey-dark-1;
         line-height: 200%;
         font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-        border: 2px solid $color-primary;
-        border-radius: 20px;
-        -webkit-border-radius: 20px;
-        -moz-border-radius: 20px;
-        -ms-border-radius: 20px;
-        -o-border-radius: 20px;
+        border: .2rem solid $color-primary;
+        border-radius: 2rem;
+        -webkit-border-radius: 2rem;
+        -moz-border-radius: 2rem;
+        -ms-border-radius: 2rem;
+        -o-border-radius: 2rem;
       }
 
       & textarea:focus {
@@ -85,12 +85,12 @@
   &__access {
     width: 40%;
     background-color: $color-grey-dark-1;
-    border: 2px solid $color-primary;
-    border-radius: 20px;
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
-    -ms-border-radius: 20px;
-    -o-border-radius: 20px;
+    border: .2rem solid $color-primary;
+    border-radius: 2rem;
+    -webkit-border-radius: 2rem;
+    -moz-border-radius: 2rem;
+    -ms-border-radius: 2rem;
+    -o-border-radius: 2rem;
 
     &__addUser {
       width: 80%;
@@ -108,17 +108,17 @@
         display: block;
         margin: 0 auto;
         margin-bottom: 2%;
-        height: 25px;
+        height: 2.5rem;
         width: 45%;
         padding-left: 2%;
         color: $color-primary;
         background-color: $color-grey-dark-1;
-        border: 2px solid $color-primary;
-        border-radius: 20px;
-        -webkit-border-radius: 20px;
-        -moz-border-radius: 20px;
-        -ms-border-radius: 20px;
-        -o-border-radius: 20px;
+        border: .2rem solid $color-primary;
+        border-radius: 2rem;
+        -webkit-border-radius: 2rem;
+        -moz-border-radius: 2rem;
+        -ms-border-radius: 2rem;
+        -o-border-radius: 2rem;
       }
 
       & input:focus {
@@ -130,14 +130,14 @@
         margin: 0 auto;
         background-color: $color-grey-dark-1;
         width: 30%;
-        height: 30px;
+        height: 3rem;
         color: $color-primary;
-        border: 2px solid $color-primary;
-        border-radius: 20px;
-        -webkit-border-radius: 20px;
-        -moz-border-radius: 20px;
-        -ms-border-radius: 20px;
-        -o-border-radius: 20px;
+        border: .2rem solid $color-primary;
+        border-radius: 2rem;
+        -webkit-border-radius: 2rem;
+        -moz-border-radius: 2rem;
+        -ms-border-radius: 2rem;
+        -o-border-radius: 2rem;
         transition: all .5s;
         -webkit-transition: all .5s;
         -moz-transition: all .5s;
@@ -168,14 +168,14 @@
       margin-top: 20%;
       background-color: $color-grey-dark-1;
       width: 30%;
-      height: 40px;
+      height: 4rem;
       color: $color-primary;
-      border: 2px solid $color-primary;
-      border-radius: 20px;
-      -webkit-border-radius: 20px;
-      -moz-border-radius: 20px;
-      -ms-border-radius: 20px;
-      -o-border-radius: 20px;
+      border: .2rem solid $color-primary;
+      border-radius: 2rem;
+      -webkit-border-radius: 2rem;
+      -moz-border-radius: 2rem;
+      -ms-border-radius: 2rem;
+      -o-border-radius: 2rem;
       transition: all .5s;
       -webkit-transition: all .5s;
       -moz-transition: all .5s;
@@ -196,12 +196,12 @@
     margin-left: auto;
     margin-right: auto;
     background-color: $color-grey-dark-1;
-    border: 2px solid $color-primary;
-    border-radius: 20px;
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
-    -ms-border-radius: 20px;
-    -o-border-radius: 20px;
+    border: .2rem solid $color-primary;
+    border-radius: 2rem;
+    -webkit-border-radius: 2rem;
+    -moz-border-radius: 2rem;
+    -ms-border-radius: 2rem;
+    -o-border-radius: 2rem;
 
     & h2 {
       text-align: center;
@@ -213,7 +213,7 @@
     & p {
       margin-top: 2%;
       margin-bottom: 2%;
-      font-size: 16px;
+      font-size: 1.6rem;
       color: $color-primary;
       font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
       text-align: center;
@@ -221,18 +221,18 @@
 
     & input {
       width: 30%;
-      height: 35px;
+      height: 3.5rem;
       color: $color-primary;
       margin-left: 34%;
       margin-bottom: 2%;
       padding-left: 1%;
       background-color: $color-grey-dark-1;
-      border: 2px solid $color-primary;
-      border-radius: 20px;
-      -webkit-border-radius: 20px;
-      -moz-border-radius: 20px;
-      -ms-border-radius: 20px;
-      -o-border-radius: 20px;
+      border: .2rem solid $color-primary;
+      border-radius: 2rem;
+      -webkit-border-radius: 2rem;
+      -moz-border-radius: 2rem;
+      -ms-border-radius: 2rem;
+      -o-border-radius: 2rem;
     }
 
     & input:focus {
@@ -252,13 +252,13 @@
   background-color: $color-grey-dark-1;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   color: $color-primary;
-  font-size: 16px;
-  border: 2px solid $color-primary;
-  border-radius: 20px;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  -ms-border-radius: 20px;
-  -o-border-radius: 20px;
+  font-size: 1.6rem;
+  border: .2rem solid $color-primary;
+  border-radius: 2rem;
+  -webkit-border-radius: 2rem;
+  -moz-border-radius: 2rem;
+  -ms-border-radius: 2rem;
+  -o-border-radius: 2rem;
   cursor: pointer;
   width: 20%;
   transition: all .5s;
@@ -279,14 +279,14 @@
   margin-bottom: 2%;
   background-color: transparent;
   width: 16%;
-  height: 35px;
+  height: 3.5rem;
   color: red;
-  border: 2px solid red;
-  border-radius: 20px;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  -ms-border-radius: 20px;
-  -o-border-radius: 20px;
+  border: .2rem solid red;
+  border-radius: 2rem;
+  -webkit-border-radius: 2rem;
+  -moz-border-radius: 2rem;
+  -ms-border-radius: 2rem;
+  -o-border-radius: 2rem;
   transition: all .6s;
   -webkit-transition: all .6s;
   -moz-transition: all .6s;
@@ -313,8 +313,8 @@
 
 .loader {
   color: $color-primary;
-  font-size: 10px;
-  margin: 100px auto;
+  font-size: 1rem;
+  margin: 10rem auto;
   width: 1em;
   height: 1em;
   border-radius: 50%;

@@ -3,12 +3,12 @@
 .container {
   background-color: $color-grey-dark-1;
   border: 2px solid $color-primary;
-  border-radius: 20px;
+  border-radius: 2rem;
   height: 75vh;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  -ms-border-radius: 20px;
-  -o-border-radius: 20px;
+  -webkit-border-radius: 2rem;
+  -moz-border-radius: 2rem;
+  -ms-border-radius: 2rem;
+  -o-border-radius: 2rem;
   padding: 2%;
   margin-top: -2%;
 
@@ -29,14 +29,14 @@
       color: $color-primary;
       font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
       width: 38%;
-      height: 40px;
+      height: 4rem;
       background-color: $color-grey-dark-1;
       border: 2px solid $color-primary;
-      border-radius: 20px;
-      -webkit-border-radius: 20px;
-      -moz-border-radius: 20px;
-      -ms-border-radius: 20px;
-      -o-border-radius: 20px;
+      border-radius: 2rem;
+      -webkit-border-radius: 2rem;
+      -moz-border-radius: 2rem;
+      -ms-border-radius: 2rem;
+      -o-border-radius: 2rem;
       padding: 0 1%;
     }
 
@@ -50,13 +50,14 @@
     margin: 0 auto;
     margin-top: 7%;
     border: 2px solid $color-primary;
-    border-radius: 20px;
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
-    -ms-border-radius: 20px;
-    -o-border-radius: 20px;
+    border-radius: 2rem;
+    -webkit-border-radius: 2rem;
+    -moz-border-radius: 2rem;
+    -ms-border-radius: 2rem;
+    -o-border-radius: 2rem;
 
     & h2 {
+      font-size: 1.6rem;
       font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
       text-align: center;
       color: $color-primary;
@@ -71,18 +72,23 @@
       justify-content: space-evenly;
       align-items: center;
 
+      & label {
+        font-size: 1.4rem;
+      }
+
       & input {
         color: $color-primary;
+        font-size: 1.4rem;
         font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
         padding: 0 1%;
-        height: 30px;
+        height: 3rem;
         background-color: $color-grey-dark-1;
         border: 2px solid $color-primary;
-        border-radius: 20px;
-        -webkit-border-radius: 20px;
-        -moz-border-radius: 20px;
-        -ms-border-radius: 20px;
-        -o-border-radius: 20px;
+        border-radius: 2rem;
+        -webkit-border-radius: 2rem;
+        -moz-border-radius: 2rem;
+        -ms-border-radius: 2rem;
+        -o-border-radius: 2rem;
       }
 
       & input:focus {
@@ -94,14 +100,15 @@
         color: $color-primary;
         cursor: pointer;
         width: 10%;
-        height: 30px;
+        height: 3rem;
+        font-size: 1.4rem;
         font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
         border: 2px solid $color-primary;
-        border-radius: 20px;
-        -webkit-border-radius: 20px;
-        -moz-border-radius: 20px;
-        -ms-border-radius: 20px;
-        -o-border-radius: 20px;
+        border-radius: 2rem;
+        -webkit-border-radius: 2rem;
+        -moz-border-radius: 2rem;
+        -ms-border-radius: 2rem;
+        -o-border-radius: 2rem;
         transition: all .5s;
         -webkit-transition: all .5s;
         -moz-transition: all .5s;
@@ -123,17 +130,18 @@
     &__members {
       text-align: center;
       width: 80%;
+      font-size: 1.4rem;
       font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
       color: $color-primary;
       margin: 0 auto;
       margin-top: 5%;
       background-color: $color-grey-dark-1;
       border: 2px solid $color-primary;
-      border-radius: 20px;
-      -webkit-border-radius: 20px;
-      -moz-border-radius: 20px;
-      -ms-border-radius: 20px;
-      -o-border-radius: 20px;
+      border-radius: 2rem;
+      -webkit-border-radius: 2rem;
+      -moz-border-radius: 2rem;
+      -ms-border-radius: 2rem;
+      -o-border-radius: 2rem;
 
       & h2 {
         margin-bottom: 5%;
@@ -154,13 +162,14 @@
           flex-direction: column;
           align-items: center;
           border: 2px solid $color-primary;
-          border-radius: 20px;
-          -webkit-border-radius: 20px;
-          -moz-border-radius: 20px;
-          -ms-border-radius: 20px;
-          -o-border-radius: 20px;
+          border-radius: 2rem;
+          -webkit-border-radius: 2rem;
+          -moz-border-radius: 2rem;
+          -ms-border-radius: 2rem;
+          -o-border-radius: 2rem;
 
           & p {
+            font-size: 1.4rem;
             font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
             color: $color-primary;
           }
@@ -175,15 +184,15 @@
         color: $color-primary;
         cursor: pointer;
         margin-bottom: 3%;
-        height: 35px;
+        height: 3.5rem;
         width: 15%;
         background-color: $color-grey-dark-1;
         border: 2px solid $color-primary;
-        border-radius: 20px;
-        -webkit-border-radius: 20px;
-        -moz-border-radius: 20px;
-        -ms-border-radius: 20px;
-        -o-border-radius: 20px;
+        border-radius: 2rem;
+        -webkit-border-radius: 2rem;
+        -moz-border-radius: 2rem;
+        -ms-border-radius: 2rem;
+        -o-border-radius: 2rem;
         transition: all .6s;
         -webkit-transition: all .6s;
         -moz-transition: all .6s;
@@ -202,7 +211,8 @@
       }
 
       &__popup {
-        min-height: 400px;
+        min-height: 40rem;
+        font-size: 1.4rem;
         font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
         text-align: center;
         color: $color-primary;
@@ -210,11 +220,11 @@
         margin: 0 auto;
         background-color: $color-grey-dark-1;
         border: 2px solid $color-primary;
-        border-radius: 20px;
-        -webkit-border-radius: 20px;
-        -moz-border-radius: 20px;
-        -ms-border-radius: 20px;
-        -o-border-radius: 20px;
+        border-radius: 2rem;
+        -webkit-border-radius: 2rem;
+        -moz-border-radius: 2rem;
+        -ms-border-radius: 2rem;
+        -o-border-radius: 2rem;
         transform: translate(0, -95%);
         -webkit-transform: translate(0, -95%);
         -moz-transform: translate(0, -95%);
@@ -239,15 +249,15 @@
           background-color: $color-grey-dark-1;
           cursor: pointer;
           margin-bottom: 5%;
-          height: 30px;
+          height: 3rem;
           width: 15%;
           color: red;
           border: 2px solid red;
-          border-radius: 20px;
-          -webkit-border-radius: 20px;
-          -moz-border-radius: 20px;
-          -ms-border-radius: 20px;
-          -o-border-radius: 20px;
+          border-radius: 2rem;
+          -webkit-border-radius: 2rem;
+          -moz-border-radius: 2rem;
+          -ms-border-radius: 2rem;
+          -o-border-radius: 2rem;
           transition: all .5s;
           -webkit-transition: all .5s;
           -moz-transition: all .5s;
@@ -266,11 +276,11 @@
         margin-top: 3%;
         width: 80%;
         border: 2px solid $color-primary;
-        border-radius: 20px;
-        -webkit-border-radius: 20px;
-        -moz-border-radius: 20px;
-        -ms-border-radius: 20px;
-        -o-border-radius: 20px;
+        border-radius: 2rem;
+        -webkit-border-radius: 2rem;
+        -moz-border-radius: 2rem;
+        -ms-border-radius: 2rem;
+        -o-border-radius: 2rem;
         font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
         color: $color-primary;
         text-align: center;
@@ -284,12 +294,12 @@
           color: $color-primary;
           cursor: pointer;
           width: 15%;
-          height: 35px;
-          border-radius: 20px;
-          -webkit-border-radius: 20px;
-          -moz-border-radius: 20px;
-          -ms-border-radius: 20px;
-          -o-border-radius: 20px;
+          height: 3.5rem;
+          border-radius: 2rem;
+          -webkit-border-radius: 2rem;
+          -moz-border-radius: 2rem;
+          -ms-border-radius: 2rem;
+          -o-border-radius: 2rem;
           transition: all .5s;
           -webkit-transition: all .5s;
           -moz-transition: all .5s;
@@ -352,17 +362,17 @@
     }
 
     &__editBtn {
-      height: 30px;
+      height: 3rem;
       cursor: pointer;
       width: 20%;
       background-color: $color-grey-dark-1;
       border: 2px solid $color-primary;
       color: $color-primary;
-      border-radius: 20px;
-      -webkit-border-radius: 20px;
-      -moz-border-radius: 20px;
-      -ms-border-radius: 20px;
-      -o-border-radius: 20px;
+      border-radius: 2rem;
+      -webkit-border-radius: 2rem;
+      -moz-border-radius: 2rem;
+      -ms-border-radius: 2rem;
+      -o-border-radius: 2rem;
       transition: all .6s;
       -webkit-transition: all .6s;
       -moz-transition: all .6s;
@@ -377,7 +387,7 @@
 
     &__deleteBtn {
       width: 15%;
-      height: 35px;
+      height: 3.5rem;
       cursor: pointer;
       margin-left: 42%;
       margin-bottom: 5%;
@@ -385,11 +395,11 @@
       background-color: $color-grey-dark-1;
       color: red;
       border: 2px solid red;
-      border-radius: 20px;
-      -webkit-border-radius: 20px;
-      -moz-border-radius: 20px;
-      -ms-border-radius: 20px;
-      -o-border-radius: 20px;
+      border-radius: 2rem;
+      -webkit-border-radius: 2rem;
+      -moz-border-radius: 2rem;
+      -ms-border-radius: 2rem;
+      -o-border-radius: 2rem;
       transition: all .5s;
       -webkit-transition: all .5s;
       -moz-transition: all .5s;
@@ -405,17 +415,17 @@
 
   &__createBtn {
     width: 12%;
-    height: 40px;
+    height: 4rem;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     color: $color-primary;
     cursor: pointer;
     background-color: $color-grey-dark-1;
     border: 2px solid $color-primary;
-    border-radius: 20px;
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
-    -ms-border-radius: 20px;
-    -o-border-radius: 20px;
+    border-radius: 2rem;
+    -webkit-border-radius: 2rem;
+    -moz-border-radius: 2rem;
+    -ms-border-radius: 2rem;
+    -o-border-radius: 2rem;
     transition: all .5s;
     -webkit-transition: all .5s;
     -moz-transition: all .5s;
@@ -434,11 +444,11 @@
     margin-top: 5%;
     background-color: transparent;
     border: 2px solid $color-primary;
-    border-radius: 20px;
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
-    -ms-border-radius: 20px;
-    -o-border-radius: 20px;
+    border-radius: 2rem;
+    -webkit-border-radius: 2rem;
+    -moz-border-radius: 2rem;
+    -ms-border-radius: 2rem;
+    -o-border-radius: 2rem;
 
     & h2 {
       text-align: center;
@@ -454,21 +464,22 @@
       justify-content: space-around;
 
       & label {
+        font-size: 1.4rem;
         font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
         color: $color-primary;
       }
 
       & input {
         font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-        height: 25px;
+        height: 2.5rem;
         width: 20%;
         padding: 0 1%;
         border: 2px solid $color-primary;
-        border-radius: 20px;
-        -webkit-border-radius: 20px;
-        -moz-border-radius: 20px;
-        -ms-border-radius: 20px;
-        -o-border-radius: 20px;
+        border-radius: 2rem;
+        -webkit-border-radius: 2rem;
+        -moz-border-radius: 2rem;
+        -ms-border-radius: 2rem;
+        -o-border-radius: 2rem;
       }
 
       & input:focus {
@@ -483,12 +494,12 @@
       color: $color-primary;
       cursor: pointer;
       width: 15%;
-      height: 35px;
-      border-radius: 20px;
-      -webkit-border-radius: 20px;
-      -moz-border-radius: 20px;
-      -ms-border-radius: 20px;
-      -o-border-radius: 20px;
+      height: 3.5rem;
+      border-radius: 2rem;
+      -webkit-border-radius: 2rem;
+      -moz-border-radius: 2rem;
+      -ms-border-radius: 2rem;
+      -o-border-radius: 2rem;
       transition: all .5s;
       -webkit-transition: all .5s;
       -moz-transition: all .5s;
@@ -511,12 +522,12 @@
       color: $color-primary;
       cursor: pointer;
       width: 15%;
-      height: 35px;
-      border-radius: 20px;
-      -webkit-border-radius: 20px;
-      -moz-border-radius: 20px;
-      -ms-border-radius: 20px;
-      -o-border-radius: 20px;
+      height: 3.5rem;
+      border-radius: 2rem;
+      -webkit-border-radius: 2rem;
+      -moz-border-radius: 2rem;
+      -ms-border-radius: 2rem;
+      -o-border-radius: 2rem;
       transition: all .5s;
       -webkit-transition: all .5s;
       -moz-transition: all .5s;
@@ -546,13 +557,14 @@
     margin-top: 5%;
     background-color: transparent;
     border: 2px solid $color-primary;
-    border-radius: 20px;
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
-    -ms-border-radius: 20px;
-    -o-border-radius: 20px;
+    border-radius: 2rem;
+    -webkit-border-radius: 2rem;
+    -moz-border-radius: 2rem;
+    -ms-border-radius: 2rem;
+    -o-border-radius: 2rem;
 
     & h2 {
+      font-size: 1.4rem;
       font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
       margin-bottom: 5%;
       color: $color-primary;
@@ -574,13 +586,14 @@
         flex-direction: column;
         align-items: center;
         border: 2px solid $color-primary;
-        border-radius: 20px;
-        -webkit-border-radius: 20px;
-        -moz-border-radius: 20px;
-        -ms-border-radius: 20px;
-        -o-border-radius: 20px;
+        border-radius: 2rem;
+        -webkit-border-radius: 2rem;
+        -moz-border-radius: 2rem;
+        -ms-border-radius: 2rem;
+        -o-border-radius: 2rem;
 
         & p {
+          font-size: 1.4rem;
           font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
           color: $color-primary;
         }
@@ -604,11 +617,11 @@
   border: 2px solid black;
   cursor: pointer;
   color: #fff;
-  border-radius: 20px;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  -ms-border-radius: 20px;
-  -o-border-radius: 20px;
+  border-radius: 2rem;
+  -webkit-border-radius: 2rem;
+  -moz-border-radius: 2rem;
+  -ms-border-radius: 2rem;
+  -o-border-radius: 2rem;
   transition: all .5s;
   -webkit-transition: all .5s;
   -moz-transition: all .5s;
