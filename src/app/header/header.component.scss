@@ -19,7 +19,7 @@
       justify-content: space-evenly;
 
       &__item {
-        width: 30%;
+        width: 15rem;
         list-style: none;
 
         &__btn {
@@ -39,7 +39,7 @@
           -moz-transition: all .6s;
           -ms-transition: all .6s;
           -o-transition: all .6s;
-}
+        }
 
         &__btn:hover {
           background-color: $color-primary-light;
@@ -56,7 +56,7 @@
       justify-content: space-around;
 
       &__item {
-        width: 30%;
+        width: 15rem;
         list-style: none;
 
         &__btn {

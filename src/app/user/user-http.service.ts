@@ -35,6 +35,7 @@ export class UserHttpService {
   }
 
   register(user: User) {
+    user.role = 'User';
     // make Https call to API
     return this.http.post(
       'http://localhost/LeadAPI/api/register',
