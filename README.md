@@ -1,6 +1,10 @@
 # Lead
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.4.
+Lead is a project management web application developed in Angular that utilizes a microservice backend architecture. The purpose of this project was to design and develop a Agile based platform with a user friendly UI/UX that is easy to use yet a powerful necessity to any project. Key features of this project include user registration and login, state management, project creation, project mangement, mapping of teams, creation of sprints, and a centrilized architecture to support the use and transport of data between components and services. The backend API's can be found at the following links:
+
+LEAD User API: https://github.com/jnicols11/LeadUserAPI
+LEAD Project API: https://github.com/jnicols11/LeadProjectAPI
+
 
 ## Development server
 
